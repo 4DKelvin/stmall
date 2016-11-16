@@ -1,0 +1,30 @@
+{
+  "name": "stmall",
+  "version": "1.0.0",
+  "description": "PcWeb-Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4DKelvin/stmall.git"
+  },
+  "author": "Kelvin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/4DKelvin/stmall/issues"
+  },
+  "homepage": "https://github.com/4DKelvin/stmall#readme",
+  "dependencies": {
+    "gulp-cmd-pack": "^1.0.9",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-main-bower-files": "^1.5.3",
+    "gulp-nodemon": "^2.2.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "angular",
+    "require"
+  ]
+}

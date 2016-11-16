@@ -1,0 +1,25 @@
+{
+  "name": "stmall",
+  "description": "PcWeb-Framework",
+  "main": "index.js",
+  "authors": [
+    "Kelvin"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/4DKelvin/stmall",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.0",
+    "angular-async-loader": "https://github.com/subchen/angular-async-loader.git#^1.3.2",
+    "angularjs-ie8-build": "^1.4.7",
+    "requirejs": "^2.3.2",
+    "angular-ui-router": "^0.3.2"
+  },
+  "private": true
+}
