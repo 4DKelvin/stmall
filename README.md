@@ -9,7 +9,7 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [Angular Async Loader v1.3.2](https://github.com/subchen/angular-async-loader) `Angular` 模块异步加载插件
 * [RequireJs v2.3.2](http://requirejs.org) AMD 异步模块定义
 * [Jquery v1.11.0](https://github.com/jquery/jquery-dist) `Jquery 1.x` 支持IE6-8的版本
-* [Jquery unveil v1.3.0](https://github.com/luis-almeida/unveil) 图片延迟加载插件
+* [Jquery unveil v1.3.0](https://github.com/luis-almeida/unveil) 图片`延迟加载`插件支持IE7+
 * [Less v2.7.1](http://lesscss.cn/) Less 做Css编译语言
 * [IconFont Plus](http://www.iconfont.cn/plus) 设计所有图标由 `IconFont Plus` 管理
 * [Gulp v3.9.1](http://www.gulpjs.com.cn/) 前端自动化构建使用`Gulp` 管理资源合并压缩
