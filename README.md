@@ -34,7 +34,18 @@ gulp
 ````
 
 ### 前端模块化
+- AMD 方式定义模块 require方式异步引入
+````
+define(function (require, exports, module) {
+    var app = require('app'); //引入模块
 
+    app.controller('home', ['$scope', function ($scope) {
+
+    }]);
+    module.exports = app; //输出
+});
+````
+- 更多`规范`看[这里](https://github.com/amdjs/amdjs-api/wiki/AMD)
 
 ### 注意事项
 
@@ -77,3 +88,7 @@ Module.directive('myElement', function () {
 // 正确方式
 <div style='{{someCss}}'></div>
 ````
+
+### 使用协议
+
+MIT License
