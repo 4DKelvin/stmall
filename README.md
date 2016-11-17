@@ -29,7 +29,7 @@ promise['catch'](function(){});
 ````
 - 自定义指令 使用E方式 IE8 要添加document.createElement('');
 ````
-<b>document.createElement('myElement');</b>
+document.createElement('myElement');
 Module.directive('myElement', function () {
     return {
         restrict: 'E',
