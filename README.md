@@ -116,6 +116,7 @@ Module.directive('myElement', function () {
 // 正确方式
 <div style='{{someCss}}'></div>
 ````
+- ...(待补充)
 
 ### 使用协议
 
