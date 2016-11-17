@@ -14,6 +14,13 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [Gulp v3.9.1](http://www.gulpjs.com.cn/) 前端自动化构建使用`Gulp` 管理资源合并压缩
 * [MockJs v1.0.1](https://github.com/nuysoft/Mock) 模拟Restful(Ajax) 请求数据
 
+### 自动整合 `RAP Mock Api`
+- `RAP` [接口文档](http://121.43.161.157:8084/workspace/myWorkspace.do?projectId=3#219)
+- 已集成MockApi(仅开发模式)
+````
+<script src='http://121.43.161.157:8084/rap.plugin.js?projectId=3'></script>
+````
+
 ### 打开方式
 - 环境准备(`NodeJS` 与 `Npm3` 不同系统安装各异)
 
@@ -32,14 +39,6 @@ gulp serve
 - 发布(dist目录)
 ````
 gulp
-````
-
-### 自动整合 `RAP Mock Api`
-- `RAP` [接口文档](http://121.43.161.157:8084/workspace/myWorkspace.do?projectId=3#219)
-- 已集成MockApi(仅开发模式)
-````
-<script src='http://121.43.161.157:8084/rap.plugin.js?projectId=3'></script>
-
 ````
 
 ### 前端模块化
