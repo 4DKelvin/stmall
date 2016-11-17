@@ -73,8 +73,8 @@ require.config({
     }
 });
 ````
-- `Angular`异步定义看[这里](https://github.com/subchen/angular-async-loader)
-- 更多`规范`看[这里](https://github.com/amdjs/amdjs-api/wiki/AMD)
+- 更多`Angular异步定义`看[这里](https://github.com/subchen/angular-async-loader)
+- 更多`AMD规范`看[这里](https://github.com/amdjs/amdjs-api/wiki/AMD)
 
 ### 注意事项
 
