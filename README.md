@@ -1,4 +1,4 @@
-# PcWeb-Framework
+# Pc-Web-Framework
 
 RequireJs + AngularJs  IE >= 8 异步载入框架
 
@@ -11,6 +11,7 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [Jquery v1.11.0](https://github.com/jquery/jquery-dist) `Jquery 1.x` 支持IE6-8的版本
 * [Less v2.7.1](http://lesscss.cn/) Less 做Css编译语言
 * [IconFont Plus](http://www.iconfont.cn/plus) 设计所有图标由 `IconFont Plus` 管理
+* [Gulp v3.9.1](http://www.gulpjs.com.cn/) 前端自动化构建使用`Gulp` 管理资源合并压缩
 
 ### 注意事项
 
