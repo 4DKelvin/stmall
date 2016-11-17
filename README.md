@@ -13,6 +13,28 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [IconFont Plus](http://www.iconfont.cn/plus) 设计所有图标由 `IconFont Plus` 管理
 * [Gulp v3.9.1](http://www.gulpjs.com.cn/) 前端自动化构建使用`Gulp` 管理资源合并压缩
 
+### 打开方式
+- 环境准备(NodeJS 与 Npm3)
+- 初始化项目
+````
+npm install
+````
+- 安装`Bower`模块和前端插件
+````
+npm install -g bower && bower install
+````
+- 运行(开发模式),端口号`4000`[预览](http://localhost:4000/)
+````
+gulp serve
+````
+- 发布(dist目录)
+```
+gulp
+```
+
+### 前端模块化
+
+
 ### 注意事项
 
 - 使用Angular的`$q`模块创建`promise`, IE8 并不支持`catch`,`finally`等方法
