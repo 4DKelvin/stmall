@@ -11,11 +11,34 @@
 
 ## 注意事项
 
-#### 使用Angular的`$q`模块创建promise,IE8并不支持`catch`,`finally`等方法
+- 使用Angular的`$q`模块创建promise,IE8并不支持`catch`,`finally`等方法
+
 ````
 // 不支持
 promise.catch(function(){});
 
 // 正确方式
 promise['catch'](function(){});
+````
+- IE 8 不支持自定义标签
+````
+// 不支持
+<ng-view></ng-view>
+// 正确方式
+<div ng-view></div>
+````
+- 自定义指令 使用E方式 IE8 要添加document.createElement('');
+````
+`document.createElement('myElement');`
+Module.directive('myElement', function () {
+    return {
+        restrict: 'E',
+        replace: true,
+        scope: false,
+        template: '...',
+        link: function (scope, element, attr) {
+            //...
+        }
+    }
+});
 ````
