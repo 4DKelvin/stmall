@@ -15,6 +15,7 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 
 ### 打开方式
 - 环境准备(NodeJS 与 Npm3)
+不同系统安装各异
 - 初始化项目
 ````
 npm install
