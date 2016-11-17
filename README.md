@@ -46,3 +46,10 @@ Module.directive('myElement', function () {
     }
 });
 ````
+- 使用 `ng-style` 替代 `style="{{ someCss }}"`
+````
+// 不支持
+<div ng-style='someCss'></div>
+// 正确方式
+<div style='{{someCss}}'></div>
+````
