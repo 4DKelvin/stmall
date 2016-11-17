@@ -15,7 +15,7 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 
 ### 注意事项
 
-- 使用Angular的`$q`模块创建promise,IE8并不支持`catch`,`finally`等方法
+- 使用Angular的`$q`模块创建`promise`,`IE8`并不支持`catch`,`finally`等方法
 
 ````
 // 不支持
