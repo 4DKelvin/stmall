@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     rev = require('gulp-rev'),
     del = require('del'),
+    plumber = require('gulp-plumber'),
     nodemon = require("gulp-nodemon"),
     uglify = require('gulp-uglify'),
     html = require('gulp-htmlmin'),
@@ -53,7 +54,8 @@ gulp.task('image', function () {
 });
 gulp.task('less', function () {
     return gulp.src(path.join(ROOT, 'stylesheets', '**.less'))
-        .pipe(less())
+        .pipe(plumber())
+	.pipe(less())
         .pipe(gulpif(ENV == 'dist', concat('pc.css')))
         .pipe(gulpif(ENV == 'dist', minify()))
         .pipe(gulpif(ENV == 'dist', rev()))
