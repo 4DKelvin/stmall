@@ -9,7 +9,7 @@
 <body>
 <div ui-view></div>
 <!--[if IE 8]>
-<script type="text/javascript" src="//cdn.bootcss.com/es5-shim/4.5.9/es5-shim.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/es5-shim/4.0.5/es5-shim.min.js"></script>
 <![endif]-->
 <script src="lib/require.js"></script>
 <script type="text/javascript">
@@ -20,16 +20,20 @@
             'angular-ui-router': '../lib/angular-ui-router',
             'angular-async-loader': '../lib/angular-async-loader',
             'jquery': '../lib/jquery',
+            'unveil': '../lib/jquery.unveil',
             'app': '../config/app',
-            'routes': '../config/routes'
+            'routes': '../config/routes',
+            'image': '../config/image'
         },
         shim: {
-            '$': {exports: 'jquery'},
+            'jquery': {exports: 'jquery'},
+            'unveil': {deps: ['jquery']},
+            'image': {deps: ['unveil']},
             'angular': {exports: 'angular'},
             'angular-ui-router': {deps: ['angular']}
         }
     });
-    require(['angular', 'routes'], function (angular) {
+    require(['angular', 'routes', 'image'], function (angular) {
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['app']);
             angular.element(document).find('html').addClass('ng-app');

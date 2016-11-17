@@ -9,11 +9,12 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [Angular Async Loader v1.3.2](https://github.com/subchen/angular-async-loader) `Angular` 模块异步加载插件
 * [RequireJs v2.3.2](http://requirejs.org) AMD 异步模块定义
 * [Jquery v1.11.0](https://github.com/jquery/jquery-dist) `Jquery 1.x` 支持IE6-8的版本
+* [Jquery unveil v1.3.0](https://github.com/luis-almeida/unveil) 图片延迟加载插件
 * [Less v2.7.1](http://lesscss.cn/) Less 做Css编译语言
 * [IconFont Plus](http://www.iconfont.cn/plus) 设计所有图标由 `IconFont Plus` 管理
 * [Gulp v3.9.1](http://www.gulpjs.com.cn/) 前端自动化构建使用`Gulp` 管理资源合并压缩
 * [MockJs v1.0.1](https://github.com/nuysoft/Mock) 模拟Restful(Ajax) 请求数据
-* [Es5-shim v4.5.9](https://github.com/es-shims/es5-shim) 让 IE8 支持更多浏览器新特性(`Javascript部分`)
+* [Es5-shim v4.0.5](https://github.com/es-shims/es5-shim) 让 IE8 支持更多浏览器新特性(`Javascript部分`)
 
 ### 自动整合 `RAP Mock Api`
 - `RAP` [接口文档](http://121.43.161.157:8084/workspace/myWorkspace.do?projectId=3#219)
@@ -63,11 +64,15 @@ require.config({
         'angular-ui-router': '../lib/angular-ui-router',
         'angular-async-loader': '../lib/angular-async-loader',
         'jquery': '../lib/jquery',
+        'unveil': '../lib/jquery.unveil',
         'app': '../config/app',
-        'routes': '../config/routes'
+        'routes': '../config/routes',
+        'image': '../config/image'
     },
     shim: {
-        '$': {exports: 'jquery'},
+        'jquery': {exports: 'jquery'},
+        'unveil': {deps: ['jquery']},
+        'image': {deps: ['unveil']},
         'angular': {exports: 'angular'},
         'angular-ui-router': {deps: ['angular']}
     }
@@ -75,6 +80,16 @@ require.config({
 ````
 - 更多`Angular异步定义`看[这里](https://github.com/subchen/angular-async-loader)
 - 更多`AMD规范`看[这里](https://github.com/amdjs/amdjs-api/wiki/AMD)
+
+### 图片延迟加载(Unveil)
+- Controller
+````
+  $scope.image = "http://lorempixel.com/g/800/500/city/1"
+````
+- View
+````
+<img ng-lazy="image"/>
+````
 
 ### 注意事项
 
