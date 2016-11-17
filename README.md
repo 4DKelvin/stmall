@@ -53,6 +53,26 @@ define(function (require, exports, module) {
     module.exports = app; //输出
 });
 ````
+- 入口配置, 将 `Jquery` 和 `Angular` 作用域设置全局
+````
+require.config({
+    baseUrl: '/module',
+    paths: {
+        'angular': '../lib/angular',
+        'angular-ui-router': '../lib/angular-ui-router',
+        'angular-async-loader': '../lib/angular-async-loader',
+        'jquery': '../lib/jquery',
+        'app': '../config/app',
+        'routes': '../config/routes'
+    },
+    shim: {
+        '$': {exports: 'jquery'},
+        'angular': {exports: 'angular'},
+        'angular-ui-router': {deps: ['angular']}
+    }
+});
+````
+- `Angular`异步定义看[这里](https://github.com/subchen/angular-async-loader)
 - 更多`规范`看[这里](https://github.com/amdjs/amdjs-api/wiki/AMD)
 
 ### 注意事项
