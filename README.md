@@ -13,6 +13,7 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [IconFont Plus](http://www.iconfont.cn/plus) 设计所有图标由 `IconFont Plus` 管理
 * [Gulp v3.9.1](http://www.gulpjs.com.cn/) 前端自动化构建使用`Gulp` 管理资源合并压缩
 * [MockJs v1.0.1](https://github.com/nuysoft/Mock) 模拟Restful(Ajax) 请求数据
+* [ES5-SHIM v4.5.9](https://github.com/es-shims/es5-shim) 让 IE8 支持更多浏览器新特性(`Javascript部分`)
 
 ### 自动整合 `RAP Mock Api`
 - `RAP` [接口文档](http://121.43.161.157:8084/workspace/myWorkspace.do?projectId=3#219)
