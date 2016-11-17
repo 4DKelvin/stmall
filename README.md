@@ -1,5 +1,5 @@
-PcWeb-Framework
-### RequireJs + AngularJs  IE >= 8 异步载入框架
+# PcWeb-Framework
+#### RequireJs + AngularJs  IE >= 8 异步载入框架
 
 ## 使用到的模块
 
@@ -8,3 +8,14 @@ PcWeb-Framework
 * [Angular Async Loader v1.3.2](https://github.com/subchen/angular-async-loader) angular 模块异步加载插件
 * [RequireJs v2.3.2](http://requirejs.org) AMD 异步模块定义
 * [Jquery v1.11.0](https://github.com/jquery/jquery-dist) Jquery 1.x 支持IE6-8的版本
+
+## 注意事项
+
+#### 使用Angular的`$q`模块创建promise,IE8并不支持`catch`,`finally`等方法
+````
+// 不支持
+promise.catch(function(){});
+
+// 正确方式
+promise['catch'](function(){});
+````
