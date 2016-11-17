@@ -14,8 +14,8 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [Gulp v3.9.1](http://www.gulpjs.com.cn/) 前端自动化构建使用`Gulp` 管理资源合并压缩
 
 ### 打开方式
-- 环境准备(NodeJS 与 Npm3)
-##### 不同系统安装各异
+- 环境准备(`NodeJS` 与 `Npm3` 不同系统安装各异)
+
 - 初始化项目
 ````
 npm install
