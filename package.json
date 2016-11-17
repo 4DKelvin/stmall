@@ -31,6 +31,7 @@
     "gulp-nodemon": "^2.2.1",
     "gulp-plumber": "^1.1.0",
     "gulp-rev": "^7.1.2",
+    "gulp-size": "^2.1.0",
     "gulp-uglify": "^2.0.0",
     "less": "^2.7.1",
     "main-bower-files": "^2.13.1",
