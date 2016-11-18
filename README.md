@@ -7,6 +7,7 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [Angular v1.4 IE 8 Build](https://github.com/fergaldoyle/angular.js-ie8-builds) 使用 `AngularJs 1.4` 版本的 `Ie8 Poly-fills`
 * [Angular UI Router v0.3.2](https://github.com/angular-ui/ui-router) 单页路由使用 `UI Router`
 * [Angular Async Loader v1.3.2](https://github.com/subchen/angular-async-loader) `Angular` 模块异步加载插件
+* [Angular Cookies v1.5.8](https://github.com/angular/bower-angular-cookies) IE8 下不适用 `localStorage` 用 `cookies` 替代
 * [RequireJs v2.3.2](http://requirejs.org) AMD 异步模块定义
 * [Jquery v1.11.0](https://github.com/jquery/jquery-dist) `Jquery 1.x` 支持IE6-8的版本
 * [Jquery unveil v1.3.0](https://github.com/luis-almeida/unveil) 图片`延迟加载`插件支持IE7+
@@ -58,24 +59,84 @@ define(function (require, exports, module) {
 - 入口配置, 将 `Jquery` 和 `Angular` 作用域设置全局
 ````
 require.config({
-    baseUrl: '/module',
+    baseUrl: '/app',
     paths: {
         'angular': '../lib/angular',
         'angular-ui-router': '../lib/angular-ui-router',
         'angular-async-loader': '../lib/angular-async-loader',
+        'angular-cookies': '../lib/angular-cookies',
         'jquery': '../lib/jquery',
         'unveil': '../lib/jquery.unveil',
         'app': '../config/app',
         'routes': '../config/routes',
-        'image': '../config/image'
+        'constants': '../config/constants',
+        'factories': '../config/factories'
+        /** @Inject:mock-define */
     },
     shim: {
         'jquery': {exports: 'jquery'},
         'unveil': {deps: ['jquery']},
-        'image': {deps: ['unveil']},
         'angular': {exports: 'angular'},
-        'angular-ui-router': {deps: ['angular']}
+        'angular-ui-router': {deps: ['angular']},
+        'angular-cookies': {deps: ['angular']}
+        /** @Inject:mock-dependencies */
     }
+    /** @Inject:version */
+});
+````
+- 自定义`指令` 以及 `服务`
+````
+//定义指令部分(components目录)
+define(function (require, exports, module) {
+    var angular = require('angular');
+
+    var module = angular.module('指令模块', []);
+
+    module.directive('urDirective', ['$timeout', function ($timeout) {
+        return {
+            restrict: 'A',
+            scope: false,
+            controller: function ($scope, $element) {
+                //...
+            }
+        }
+    }]);
+
+    module.exports = module; //所有指令以模块方式输出
+});
+
+
+//定义服务部分(services目录)
+define(function (require, exports, module) {
+    var angular = require('angular');
+
+    var module = angular.module('服务模块', []);
+
+    module.factory('urService', ['$request', function ($request) {
+        return {
+            something: function (cityId) {
+                //do something...
+            }
+        }
+    }]);
+
+    module.exports = module; //所有服务以模块方式输出
+});
+
+
+//使用
+define(function (require) {
+    var app = require('app'),
+        directive = require('components/文件名'),
+        service = require('services/文件名');
+
+    app.useModule('指令模块'); //ng异步载入
+
+    app.useModule('服务模块'); //ng异步载入
+
+    app.controller('test', ['urService', function (urService) {
+        urService.something(); //调用服务
+    }]);
 });
 ````
 - 更多`Angular异步定义`看[这里](https://github.com/subchen/angular-async-loader)

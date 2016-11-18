@@ -1,16 +1,26 @@
 define(function (require, exports, module) {
-    var app = require('app');
+    module.exports = {
+        regRoutes: function (ngModule) {
 
-    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/home');
+            ngModule.config(['$stateProvider', '$urlRouterProvider', '$template', '$action',
+                function ($stateProvider, $urlRouterProvider, $template, $action) {
+                    $urlRouterProvider.otherwise('/');
+                    $stateProvider
+                        .state('home', {
+                            url: '/',
+                            templateUrl: $template('home'),
+                            controllerUrl: $action('home'),
+                            controller: 'home'
+                        });
+                }]);
 
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: 'views/home.html',
-                // new attribute for ajax load controller
-                controllerUrl: 'home',
-                controller: 'home'
-            });
-    }]);
+            ngModule.run(['$rootScope', function ($rootScope) {
+                $rootScope.$on('$stateChangeStart',
+                    function (event, toState) {
+                        console.log('这里检查参数toState做页面权限验证,用方法event.preventDefault();中断页面跳转');
+                    });
+
+            }]);
+        }
+    };
 });

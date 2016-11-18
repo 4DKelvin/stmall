@@ -11,6 +11,7 @@ var gulp = require('gulp'),
     nodemon = require("gulp-nodemon"),
     uglify = require('gulp-uglify'),
     html = require('gulp-htmlmin'),
+    string = require('gulp-inject-string'),
     bowerfile = require('main-bower-files'),
     less = require('gulp-less'),
     settings = {
@@ -32,22 +33,23 @@ gulp.task('clean', function () {
 });
 gulp.task('lib', function () {
     return gulp.src(bowerfile())
-        .pipe(gulpif(ENV == 'dist', uglify()))
+        .pipe(uglify())
         .pipe(gulp.dest(path.join(ENV, 'lib')));
 });
 gulp.task('config', function () {
     return gulp.src(path.join(ROOT, 'config', '*'))
+        .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock */", "var mock = require('mock');")))
         .pipe(gulp.dest(path.join(ENV, 'config')));
 });
-gulp.task('module', function () {
-    return gulp.src(path.join(ROOT, 'module', '*'))
+gulp.task('app', function () {
+    return gulp.src(path.join(ROOT, 'app', '*', '**.js'))
         .pipe(gulpif(ENV == 'dist', uglify()))
-        .pipe(gulp.dest(path.join(ENV, 'module')));
+        .pipe(gulp.dest(path.join(ENV, 'app')));
 });
 gulp.task('html', function () {
-    return gulp.src(path.join(ROOT, 'views', '*'))
+    return gulp.src(path.join(ROOT, 'app', '*', '**.html'))
         .pipe(gulpif(ENV == 'dist', html(settings)))
-        .pipe(gulp.dest(path.join(ENV, 'views')));
+        .pipe(gulp.dest(path.join(ENV, 'app')));
 });
 gulp.task('image', function () {
     return gulp.src(path.join(ROOT, 'images', '**'))
@@ -66,18 +68,21 @@ gulp.task('index', function () {
     return gulp.src(path.join(ROOT, 'index.html'))
         .pipe(gulp.dest(path.join(ENV)));
 });
-gulp.task('default', ['clean', 'image', 'lib', 'config', 'module', 'less', 'html', 'index'], function () {
+gulp.task('default', ['clean', 'image', 'lib', 'config', 'app', 'less', 'html', 'index'], function () {
     gulp.src(path.join(ENV, 'index.html'))
         .pipe(inject(gulp.src([path.join(ENV, 'css', '*.css')], {read: false}), {relative: true}))
+        .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-define */", ",'mock':'http://121.43.161.157:8084/rap.plugin.js?projectId=3'")))
+        .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-dependencies */", ",'mock':{deps: ['jquery']}")))
+        .pipe(string.after("/** @Inject:version */", ",'urlArgs':'ver=" + (ENV == 'dist' ? new Date().getTime() + "'" : "'+new Date().getTime()")))
         .pipe(gulpif(ENV == 'dist', html(settings)))
-        .pipe(gulp.dest(path.join(ENV)))
+        .pipe(gulp.dest(path.join(ENV)));
     return gulp.src(path.join(ENV, '**'))
         .pipe(gulpif(ENV == 'dist', size({title: 'compress', showFiles: true})))
 });
 gulp.task('serve', ['default'], function () {
     gulp.watch(path.join(ROOT, 'images', '**'), ['image']);
-    gulp.watch(path.join(ROOT, 'module', '**.js'), ['module']);
-    gulp.watch(path.join(ROOT, 'views', '**.html'), ['html']);
+    gulp.watch(path.join(ROOT, 'app', '*', '**.js'), ['app']);
+    gulp.watch(path.join(ROOT, 'app', '*', '**.html'), ['html']);
     gulp.watch(path.join(ROOT, 'index.html'), ['index']);
     gulp.watch(path.join(ROOT, 'config', '**.js'), ['config']);
     gulp.watch(path.join(ROOT, 'stylesheets', '**.less'), ['less']);

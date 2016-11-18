@@ -2,8 +2,15 @@
         "http://www.w3.org/TR/html4/frameset.dtd">
 <html>
 <head>
-    <meta charset="utf-8">
     <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, Chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="#"/>
+    <meta name="description" content="#"/>
+    <meta name="author" content="#"/>
     <!-- inject:css --><!-- endinject -->
 </head>
 <body>
@@ -14,26 +21,34 @@
 <script src="lib/require.js"></script>
 <script type="text/javascript">
     require.config({
-        baseUrl: '/module',
+        baseUrl: '/app',
         paths: {
             'angular': '../lib/angular',
             'angular-ui-router': '../lib/angular-ui-router',
             'angular-async-loader': '../lib/angular-async-loader',
+            'angular-cookies': '../lib/angular-cookies',
             'jquery': '../lib/jquery',
             'unveil': '../lib/jquery.unveil',
             'app': '../config/app',
             'routes': '../config/routes',
-            'image': '../config/image'
+            'constants': '../config/constants',
+            'factories': '../config/factories'
+            /** @Inject:mock-define */
         },
         shim: {
             'jquery': {exports: 'jquery'},
             'unveil': {deps: ['jquery']},
-            'image': {deps: ['unveil']},
             'angular': {exports: 'angular'},
-            'angular-ui-router': {deps: ['angular']}
+            'angular-ui-router': {deps: ['angular']},
+            'angular-cookies': {deps: ['angular']}
+            /** @Inject:mock-dependencies */
         }
+        /** @Inject:version */
     });
-    require(['angular', 'routes', 'image'], function (angular) {
+    require(['angular', 'app', 'routes', 'constants', 'factories'], function (angular, app, routes, constants, factories) {
+        constants.regConstants(app);
+        factories.regFactories(app);
+        routes.regRoutes(app);
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['app']);
             angular.element(document).find('html').addClass('ng-app');
