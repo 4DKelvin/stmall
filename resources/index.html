@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/html4/frameset.dtd">
 <html>
 <head>
-    <title></title>
+    <title>桂林银行</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, Chrome=1"/>
     <meta name="renderer" content="webkit"/>
@@ -11,6 +11,7 @@
     <meta name="keywords" content="#"/>
     <meta name="description" content="#"/>
     <meta name="author" content="#"/>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_ohlizrm8chw1m7vi.css">
     <!-- inject:css --><!-- endinject -->
 </head>
 <body>
@@ -23,12 +24,11 @@
     require.config({
         baseUrl: '/app',
         paths: {
-            'angular': '../lib/angular',
-            'angular-ui-router': '../lib/angular-ui-router',
-            'angular-async-loader': '../lib/angular-async-loader',
-            'angular-cookies': '../lib/angular-cookies',
-            'jquery': '../lib/jquery',
-            'unveil': '../lib/jquery.unveil',
+            'angular': '../lib/angular.min',
+            'angular-ui-router': '../lib/angular-ui-router.min',
+            'angular-async-loader': '../lib/angular-async-loader.min',
+            'jquery': '../lib/jquery.min',
+            'unveil': '../lib/jquery.unveil.min',
             'app': '../config/app',
             'routes': '../config/routes',
             'constants': '../config/constants',
@@ -39,8 +39,7 @@
             'jquery': {exports: 'jquery'},
             'unveil': {deps: ['jquery']},
             'angular': {exports: 'angular'},
-            'angular-ui-router': {deps: ['angular']},
-            'angular-cookies': {deps: ['angular']}
+            'angular-ui-router': {deps: ['angular']}
             /** @Inject:mock-dependencies */
         }
         /** @Inject:version */

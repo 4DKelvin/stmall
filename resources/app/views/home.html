@@ -1,1 +1,887 @@
-<img ng-lazy="image" ng-repeat="image in images" style="height: 400px;"/>
+<!--顶部菜单-->
+<div id="site-nav">
+    <div class="sn-box">
+        <div class="sn-login-info">
+            <em>欢迎来到小能人</em>
+            <a class="sn-login" href="#">请登录</a>
+            <a class="sn-register" href="#">免费注册</a>
+        </div>
+        <ul class="sn-quick-menu">
+            <li><a href="#">我的小能人</a></li>
+            <li><a href="#"><i class="iconfont icon-like font-purple"></i>我的关注</a></li>
+            <li>
+                <a href="#"><i class="iconfont icon-gouwuche font-purple"></i>购物车 0 件</a>
+            </li>
+            <li>
+                <div class="sn-menu">收藏夹</div>
+            </li>
+            <li>
+                <a href="#"><i class="iconfont icon-shouji font-purple"></i>手机版</a>
+            </li>
+            <li><a href="#">商家中心</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--头部-->
+<div id="header">
+    <div class="mall-logo"></div>
+    <div class="mall-search">
+        <div class="ms-form">
+            <input type="text" class="ms-input">
+            <button class="ms-submit">搜索</button>
+        </div>
+        <ul class="ms-hot-query">
+            <li><a href="#">iphone7</a></li>
+            <li><a href="#">坚果</a></li>
+            <li><a href="#">洗衣机</a></li>
+            <li><a href="#">电视机</a></li>
+            <li><a href="#">电脑</a></li>
+            <li><a href="#">空调</a></li>
+            <li><a href="#">冰箱</a></li>
+            <li><a href="#">衣服</a></li>
+            <li><a href="#">吹风机</a></li>
+            <li><a href="#">鞋子</a></li>
+            <li><a href="#">夹克</a></li>
+            <li><a href="#">干衣机</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="content">
+    <!--主菜单-->
+    <div class="main-nav">
+        <div class="nav-inner">
+            <ul class="nav-con">
+                <li><a href="#"><i class="iconfont icon-gouwu"></i>桂银e购</a></li>
+                <li><a href="#"><i class="iconfont icon-zhoubianpeitao"></i>周边生活</a></li>
+                <li><a href="#"><i class="iconfont icon-lvyou1"></i>旅游联盟</a></li>
+                <li><a href="#"><i class="iconfont icon-aixin1"></i>爱心扶贫</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--分类导航-->
+    <div class="g-category">
+        <div class="gc-con">
+            <div class="gc-title"><i class="iconfont icon-fenlei"></i>商品分类</div>
+            <ul class="gc-nav">
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">女装 /内衣</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">女鞋 /男鞋 /箱包</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">化妆品 /个人护理</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">腕表 /珠宝饰品 /眼镜</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">手机 /数码 /电脑办公</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">母婴玩具</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">零食 /进口食品 /茶酒</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">生鲜水果</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">大家电 /生活电器</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">家具建材</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">汽车 /配件 /用品</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">家纺 /家饰 /鲜花</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">医药保健</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">厨具 /收纳 /宠物</a>
+                </li>
+                <li class="gc-nav-item">
+                    <i class="iconfont"></i><a href="#" class="gc-item-a">图书音像</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--banner 区-->
+    <div class="main-banner">
+        <div class="banner-plate">
+            <div class="slide-pannel">
+                <ul class="slide-con">
+                    <li style="background-image:url(images/tem/tem_banner.jpg)">
+                        <a href="#"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="avatar">
+                <div class="ava-con">
+                    <div class="user-info">
+                        <div class="user-head"></div>
+                        <div class="sign-in"></div>
+                        <div class="sign-out">
+                            <p>Hi~你好！</p>
+                            <a href="javascript:void(0)"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ava-bg"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--专题活动-->
+    <div class="activity-convenience">
+        <div class="special-activity">
+            <div class="title-con">
+                <div class="title-inner">
+                    <span class="vline vline-l"></span>
+                    <i class="iconfont icon-zhuanti"></i>
+                    专题活动
+                    <span class="vline vline-r"></span>
+                </div>
+            </div>
+            <ul class="sa-con">
+                <li>
+                    <a href="#"><img src="images/tem/tem-_act.jpg" alt=""></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/tem/tem-_act.jpg" alt=""></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/tem/tem-_act.jpg" alt=""></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/tem/tem-_act.jpg" alt=""></a>
+                </li>
+            </ul>
+        </div>
+        <div class="convenience">
+            <div class="title-con">
+                <div class="title-inner">
+                    <span class="vline vline-l"></span>
+                    <i class="iconfont icon-yonghu"></i>
+                    便民服务
+                    <span class="vline vline-r"></span>
+                </div>
+            </div>
+            <ul class="cv-con">
+                <li>
+                    <i class="iconfont icon-shuifei"></i>
+                    <a href="#">水费</a>
+                </li>
+                <li>
+                    <i class="iconfont icon-dianfei"></i>
+                    <a href="#">电费</a>
+                </li>
+                <li>
+                    <i class="iconfont icon-dianxin"></i>
+                    <a href="#">电信费</a>
+                </li>
+                <li>
+                    <i class="iconfont icon-jiaotongfakuan"></i>
+                    <a href="#">交通罚款</a>
+                </li>
+                <li>
+                    <i class="iconfont icon-guangdianfuzhi"></i>
+                    <a href="#">广电费</a>
+                </li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--品牌汇-->
+    <div class="brand-module">
+        <div class="brand-adv">
+            <img src="images/tem/brand-adv.jpg" alt="">
+        </div>
+        <ul class="brand-list">
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="#"><img src="images/tem/brand-logo.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div class="last-brush">
+                    <a href="javascript:void(0)"><i class="iconfont icon-shuaxin3"></i>换一批</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--楼层一-->
+    <div class="floor pink-floor">
+        <div class="floor-head">
+            <div class="fh-name">
+                <span class="cn-name">美丽日常</span>
+                <span class="en-name">BEAUTIFUL EVERYDAY</span>
+            </div>
+            <ul class="fh-link">
+                <li><a href="#">童装</a></li>
+                <li><a href="#">玩具</a></li>
+                <li><a href="#">文教用品</a></li>
+                <li><a href="#">宝宝用品</a></li>
+                <li><a href="#">儿童床品</a></li>
+                <li><a href="#">奶粉</a></li>
+                <li><a href="#">童书</a></li>
+                <li><a href="#" class="anone">纸尿裤</a></li>
+            </ul>
+        </div>
+        <div class="floor-con">
+            <div class="floor-adv">
+                <a href="#"><img src="images/tem/tem_floor_adv.jpg" alt=""></a>
+            </div>
+            <div class="floor-inner">
+                <ul class="inner-left">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                </ul>
+                <ul class="inner-right">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--广告-->
+    <div class="full-adv">
+        <img src="images/tem/tem_full_adv.jpg" alt="">
+    </div>
+
+    <!--楼层二-->
+    <div class="floor blue-floor">
+        <div class="floor-head">
+            <div class="fh-name">
+                <i class="fh-line"></i>
+                <span class="cn-name">潮电酷玩</span>
+                <span class="en-name">TIDAl POWER COLDPLAY</span>
+            </div>
+            <ul class="fh-link">
+                <li><a href="#">童装</a></li>
+                <li><a href="#">玩具</a></li>
+                <li><a href="#">文教用品</a></li>
+                <li><a href="#">宝宝用品</a></li>
+                <li><a href="#">儿童床品</a></li>
+                <li><a href="#">奶粉</a></li>
+                <li><a href="#">童书</a></li>
+                <li><a href="#" class="anone">纸尿裤</a></li>
+            </ul>
+        </div>
+        <div class="floor-con">
+            <div class="floor-adv">
+                <a href="#"><img src="images/tem/tem_floor_adv.jpg" alt=""></a>
+            </div>
+            <div class="floor-inner">
+                <ul class="inner-left">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                </ul>
+                <ul class="inner-right">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--楼层三-->
+    <div class="floor orange-floor">
+        <div class="floor-head">
+            <div class="fh-name">
+                <i class="fh-line"></i>
+                <span class="cn-name">打造爱巢</span>
+                <span class="en-name">BUILD A NEST </span>
+            </div>
+            <ul class="fh-link">
+                <li><a href="#">童装</a></li>
+                <li><a href="#">玩具</a></li>
+                <li><a href="#">文教用品</a></li>
+                <li><a href="#">宝宝用品</a></li>
+                <li><a href="#">儿童床品</a></li>
+                <li><a href="#">奶粉</a></li>
+                <li><a href="#">童书</a></li>
+                <li><a href="#" class="anone">纸尿裤</a></li>
+            </ul>
+        </div>
+        <div class="floor-con">
+            <div class="floor-adv">
+                <a href="#"><img src="images/tem/tem_floor_adv.jpg" alt=""></a>
+            </div>
+            <div class="floor-inner">
+                <ul class="inner-left">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                </ul>
+                <ul class="inner-right">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--广告-->
+    <div class="full-adv">
+        <img src="images/tem/tem_full_adv.jpg" alt="">
+    </div>
+
+    <!--楼层四-->
+    <div class="floor green-floor">
+        <div class="floor-head">
+            <div class="fh-name">
+                <i class="fh-line"></i>
+                <span class="cn-name">居家生活</span>
+                <span class="en-name">TIDAl POWER COLDPLAY</span>
+            </div>
+            <ul class="fh-link">
+                <li><a href="#">童装</a></li>
+                <li><a href="#">玩具</a></li>
+                <li><a href="#">文教用品</a></li>
+                <li><a href="#">宝宝用品</a></li>
+                <li><a href="#">儿童床品</a></li>
+                <li><a href="#">奶粉</a></li>
+                <li><a href="#">童书</a></li>
+                <li><a href="#" class="anone">纸尿裤</a></li>
+            </ul>
+        </div>
+        <div class="floor-con">
+            <div class="floor-adv">
+                <a href="#"><img src="images/tem/tem_floor_adv.jpg" alt=""></a>
+            </div>
+            <div class="floor-inner">
+                <ul class="inner-left">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                </ul>
+                <ul class="inner-right">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--楼层五-->
+    <div class="floor yellow-floor">
+        <div class="floor-head">
+            <div class="fh-name">
+                <i class="fh-line"></i>
+                <span class="cn-name">亲子时光</span>
+                <span class="en-name">CRAFT FOR KIDS</span>
+            </div>
+            <ul class="fh-link">
+                <li><a href="#">童装</a></li>
+                <li><a href="#">玩具</a></li>
+                <li><a href="#">文教用品</a></li>
+                <li><a href="#">宝宝用品</a></li>
+                <li><a href="#">儿童床品</a></li>
+                <li><a href="#">奶粉</a></li>
+                <li><a href="#">童书</a></li>
+                <li><a href="#" class="anone">纸尿裤</a></li>
+            </ul>
+        </div>
+        <div class="floor-con">
+            <div class="floor-adv">
+                <a href="#"><img src="images/tem/tem_floor_adv.jpg" alt=""></a>
+            </div>
+            <div class="floor-inner">
+                <ul class="inner-left">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a></li>
+                </ul>
+                <ul class="inner-right">
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/tem/tem_floor_pro2.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--广告-->
+    <div class="full-adv">
+        <img src="images/tem/tem_full_adv.jpg" alt="">
+    </div>
+
+    <!--品牌旗舰店-->
+    <div class="brand-shop">
+        <div class="bs-title">
+            <span class="cn-name">品牌旗舰店</span>
+            <span class="en-name">BRAND FLAGSHIP STORE</span>
+        </div>
+        <div class="bs-list">
+            <div class="bs-item">
+                <div class="bst-title">
+                    <div class="bs-logo">
+                        <img src="images/tem/tem_brand_shop_logo.jpg" alt="">
+                    </div>
+                    <div class="bst-info">
+                        <h2 class="bs-name">贝凯家居旗舰店</h2>
+                        <span class="bs-fans">10.0万粉丝</span>
+                    </div>
+                    <div class="bs-into"><a href="#">进店看看</a></div>
+                </div>
+                <ul class="bst-con">
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bs-item">
+                <div class="bst-title">
+                    <div class="bs-logo">
+                        <img src="images/tem/tem_brand_shop_logo.jpg" alt="">
+                    </div>
+                    <div class="bst-info">
+                        <h2 class="bs-name">贝凯家居旗舰店</h2>
+                        <span class="bs-fans">10.0万粉丝</span>
+                    </div>
+                    <div class="bs-into"><a href="#">进店看看</a></div>
+                </div>
+                <ul class="bst-con">
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bs-item">
+                <div class="bst-title">
+                    <div class="bs-logo">
+                        <img src="images/tem/tem_brand_shop_logo.jpg" alt="">
+                    </div>
+                    <div class="bst-info">
+                        <h2 class="bs-name">贝凯家居旗舰店</h2>
+                        <span class="bs-fans">10.0万粉丝</span>
+                    </div>
+                    <div class="bs-into"><a href="#">进店看看</a></div>
+                </div>
+                <ul class="bst-con">
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bs-item">
+                <div class="bst-title">
+                    <div class="bs-logo">
+                        <img src="images/tem/tem_brand_shop_logo.jpg" alt="">
+                    </div>
+                    <div class="bst-info">
+                        <h2 class="bs-name">贝凯家居旗舰店</h2>
+                        <span class="bs-fans">10.0万粉丝</span>
+                    </div>
+                    <div class="bs-into"><a href="#">进店看看</a></div>
+                </div>
+                <ul class="bst-con">
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                    <li class="bst-item">
+                        <a href="#">
+                            <img src="images/tem/tem_brand_shop_pro.jpg" alt="">
+
+                            <h3>贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</h3>
+
+                            <p>￥24.9</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--随便逛逛-->
+    <div class="browsing">
+        <div class="br-title">
+            <div class="br-title-inner">
+                <span class="vline vline-l"></span>
+                <i class="iconfont icon-gouwu4"></i>
+                随便逛逛
+                <span class="vline vline-r"></span>
+            </div>
+        </div>
+        <ul class="br-list">
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+            <li class="br-item">
+                <a href="#">
+                    <img src="images/tem/tem_browsing_pro.jpg" width="226" height="226" alt="">
+
+                    <p class="name">2016秋装女装新款韩版西装领中长款英伦风宽松风衣女春秋外套欧货</p>
+
+                    <p class="price">￥129 .0</p>
+                </a>
+            </li>
+        </ul>
+        <div class="browsing-end"></div>
+    </div>
+
+</div>
+<div id="footer">
+    <div class="gl-ensure">
+        <a href="#" class="gl-ensure-01"></a>
+        <a href="#" class="gl-ensure-02"></a>
+        <a href="#" class="gl-ensure-03"></a>
+        <a href="#" class="gl-ensure-04"></a>
+    </div>
+    <div class="gl-desc">
+        <div class="desc">
+            <dl class="shipping">
+                <dt>配送方式</dt>
+                <dd><a href="#">客户自提</a></dd>
+                <dd><a href="#">配送到家</a></dd>
+                <dd><a href="#">运费标准</a></dd>
+                <dd><a href="#">配送时间</a></dd>
+            </dl>
+            <dl class="pay">
+                <dt>支付方式</dt>
+                <dd><a href="#">快捷支付</a></dd>
+                <dd><a href="#">微信支付</a></dd>
+                <dd><a href="#">支付宝</a></dd>
+                <dd><a href="#">积分支付</a></dd>
+                <dd><a href="#">账户余额</a></dd>
+            </dl>
+            <dl class="service">
+                <dt>售后服务</dt>
+                <dd><a href="#">退换货政策</a></dd>
+                <dd><a href="#">退换货流程</a></dd>
+                <dd><a href="#">投诉与回复</a></dd>
+                <dd><a href="#">发票制度</a></dd>
+            </dl>
+            <dl class="faq">
+                <dt>常见问题</dt>
+                <dd><a href="#">如何使用红包</a></dd>
+                <dd><a href="#">如何领取优惠劵</a></dd>
+                <dd><a href="#">如何使用预付卡</a></dd>
+                <dd><a href="#">如何充值</a></dd>
+            </dl>
+        </div>
+        <div class="mobile">
+            <dl>
+                <dt>手机版（苹果）</dt>
+                <dd><img src="images/tem/erwm.jpg" alt=""></dd>
+            </dl>
+            <dl>
+                <dt>手机版（安卓）</dt>
+                <dd><img src="images/tem/erwm.jpg" alt=""></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="gl-copyright">
+        <a href="#">关于我们</a>｜<a href="#">服务条款</a>｜<a href="#">友情链接</a>｜<a href="#">帮助中心</a><br>
+        Copyright@2016-2020 广西桂林银行版权所有ICP-桂
+    </div>
+</div>

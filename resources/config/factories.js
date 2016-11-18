@@ -5,10 +5,10 @@ define(function (require, exports, module) {
         /**
          * 请求(继承于$http)
          */
-        $request: ['$http', '$cookies', '$q', 'apiUri', function ($http, $cookies, $q, apiUri) {
+        $request: ['$http', '$q', 'apiUri', function ($http, $q, apiUri) {
             var request = function (path, params, method) {
                 var deferred = $q.defer(),
-                    profile = $.parseJSON($cookies.get('profile') || '{}'),
+                    profile = $.parseJSON(/*$cookies.get('profile') ||*/ '{}'),
                     token = profile.token,
                     memberId = profile.memberId,
                     data = {_seed: new Date().getTime()};

@@ -7,7 +7,6 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 * [Angular v1.4 IE 8 Build](https://github.com/fergaldoyle/angular.js-ie8-builds) 使用 `AngularJs 1.4` 版本的 `Ie8 Poly-fills`
 * [Angular UI Router v0.3.2](https://github.com/angular-ui/ui-router) 单页路由使用 `UI Router`
 * [Angular Async Loader v1.3.2](https://github.com/subchen/angular-async-loader) `Angular` 模块异步加载插件
-* [Angular Cookies v1.5.8](https://github.com/angular/bower-angular-cookies) IE8 下不适用 `localStorage` 用 `cookies` 替代
 * [RequireJs v2.3.2](http://requirejs.org) AMD 异步模块定义
 * [Jquery v1.11.0](https://github.com/jquery/jquery-dist) `Jquery 1.x` 支持IE6-8的版本
 * [Jquery unveil v1.3.0](https://github.com/luis-almeida/unveil) 图片`延迟加载`插件支持IE7+

@@ -1,17 +1,16 @@
 define(function (require, exports, module) {
     var angular = require('angular'),
         asyncLoader = require('angular-async-loader'),
-        cookies = require('angular-cookies'),
         router = require('angular-ui-router');
 
-    var app = angular.module('app', ['ui.router', 'ngCookies']);
+    var app = angular.module('app', ['ui.router']);
 
-    asyncLoader.configure(app);
 
     app.run(function () {
         //TODO:初始化
     });
 
+    asyncLoader.configure(app);
 
     module.exports = app;
 });
