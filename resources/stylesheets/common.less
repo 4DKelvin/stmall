@@ -311,6 +311,7 @@
             top: 10px;
             .ava-bg{
                 position: absolute;
+                z-index: 1;
                 top:0;
                 bottom:0;
                 width:100px;
@@ -322,14 +323,64 @@
                 filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
             }
             .ava-con{
+                position: absolute;
+                z-index: 2;
+                color: #fff;
                 .user-info{
                     width:70px;
-                    padding:15px;
+                    margin:15px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                    line-height: 22px;
+                    border-bottom:1px dashed #000000;
+                    a{
+                        color:#fff;
+                        display: block;
+                        &.login{
+                            background: @purpleColor;
+                            margin: 5px auto;
+                        }
+                    }
                     .user-head{
                         background: #000;
                         width:70px;
                         height: 70px;
                         border-radius: 50%;
+                        margin-bottom: 10px;
+                    }
+                }
+                .privileges{
+                    padding:0 15px;
+                    line-height: 26px;
+                    text-align: center;
+                    a.more{
+                        margin-top: 10px;
+                        color: #fff;
+                    }
+                }
+                .recommend{
+                    text-align: center;
+                    margin-top: 10px;
+                    h2{
+                        background: #000;
+                        line-height: 26px;
+                    }
+                    .rec-con{
+                        padding:10px;
+                        .pro-img{
+                            background: #000;
+                            width: 70px;
+                            height: 70px;
+                            -webkit-border-radius:50%;
+                            -moz-border-radius:50%;
+                            border-radius:50%;
+                            margin: 10px auto;
+                        }
+                        .name{
+                            line-height: 18px;
+                            height: 36px;
+                            overflow: hidden;
+                        }
                     }
                 }
             }

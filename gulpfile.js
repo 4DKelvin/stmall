@@ -39,25 +39,30 @@ gulp.task('clean', function () {
 });
 gulp.task('lib', function () {
     return gulp.src(bowerfile())
+        .pipe(plumber())
         .pipe(gulp.dest(path.join(ENV, 'lib')));
 });
 gulp.task('config', function () {
     return gulp.src(path.join(ROOT, 'config', '*'))
+        .pipe(plumber())
         .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock */", "var mock = require('mock');")))
         .pipe(gulp.dest(path.join(ENV, 'config')));
 });
 gulp.task('app', function () {
     return gulp.src(path.join(ROOT, 'app', '*', '**.js'))
+        .pipe(plumber())
         .pipe(gulpif(ENV != 'dist', minifier(jsOptions, uglify)))
         .pipe(gulp.dest(path.join(ENV, 'app')));
 });
 gulp.task('html', function () {
     return gulp.src(path.join(ROOT, 'app', '*', '**.html'))
+        .pipe(plumber())
         .pipe(gulpif(ENV == 'dist', html(settings)))
         .pipe(gulp.dest(path.join(ENV, 'app')));
 });
 gulp.task('image', function () {
     return gulp.src(path.join(ROOT, 'images', '**'))
+        .pipe(plumber())
         .pipe(gulp.dest(path.join(ENV, 'images')))
 });
 gulp.task('less', function () {
@@ -75,6 +80,7 @@ gulp.task('index', function () {
 });
 gulp.task('inject', ['index'], function () {
     return gulp.src(path.join(ENV, 'index.html'))
+        .pipe(plumber())
         .pipe(inject(gulp.src([path.join(ENV, 'css', '*.css')], {read: false}), {relative: true}))
         .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-define */", ",'mock':'http://121.43.161.157:8084/rap.plugin.js?projectId=3'")))
         .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-dependencies */", ",'mock':{deps: ['jquery']}")))
