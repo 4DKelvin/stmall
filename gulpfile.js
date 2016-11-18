@@ -78,7 +78,7 @@ gulp.task('inject', ['index'], function () {
         .pipe(inject(gulp.src([path.join(ENV, 'css', '*.css')], {read: false}), {relative: true}))
         .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-define */", ",'mock':'http://121.43.161.157:8084/rap.plugin.js?projectId=3'")))
         .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-dependencies */", ",'mock':{deps: ['jquery']}")))
-        .pipe(string.after("/** @Inject:version */", ",'urlArgs':'ver=" + new Date().getTime() + "'"))
+        .pipe(string.after("/** @Inject:version */", ",'urlArgs':'v=" + new Date().getTime() + "'"))
         .pipe(gulpif(ENV == 'dist', html(settings)))
         .pipe(gulp.dest(path.join(ENV)));
 });

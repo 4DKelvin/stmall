@@ -38,17 +38,15 @@ define(function (require, exports, module) {
                         $('body').removeClass('loading');
                     }
                 };
-                (typeof mock == 'undefined' ? console.log : $.noop)(options);
+                console.log('请求[' + options.url + '][' + options.method + ']数据接口,参数:', data);
                 try {
                     $.ajax(options).success(function (data) {
-                        (typeof mock == 'undefined' ? console.log : $.noop)(data);
                         if (data.responseCode == "000000") {
                             deferred.resolve(data.responseData);
                         } else {
                             deferred.reject(data.desc);
                         }
                     }).error(function (err) {
-                        (typeof mock == 'undefined' ? console.log : $.noop)(err);
                         deferred.reject('网络出现问题');
                     });
                 } catch (e) {
