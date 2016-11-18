@@ -43,7 +43,7 @@ gulp.task('lib', function () {
 });
 gulp.task('config', function () {
     return gulp.src(path.join(ROOT, 'config', '*'))
-        .pipe(gulpif(ENV == 'dist', string.after("/** @Inject:mock */", "var mock = require('mock');")))
+        .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock */", "var mock = require('mock');")))
         .pipe(gulp.dest(path.join(ENV, 'config')));
 });
 gulp.task('app', function () {
