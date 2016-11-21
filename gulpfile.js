@@ -15,6 +15,7 @@ var gulp = require('gulp'),
     string = require('gulp-inject-string'),
     bowerfile = require('main-bower-files'),
     less = require('gulp-less'),
+    useMock = false,
     settings = {
         removeComments: true,
         collapseWhitespace: true,
@@ -45,7 +46,7 @@ gulp.task('lib', function () {
 gulp.task('config', function () {
     return gulp.src(path.join(ROOT, 'config', '*'))
         .pipe(plumber())
-        .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock */", "var mock = require('mock');")))
+        .pipe(gulpif(ENV != 'dist' && useMock, string.after("/** @Inject:mock */", "var mock = require('mock');")))
         .pipe(gulp.dest(path.join(ENV, 'config')));
 });
 gulp.task('app', function () {
@@ -82,8 +83,8 @@ gulp.task('inject', ['index'], function () {
     return gulp.src(path.join(ENV, 'index.html'))
         .pipe(plumber())
         .pipe(inject(gulp.src([path.join(ENV, 'css', '*.css')], {read: false}), {relative: true}))
-        .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-define */", ",'mock':'http://121.43.161.157:8084/rap.plugin.js?projectId=3'")))
-        .pipe(gulpif(ENV != 'dist', string.after("/** @Inject:mock-dependencies */", ",'mock':{deps: ['jquery']}")))
+        .pipe(gulpif(ENV != 'dist' && useMock, string.after("/** @Inject:mock-define */", ",'mock':'http://121.43.161.157:8084/rap.plugin.js?projectId=3'")))
+        .pipe(gulpif(ENV != 'dist' && useMock, string.after("/** @Inject:mock-dependencies */", ",'mock':{deps: ['jquery']}")))
         .pipe(string.after("/** @Inject:version */", ",'urlArgs':'v=" + new Date().getTime() + "'"))
         .pipe(gulpif(ENV == 'dist', html(settings)))
         .pipe(gulp.dest(path.join(ENV)));

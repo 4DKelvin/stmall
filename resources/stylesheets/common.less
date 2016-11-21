@@ -202,24 +202,19 @@
   }
 }
 
-//内容
-#content {
-  @height: 36px;
-  min-width: @baseWidth;
-  background: #f5f5f5;
-  padding-bottom: 10px;
-
-  //导航
-  .main-nav {
-    height: @height;
-    background-color: @purpleColor;
-  }
+//导航
+.main-nav {
+  @height:36px;
+  height: @height;
+  background-color: @purpleColor;
   .nav-inner {
     width: @baseWidth;
     margin: auto;
+    .nav-con-ml{
+      margin: 0 auto 0 200px;
+    }
     .nav-con {
       height: @height;
-      margin: 0 auto 0 200px;
       li {
         .fl();
         height: 36px;
@@ -235,7 +230,25 @@
         }
       }
     }
+    .page-nav{
+      li{
+        a{
+          padding:0 80px;
+          &.cut{
+
+          }
+        }
+      }
+    }
   }
+}
+
+//首页内容
+#content {
+  @height: 36px;
+  min-width: @baseWidth;
+  background: #f5f5f5;
+  padding-bottom: 10px;
 
   //分类导航
   .g-category {

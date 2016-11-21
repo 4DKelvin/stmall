@@ -1,11 +1,21 @@
 define(function (require) {
     var app = require('app'),
         image = require('components/image'),
+        header = require('components/header'),
+        search = require('components/search'),
+        footer = require('components/footer'),
         service = require('services/home.service');
 
-    app.useModule('image'); //ng异步载入
+    /** ng异步载入 */
+    app.useModule('image');
 
-    app.useModule('home.service'); //ng异步载入
+    app.useModule('header');
+
+    app.useModule('search');
+    
+    app.useModule('footer');
+
+    app.useModule('home.service');
 
     app.controller('home', ['$scope', 'homeService', function ($scope, homeService) {
         homeService.homePage(1).then(function (res) {
