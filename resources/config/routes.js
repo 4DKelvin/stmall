@@ -21,17 +21,19 @@ define(function (require, exports, module) {
                         .state('my/collectProduct',{
                             url:'/my/collectProduct',
                             templateUrl:$template('/my/collectProduct'),
-                            controllerUrl: $action('/my/index'),
+                            controllerUrl: $action('/my'),
+                            controller: 'collectProduct'
+                        })
+                        .state('my/addressManage',{
+                            url:'/my/addressManage',
+                            templateUrl:$template('/my/addressManage'),
+                            controllerUrl: $action('/my'),
                             controller: 'collectProduct'
                         });
                 }]);
 
             ngModule.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
                 $rootScope.$on('$stateChangeStart',
-                    function (event, toState) {
-                        console.log('这里检查参数toState做页面权限验证,用方法event.preventDefault();中断页面跳转');
-                    });
-                $rootScope.$on('$stateChangeEnd',
                     function (event, toState) {
                         console.log('这里检查参数toState做页面权限验证,用方法event.preventDefault();中断页面跳转');
                     });

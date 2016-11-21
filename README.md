@@ -39,7 +39,7 @@ npm install -g bower && bower install
 gulp serve
 ````
 - 发布(dist目录)
-````
+```` javascript
 gulp
 ````
 
