@@ -27,25 +27,25 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 - 环境准备(`NodeJS` 与 `Npm3` 不同系统安装各异)
 
 - 初始化项目
-```node
+```terminal
 npm install
 ```
 - 安装`Bower`模块和前端插件
-```node
+```terminal
 npm install -g bower && bower install
 ```
 - 运行(开发模式),端口号`4000`[预览](http://localhost:4000/)
-```node
+```terminal
 gulp serve
 ```
 - 发布(dist目录)
-```node
+```terminal
 gulp
 ```
 
 ### 前端模块化
 - AMD 方式定义模块 require方式异步引入
-````
+```javascript
 define(function (require, exports, module) {
     var app = require('app'); //引入模块
 
@@ -54,9 +54,9 @@ define(function (require, exports, module) {
     }]);
     module.exports = app; //输出
 });
-````
+```
 - 入口配置, 将 `Jquery` 和 `Angular` 作用域设置全局
-````
+```javascript
 require.config({
     baseUrl: '/app',
     paths: {
@@ -82,9 +82,9 @@ require.config({
     }
     /** @Inject:version */
 });
-````
+```
 - 自定义`指令` 以及 `服务`
-````
+```javascript
 //定义指令部分(components目录)
 define(function (require, exports, module) {
     var angular = require('angular');
@@ -137,40 +137,40 @@ define(function (require) {
         urService.something(); //调用服务
     }]);
 });
-````
+```
 - 更多`Angular异步定义`看[这里](https://github.com/subchen/angular-async-loader)
 - 更多`AMD规范`看[这里](https://github.com/amdjs/amdjs-api/wiki/AMD)
 
 ### 图片延迟加载(Unveil)
 - Controller
-````
+```javascript
   $scope.image = "http://lorempixel.com/g/800/500/city/1"
-````
+```
 - View
-````
+```html
 <img ng-lazy="image"/>
-````
+```
 
 ### 注意事项
 
 - 使用Angular的`$q`模块创建`promise`, IE8 并不支持`catch`,`finally`等方法
 
-````
+```javascript
 // 不支持
 promise.catch(function(){});
 
 // 正确方式
 promise['catch'](function(){});
-````
+```
 - IE 8 不支持自定义标签
-````
+```html
 // 不支持
 <ng-view></ng-view>
 // 正确方式
 <div ng-view></div>
-````
+```
 - 自定义指令 使用E方式 IE8 要添加 `document.createElement('');`
-````
+```javascript
 document.createElement('myElement'); //这个很重要
 
 Module.directive('myElement', function () {
@@ -184,14 +184,14 @@ Module.directive('myElement', function () {
         }
     }
 });
-````
+```
 - 使用 `ng-style` 替代 `style="{{ someCss }}"`
-````
+```html
 // 不支持
 <div ng-style='someCss'></div>
 // 正确方式
 <div style='{{someCss}}'></div>
-````
+```
 - ...(待补充)
 
 ### 使用协议
