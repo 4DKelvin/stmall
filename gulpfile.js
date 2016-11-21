@@ -49,13 +49,13 @@ gulp.task('config', function () {
         .pipe(gulp.dest(path.join(ENV, 'config')));
 });
 gulp.task('app', function () {
-    return gulp.src(path.join(ROOT, 'app', '*', '**.js'))
+    return gulp.src(path.join(ROOT, 'app', '**', '**.js'))
         .pipe(plumber())
         .pipe(gulpif(ENV != 'dist', minifier(jsOptions, uglify)))
         .pipe(gulp.dest(path.join(ENV, 'app')));
 });
 gulp.task('html', function () {
-    return gulp.src(path.join(ROOT, 'app', '*', '**.html'))
+    return gulp.src(path.join(ROOT, 'app', '**', '**.html'))
         .pipe(plumber())
         .pipe(gulpif(ENV == 'dist', html(settings)))
         .pipe(gulp.dest(path.join(ENV, 'app')));
@@ -94,8 +94,8 @@ gulp.task('default', ['clean', 'image', 'lib', 'config', 'app', 'less', 'html', 
 });
 gulp.task('serve', ['default'], function () {
     gulp.watch(path.join(ROOT, 'images', '**'), ['image']);
-    gulp.watch(path.join(ROOT, 'app', '*', '**.js'), ['app']);
-    gulp.watch(path.join(ROOT, 'app', '*', '**.html'), ['html']);
+    gulp.watch(path.join(ROOT, 'app', '**', '**.js'), ['app']);
+    gulp.watch(path.join(ROOT, 'app', '**', '**.html'), ['html']);
     gulp.watch(path.join(ROOT, 'index.html'), ['inject']);
     gulp.watch(path.join(ROOT, 'config', '**.js'), ['config']);
     gulp.watch(path.join(ROOT, 'stylesheets', '**.less'), ['less']);

@@ -11,6 +11,12 @@ define(function (require, exports, module) {
                             templateUrl: $template('home'),
                             controllerUrl: $action('home'),
                             controller: 'home'
+                        })
+                        .state('my',{
+                            url:'/my/',
+                            templateUrl:$template('/my/index'),
+                            controllerUrl: $action('/my/index'),
+                            controller: 'myIndex'
                         });
                 }]);
 
