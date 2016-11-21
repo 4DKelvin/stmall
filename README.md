@@ -39,9 +39,9 @@ npm install -g bower && bower install
 gulp serve
 ````
 - 发布(dist目录)
-```` nodejs
+```nodejs
 gulp
-````
+```
 
 ### 前端模块化
 - AMD 方式定义模块 require方式异步引入
