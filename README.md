@@ -19,27 +19,27 @@ RequireJs + AngularJs  IE >= 8 异步载入框架
 ### 自动整合 `RAP Mock Api`
 - `RAP` [接口文档](http://121.43.161.157:8084/workspace/myWorkspace.do?projectId=3#219)
 - 已集成MockApi(仅开发模式)
-````
+```html
 <script src='http://121.43.161.157:8084/rap.plugin.js?projectId=3'></script>
-````
+```
 
 ### 打开方式
 - 环境准备(`NodeJS` 与 `Npm3` 不同系统安装各异)
 
 - 初始化项目
-````
+```node
 npm install
-````
+```
 - 安装`Bower`模块和前端插件
-````
+```node
 npm install -g bower && bower install
-````
+```
 - 运行(开发模式),端口号`4000`[预览](http://localhost:4000/)
-````
+```node
 gulp serve
-````
+```
 - 发布(dist目录)
-```nodejs
+```node
 gulp
 ```
 
