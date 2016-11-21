@@ -38,9 +38,10 @@ define(function (require, exports, module) {
                         $('body').removeClass('loading');
                     }
                 };
-                console.log('请求[' + options.url + '][' + options.method + ']数据接口,参数:', data);
+                console.log('[请求][' + options.url + '][' + options.method + ']数据接口,参数:', data);
                 try {
                     $.ajax(options).success(function (data) {
+                        console.log('[响应][' + options.url + '][' + options.method + ']数据接口,返回:', data);
                         if (data.responseCode == "000000") {
                             deferred.resolve(data.responseData);
                         } else {

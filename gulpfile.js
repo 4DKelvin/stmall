@@ -15,7 +15,7 @@ var gulp = require('gulp'),
     string = require('gulp-inject-string'),
     bowerfile = require('main-bower-files'),
     less = require('gulp-less'),
-    useMock = false,
+    useMock = true,
     settings = {
         removeComments: true,
         collapseWhitespace: true,

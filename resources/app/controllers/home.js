@@ -7,16 +7,7 @@ define(function (require) {
         service = require('services/home.service');
 
     /** ng异步载入 */
-    app.useModule('image');
-
-    app.useModule('header');
-
-    app.useModule('search');
-    
-    app.useModule('footer');
-
-    app.useModule('home.service');
-
+    app.useModule(['image', 'header', 'search', 'footer', 'home.service']);
     app.controller('home', ['$scope', 'homeService', function ($scope, homeService) {
         homeService.homePage(1).then(function (res) {
             $scope.images = [

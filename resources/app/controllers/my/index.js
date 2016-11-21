@@ -3,18 +3,10 @@ define(function (require) {
         image = require('components/image'),
         header = require('components/header'),
         search = require('components/search'),
-        footer = require('components/footer'),
-        service = require('services/home.service');
+        footer = require('components/footer');
 
     /** ng异步载入 */
-    app.useModule('image');
-
-    app.useModule('header');
-
-    app.useModule('search');
-
-    app.useModule('footer');
-
+    app.useModule(['image', 'header', 'search', 'footer']);
     app.controller('myIndex', ['$scope', function ($scope) {
 
     }]);
