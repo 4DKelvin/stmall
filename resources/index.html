@@ -16,6 +16,9 @@
 </head>
 <body>
 <div ui-view></div>
+<!--[if lt IE 8]>
+<p class="browse-upgrade">你使用的浏览器版本 <strong>太低</strong> . 请 <a href="http://browsehappy.com/">升级</a> 你的浏览器以达到最佳的体验.</p>
+<![endif]-->
 <!--[if IE 8]>
 <script type="text/javascript" src="//cdn.bootcss.com/es5-shim/4.0.5/es5-shim.min.js"></script>
 <![endif]-->
@@ -53,9 +56,6 @@
             angular.element(document).find('html').addClass('ng-app');
         });
     });
-    window.onhashchange = function (e) {
-        console.log(JSON.stringify(arguments));
-    }
 </script>
 </body>
 </html>
