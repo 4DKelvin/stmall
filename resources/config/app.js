@@ -6,9 +6,12 @@ define(function (require, exports, module) {
     var app = angular.module('app', ['ui.router']);
 
 
-    app.run(function () {
-        //TODO:初始化
-    });
+    app.run(['$rootScope', '$state', '$stateParams',
+        function ($rootScope, $state, $stateParams) {
+            $rootScope.$state = $state;
+            $rootScope.$stateParams = $stateParams;
+        }
+    ]);
 
     asyncLoader.configure(app);
 

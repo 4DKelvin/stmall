@@ -12,16 +12,26 @@ define(function (require, exports, module) {
                             controllerUrl: $action('home'),
                             controller: 'home'
                         })
-                        .state('my',{
-                            url:'/my/',
-                            templateUrl:$template('/my/index'),
+                        .state('my', {
+                            url: '/my/',
+                            templateUrl: $template('/my/index'),
                             controllerUrl: $action('/my/index'),
                             controller: 'myIndex'
+                        })
+                        .state('my/collectProduct',{
+                            url:'/my/collectProduct',
+                            templateUrl:$template('/my/collectProduct'),
+                            controllerUrl: $action('/my/index'),
+                            controller: 'collectProduct'
                         });
                 }]);
 
-            ngModule.run(['$rootScope', function ($rootScope) {
+            ngModule.run(['$rootScope', '$timeout', function ($rootScope, $timeout) {
                 $rootScope.$on('$stateChangeStart',
+                    function (event, toState) {
+                        console.log('这里检查参数toState做页面权限验证,用方法event.preventDefault();中断页面跳转');
+                    });
+                $rootScope.$on('$stateChangeEnd',
                     function (event, toState) {
                         console.log('这里检查参数toState做页面权限验证,用方法event.preventDefault();中断页面跳转');
                     });

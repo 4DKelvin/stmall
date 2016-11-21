@@ -70,7 +70,7 @@ gulp.task('less', function () {
     return gulp.src(path.join(ROOT, 'stylesheets', '**.less'))
         .pipe(plumber())
         .pipe(less())
-        .pipe(gulpif(ENV == 'dist', concat('pc.css')))
+        .pipe(concat('pc.css'))
         .pipe(gulpif(ENV == 'dist', minify()))
         .pipe(gulpif(ENV == 'dist', rev()))
         .pipe(gulp.dest(path.join(ENV, 'css')));

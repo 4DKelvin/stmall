@@ -9,5 +9,7 @@ define(function (require) {
     app.useModule(['image', 'header', 'search', 'footer']);
     app.controller('myIndex', ['$scope', function ($scope) {
 
+    }]).controller('collectProduct', ['$scope', function ($scope) {
+
     }]);
 });
