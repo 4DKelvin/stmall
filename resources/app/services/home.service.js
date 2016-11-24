@@ -1,9 +1,9 @@
 define(function (require, exports, module) {
     var angular = require('angular');
 
-    var module = angular.module('home.service', []);
+    var ngModule = angular.module('home.service', []);
 
-    module.factory('homeService', ['$request', function ($request) {
+    ngModule.factory('homeService', ['$request', function ($request) {
         return {
             homePage: function (cityId) {
                 return $request.get('home/homePage', {
@@ -13,5 +13,6 @@ define(function (require, exports, module) {
         }
     }]);
 
-    module.exports = module;
+    module.exports = ngModule;
 });
+

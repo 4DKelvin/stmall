@@ -1,0 +1,61 @@
+<header></header>
+<search-bar></search-bar>
+<!--内容-->
+<div id="container">
+    <div class="main-nav">
+        <div class="nav-inner">
+            <ul class="nav-con page-nav">
+                <li><a ui-sref="my" class="cut">首页</a></li>
+                <li><a href="#">账户</a></li>
+                <li><a ui-sref="my/message">消息</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="con-panle">
+        <!--边侧导航-->
+        <sub-nav></sub-nav>
+
+        <!--正文-->
+        <div class="col-main">
+            <div class="cp-title">
+                <h1>收货地址管理</h1>
+            </div>
+            <div class="cp-main address-manage">
+                <button class="btn purplebtn">新增收货地址</button>
+                <div class="am-table" ng-if="list">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td width="15%">收货人</td>
+                            <td width="25%" class="left">所在地区</td>
+                            <td width="18%" class="left">详细地址</td>
+                            <td width="10%">邮编</td>
+                            <td width="10%">电话/手机</td>
+                            <td width="10%">操作</td>
+                            <td width="12%"></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in list">
+                            <td ng-bind="item.recipient"></td>
+                            <td class="left"
+                                ng-bind="(item.provinceName||'') + ' ' + (item.cityName||'') + ' ' + (item.districtName||'') + ' ' + (item.communityName||'')"></td>
+                            <td class="left" ng-bind="item.address"></td>
+                            <td ng-bind="item.postCode"></td>
+                            <td ng-bind="item.telephone||item.mobile"></td>
+                            <td>
+                                <a href="#" class="font-purple">修改</a> |
+                                <a href="javascript:void(0);" class="font-purple" ng-click="remove(item)">删除</a>
+                            </td>
+                            <td>
+                                <button class="btn purplebtn" ng-click="setDefault(item)" ng-if="!item.default">默认地址</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer></footer>

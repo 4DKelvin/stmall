@@ -5,70 +5,15 @@
     <div class="main-nav">
         <div class="nav-inner">
             <ul class="nav-con page-nav">
-                <li><a href="javascript:void(0);" class="cut">首页</a></li>
-                <li><a href="javascript:void(0);">账户</a></li>
-                <li><a href="javascript:void(0);">消息</a></li>
+                <li><a ui-sref="my" class="cut">首页</a></li>
+                <li><a href="#">账户</a></li>
+                <li><a ui-sref="my/message">消息</a></li>
             </ul>
         </div>
     </div>
     <div class="con-panle">
         <!--边侧导航-->
-        <div class="col-sub">
-            <dl>
-                <dt><a href="javascript:void(0);">我的订单</a></dt>
-            </dl>
-            <dl>
-                <dt><a href="javascript:void(0);">我的退款</a></dt>
-            </dl>
-            <dl>
-                <dt ng-init="c=true">
-                    <a href="javascript:void(0);" ng-click="c=!c">个人信息</a>
-                    <i class="iconfont" ng-class="{'icon-xia':!c,'icon-circle_up_on':c}"></i>
-                </dt>
-                <dd ng-show="c" class="animated fadeInDown">
-                    <a href="javascript:void(0);">基本资料</a>
-                </dd>
-                <dd ng-show="c" class="animated fadeInDown">
-                    <a ui-sref="my/addressManage">收货地址</a>
-                </dd>
-            </dl>
-            <dl>
-                <dt ng-init="c1=true">
-                    <a href="javascript:void(0);" ng-click="c1=!c1">我的优惠</a>
-                    <i class="iconfont" ng-class="{'icon-xia':!c1,'icon-circle_up_on':c1}"></i>
-                </dt>
-                <dd ng-show="c1" class="animated fadeInDown"><a href="javascript:void(0);">我的红包</a></dd>
-                <dd ng-show="c1" class="animated fadeInDown"><a href="javascript:void(0);">我的优惠劵</a></dd>
-            </dl>
-            <dl>
-                <dt><a href="javascript:void(0);">我的积分</a></dt>
-            </dl>
-            <dl>
-                <dt><a href="javascript:void(0);">我的投诉</a></dt>
-            </dl>
-            <dl>
-                <dt><a ui-sref="my/collectProduct">我的收藏</a></dt>
-            </dl>
-            <dl>
-                <dt><a href="javascript:void(0);">个人信息</a></dt>
-            </dl>
-            <dl>
-                <dt ng-init="c2=true">
-                    <a href="javascript:void(0);" ng-click="c2=!c2">个人信息</a>
-                    <i class="iconfont" ng-class="{'icon-xia':!c2,'icon-circle_up_on':c2}"></i>
-                </dt>
-                <dd ng-show="c2" class="animated fadeInDown"><a href="javascript:void(0);">基本资料</a></dd>
-                <dd ng-show="c2" class="animated fadeInDown"><a href="javascript:void(0);">收货地址</a></dd>
-            </dl>
-            <dl>
-                <dt ng-init="c3=true">
-                    <a href="javascript:void(0);" ng-click="c3=!c3">生活缴费</a>
-                    <i class="iconfont" ng-class="{'icon-xia':!c3,'icon-circle_up_on':c3}"></i>
-                </dt>
-                <dd ng-show="c3" class="animated fadeInDown"><a href="javascript:void(0);">缴纳电费</a></dd>
-                <dd ng-show="c3" class="animated fadeInDown"><a href="javascript:void(0);">缴纳水费</a></dd>
-            </dl>
-        </div>
+        <sub-nav></sub-nav>
 
         <!--正文-->
         <div class="col-main">
@@ -87,7 +32,7 @@
             <div class="my-order">
                 <div class="mo-head">
                     <h2>我的订单</h2>
-                    <a href="javascript:void(0);">查看全部订单</a>
+                    <a ui-sref="my/orderList">查看全部订单</a>
                 </div>
                 <div class="mo-main">
                     <table>
@@ -106,6 +51,21 @@
                             <td>
                                 <div class="inner-td-pro">
                                     <img src="images/tem/tem_floor_pro.jpg" alt="">
+                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
+                                </div>
+                            </td>
+                            <td>￥1299.00</td>
+                            <td>2</td>
+                            <td>￥1299.00 <br>（含运费￥0.00）</td>
+                            <td>已付款</td>
+                            <td>
+                                <a ui-sref="my/applyRefund" class="btn redbtn">申请退款</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="inner-td-pro">
+                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
 
                                     <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
                                 </div>
@@ -113,9 +73,9 @@
                             <td>￥1299.00</td>
                             <td>2</td>
                             <td>￥1299.00 <br>（含运费￥0.00）</td>
-                            <td>待付款</td>
+                            <td>已完成</td>
                             <td>
-                                <button class="btn redbtn">立即付款</button>
+                                <a ui-sref="my/comment" class="btn redbtn">评价</a>
                             </td>
                         </tr>
                         <tr>
@@ -131,23 +91,7 @@
                             <td>￥1299.00 <br>（含运费￥0.00）</td>
                             <td>待付款</td>
                             <td>
-                                <button class="btn redbtn">立即付款</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td>￥1299.00</td>
-                            <td>2</td>
-                            <td>￥1299.00 <br>（含运费￥0.00）</td>
-                            <td>待付款</td>
-                            <td>
-                                <button class="btn redbtn">立即付款</button>
+                                <a class="btn redbtn">立即付款</a>
                             </td>
                         </tr>
                         </tbody>

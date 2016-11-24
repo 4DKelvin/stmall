@@ -33,6 +33,7 @@
     table {
         border-collapse: collapse;
         border-spacing: 0;
+        width:100%;
     }
     th, td {
         text-align: left;
@@ -53,7 +54,19 @@
     }
     input, textarea, select, button {
         font-size: 100%;
-        font-family: inherit;
+    }
+    a,button,input[type=button]{
+        cursor:pointer;
+    }
+    textarea{
+        resize:none;
+    }
+    select {
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 3px;
+        border: 1px solid #e5e5e5;
     }
     select {
         margin: inherit;
@@ -88,6 +101,10 @@
 @lightPurple: #f1e0ff;
 @lightPurpleLine: #e2c8f8;
 @lineColor: #e5e5e5;
+@pinkColor: #ed007e;
+@lightPinkColor: #f79ec1;
+@blueDepColor: #004c9d;
+@blueColor: #0085c9;
 
 .reset();
 .clearfix {
@@ -100,10 +117,20 @@
         visibility: hidden;
     }
 }
+input[type=radio]{
+    vertical-align: middle;
+    margin:-2px 5px 0 0;
+}
 
 .fl(@f:left) {
     float: @f;
     display: block;
+}
+.fleft{
+    .fl();
+}
+.fright{
+    .fl(@f: right);
 }
 
 .borderRadius(@value:50%) {
@@ -128,11 +155,63 @@
     color: @purpleColor;
 }
 
+.font-red {
+    color: @redColor;
+}
+
+.font-through{
+    text-decoration: line-through;
+}
+
 .ellipsis {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     display: block;
+}
+.txt-big{
+    width:200px;
+}
+.txt-inside{
+    width:125px;
+}
+.txt-small{
+    width:100px;
+}
+.txt-xsmall{
+    width:50px;
+}
+.align-right{
+    text-align: right;
+}
+.align-center{
+    text-align: center;
+}
+.input-txt{
+    border:1px solid @lineColor;
+    line-height: 26px;
+    height: 26px;
+    padding:0 3px;
+}
+.sm-col-5{
+    width:50%;
+    display: inline-block;
+}
+.sm-col-4{
+    width:40%;
+    display: inline-block;
+}
+.sm-col-3{
+    width:30%;
+    display: inline-block;
+}
+.sm-col-2{
+    width:20%;
+    display: inline-block;
+}
+.sm-col-1{
+    width:10%;
+    display: inline-block;
 }
 
 //btn
@@ -140,11 +219,20 @@
     display: inline-block;
     .borderRadius(@value: 5px);
     padding: 5px 12px;
-    line-height: 20px;
+    line-height: 16px;
     border: none;
+}
+.bigBtn{
+    padding: 5px 36px;
+    line-height: 30px;
+    font-size: 16px;
 }
 .redbtn {
     background: @redColor;
+    color: #fff;
+}
+.lightPinkBtn {
+    background: @lightPinkColor;
     color: #fff;
 }
 .purplebtn {
@@ -200,12 +288,20 @@
     .clearfix;
     .mall-logo {
         .fl(@f: left);
-        width: 100px;
-        height: 32px;
+        width: 196px;
+        height: 55px;
+        margin-top: 32px;
+    }
+    .mall-text{
+        .fl();
+        margin-left: 10px;
+        margin-top: 32px;
+        line-height: 55px;
+        font-size: 30px;
     }
     .mall-search {
         .fl(@f: left);
-        margin: 40px 0 auto 180px;
+        margin: 40px 0 auto 140px;
         width: 630px;
     }
     .ms-form {
@@ -1244,6 +1340,10 @@
                 text-align: center;
                 background: rgba(0, 0, 0, .6);
                 color: #fff;
+                i{
+                    font-size: 12px;
+                    margin-right: 5px;
+                }
                 &:hover {
                     background: @purpleColor;
                 }
@@ -1279,21 +1379,970 @@
 //收货地址管理
 .address-manage{
     padding:20px 0;
-    .am-table{
-        border:1px solid @lineColor;
-        border-bottom: none;
-        .mt(@height: 20px);
-        table{
-            width: 100%;
-            thead{
-                td{
-                    background: #f1f1f1;
+}
+.am-table{
+    border:1px solid @lineColor;
+    border-bottom: none;
+    .mt(@height: 20px);
+    table{
+        width: 100%;
+        thead{
+            td{
+                background: #f1f1f1;
+                &.left{
+                    text-align: left;
                 }
             }
+        }
+        td{
+            border-bottom:1px solid @lineColor;
+            padding:10px;
+            line-height: 20px;
+            text-align: center;
+            &.left{
+                text-align: left;
+            }
+        }
+    }
+}
+
+//我的 tab
+.cp-tab-title{
+    .clearfix;
+    li{
+        .fl();
+        font-size: 14px;
+        a{
+            display: block;
+            padding:0 25px;
+        }
+        &.cut{
+            a{
+                border-bottom:2px solid @purpleColor;
+                color:@purpleColor;
+                font-weight:bold;
+            }
+        }
+    }
+}
+
+//我的订单
+.order-title-table{
+    border:1px solid #faeab5;
+    margin: 10px auto;
+    td{
+        background: #fff8e1;
+        padding:10px;
+        text-align: center;
+        &.left{
+            text-align: left;
+        }
+    }
+}
+.om-search{
+    margin: 20px auto 10px;
+    line-height: 28px;
+    .clearfix;
+    .om-id-text{
+        display: block;
+        float: left;
+        width:180px;
+        height:30px;
+        padding: 0 5px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        border:1px solid @lineColor;
+    }
+    .om-id-btn{
+        margin-right:12px;
+        height: 30px;
+        box-sizing: border-box;
+        background: #f5f5f5;
+        border:1px solid @lineColor;
+        border-left:none;
+        float: left;
+        padding: 0 10px;
+    }
+    .om-search-more{
+        float: left;
+    }
+    .search-more{
+        clear:both;
+        margin-top: 20px;
+        .clearfix;
+        .search-mod{
+            float: left;
+            margin-bottom: 10px;
+            label{
+                margin-right: 10px;
+            }
+            input,select{
+                display: inline-block;
+                height: 26px;
+                line-height: 26px;
+                padding:0 3px;
+                border:1px solid @lineColor;
+            }
+        }
+    }
+}
+.om-item{
+    margin-bottom:10px;
+    .order-main-table{
+        td{
+            padding:10px;
+            &.left{
+                text-align: left;
+            }
+            vertical-align: middle;
+        }
+        thead{
+            border:1px solid @lineColor;
             td{
-                border-bottom:1px solid @lineColor;
-                padding:10px;
-                line-height: 20px;
+                background: #eeeeee;
+                text-align: center;
+            }
+        }
+        tbody{
+            td{
+                text-align: center;
+                border:1px solid @lineColor;
+                span{
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+//为您推荐
+.base-recommend{
+    width:@baseWidth;
+    margin:20px auto;
+    h2.title{
+        color:@purpleColor;
+        line-height: 24px;
+        font-size: 16px;
+    }
+    .br-main{
+        .clearfix;
+        margin: 0 -12px;
+        li{
+            .fl();
+            width:220px;
+            border:1px solid @lineColor;
+            box-sizing: border-box;
+            margin: 12px;
+            &:hover{
+                border:1px solid @redColor;
+            }
+            .br-img{
+                margin-bottom: 10px;
+                img{
+                    width: 218px;
+                    height: 218px;
+                }
+            }
+            .br-name{
+                height:30px;
+                line-height: 30px;
+                margin:0 15px;
+            }
+            .price-sales{
+                margin:0 15px 15px;
+                .price{
+                    font-size: 14px;
+                     color: @redColor;
+                }
+                .sales{
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+//收藏店铺
+.collect-shop{
+    margin:20px auto;
+    .cs-item{
+        border-bottom:1px solid @lineColor;
+        .clearfix;
+        margin-bottom: 20px;
+    }
+    .cs-shop-info{
+        .fl();
+        .clearfix;
+        width: 252px;
+        height: 252px;
+        position:relative;
+        .icon-shanchu-shanchuchengyuan{
+            position: absolute;
+            right:0;
+            top:10px;
+        }
+        .link-coupon{
+            display: block;
+            width:100px;
+            font-size: 14px;
+            color:@pinkColor;
+            border:1px solid @pinkColor;
+            position: absolute;
+            line-height: 30px;
+            left:50%;
+            margin-left:-50px;
+            bottom:10px;
+            text-align: center;
+            .borderRadius(@value: 5px);
+        }
+        .cs-shop-logo{
+            .fl();
+            width:40px;
+            height: 40px;
+            .borderRadius(@value: 50%);
+            overflow: hidden;
+            img{
+                width:40px;
+                height: 40px;
+            }
+        }
+        .cs-shop-name{
+            .fl();
+            margin-left: 10px;
+            font-size: 14px;
+            .ellipsis;
+            line-height: 40px;
+        }
+    }
+    .cs-product-list{
+        .fl(@f: right);
+        width:894px;
+        .p-list{
+            margin: 0 -18px;
+            .p-item{
+                margin:10px 18px;
+            }
+        }
+        .cs-pl-title{
+            .clearfix;
+            .cs-pl-tab{
+                .fl();
+                line-height: 26px;
+                box-sizing: border-box;
+                border:1px solid @lineColor;
+                border-left:none;
+                li{
+                    float: left;
+                    border-left:1px solid @lineColor;
+                    padding:0 20px;
+                    &.cut{
+                        background: #eeeeee;
+                        color: @purpleColor;
+                    }
+                }
+            }
+            .cs-pl-more{
+                .fl(@f: right);
+            }
+        }
+    }
+}
+
+//我的积分
+.score-panle{
+    .sp-box{
+        border:1px solid @lineColor;
+        margin: 20px auto;
+        padding:30px 10px;
+        .clearfix;
+        .sp-gbjf,.sp-zhjf,.sp-lyjq{
+            float: left;
+            width: 33.33%;
+            text-align: center;
+            box-sizing: border-box;
+            h2{
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            span{
+                font-size: 18px;
+                font-weight: 700;
+            }
+        }
+        .sp-zhjf{
+            border-left:1px solid @lineColor;
+            border-right:1px solid @lineColor;
+        }
+    }
+    .sp-explain{
+        .clearfix;
+        span.title{
+            width:80px;
+            float: left;
+        }
+        p.main{
+            width:950px;
+            float: left;
+        }
+    }
+    .sp-action{
+        text-align: center;
+        margin: 50px;
+    }
+}
+
+.page-tab{
+    .clearfix;
+    background: #f5f5f5;
+    margin: 20px auto;
+    line-height: 30px;
+    height: 30px;
+    li{
+        .fl();
+        padding:0 30px;
+        &.cut{
+            background: @lightPurple;
+        }
+    }
+}
+
+//我的红包
+.rp-main{
+    .clearfix;
+    //margin:-10px -32px;
+    li{
+        width:260px;
+        height: 70px;
+        padding:15px 20px;
+        line-height: 20px;
+        color:#fff;
+        background: url(../images/bg/bg_red_packet.png) no-repeat;
+        .fl();
+        margin:20px;
+        position:relative;
+        &.no-user{
+            background: url(../images/bg/bg_red_packet_gray.png) no-repeat;
+            .rp-type{
+                color:#fff;
+            }
+        }
+        .rp-type{
+            font-size: 20px;
+            color:#fff606;
+            margin: 5px 0;
+        }
+        .rp-tag{
+            width:68px;
+            height: 48px;
+            position:absolute;
+            right:0;top:0;
+            &.usable{
+                background: url(../images/bg/bg_red_tag_use.png) no-repeat;
+            }
+            &.overdue{
+                background: url(../images/bg/bg_red_tag_overdue.png) no-repeat;
+            }
+            &.used{
+                background: url(../images/bg/bg_red_tag_used.png) no-repeat;
+            }
+        }
+    }
+}
+
+//我的银行卡
+.bankCard-panle{
+    //银行卡列表
+    .bcp-list{
+        .clearfix;
+        padding:10px 0;
+        margin:0 -25px;
+        li{
+            float: left;
+            background: @purpleColor;
+            width: 220px;
+            height: 136px;
+            color:#fff;
+            margin:15px 25px;
+            position:relative;
+            .borderRadius(@value: 8px);
+            .bp-info{
+                .clearfix;
+                margin:20px;
+                .bp-logo{
+                    width:34px;
+                    height: 34px;
+                    .borderRadius(@value: 50%);
+                    overflow: hidden;
+                    .fl();
+                    img {
+                        width: 34px;
+                        height: 34px;
+                    }
+                }
+                .bp-text{
+                    .fl();
+                    margin-left: 10px;
+                    line-height: 17px;
+                    h2{
+                        font-size: 14px;
+                    }
+                }
+            }
+            &.creditCard{
+                background: @blueColor;
+                .bp-cardnum{
+                    background: @blueDepColor;
+                }
+            }
+            .bp-cardnum{
+                position:absolute;
+                bottom:20px;
+                left:0;
+                right:0;
+                background: @purpleDepColor;
+                line-height: 32px;
+                text-align: right;
+                padding: 0 20px;
+            }
+        }
+        .add-bankCard{
+            background: #fff;
+            border:1px solid @lightPurpleLine;
+            box-sizing: border-box;
+            text-align: center;
+            height: 136px;
+            padding-top: 36px;
+            a{
+                display: block;
+                color:@purpleColor;
+            }
+            i.iconfont{
+                font-size: 32px;
+            }
+        }
+    }
+    //添加银行卡
+    .bcp-tab{
+        margin: 20px auto;
+        text-align: center;
+        label{
+            margin: 0 10px;
+            line-height: 24px;
+        }
+    }
+}
+
+.dl-line{
+    margin-bottom: 15px;
+    line-height: 26px;
+    vertical-align: top;
+    .clearfix;
+    dt{
+        width: 40%;
+        .fl();
+        text-align: right;
+    }
+    dd{
+        .fl();
+        margin-left: 5px;
+    }
+}
+
+//我的优惠券
+.my-coupon{
+    .mc-list{
+        @color:#ffa368;
+        .clearfix;
+        margin:0 -18px;
+        li{
+            .fl();
+            width:230px;
+            background: #f7f7f7;
+            margin:10px 18px;
+            .mc-type{
+                background: @color;
+                position:relative;
+                padding:5px 15px 10px;
+                color:#fff;
+                .mc-price{
+                    font-size: 40px;
+                    margin-top: 10px;
+                    &:before{
+                        content:'￥';
+                        font-size: 14px;
+                    }
+                }
+                .mc-limit,.mc-time{
+                    line-height: 26px;
+                    .ellipsis;
+                }
+                .mc-range{
+                    position:absolute;
+                    right:20px;
+                    top:30px;
+                    font-size: 16px;
+                }
+                .mc-type-top{
+                    height: 5px;
+                    width: 230px;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    background: url(../images/bg/bg_my_coupon.png) no-repeat 0 0;
+                }
+                .mc-type-bottom{
+                    height: 10px;
+                    width: 230px;
+                    position:absolute;
+                    bottom:0;
+                    left:0;
+                    background: url(../images/bg/bg_my_coupon.png) no-repeat 0 -5px;
+                }
+            }
+            .mc-msg{
+                padding:15px;
+                .mc-shop{
+                    .ellipsis;
+                }
+                .mc-btn{
+                    margin:15px auto 0;
+                    line-height: 30px;
+                    text-align: center;
+                    .mc-enter{
+                        display: inline-block;
+                        border:1px solid @color;
+                        margin:0 10px;
+                        color:@color;
+                        box-sizing:border-box;
+                        padding:0 20px;
+                        .borderRadius(@value: 15px);
+                        &:hover{
+                            background: @color;
+                            color:#fff;
+                        }
+                    }
+                    .mc-delete{
+                        &:hover{
+                            color:#999;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.min-box{
+    width:@baseWidth;
+    margin:10px auto 20px;
+    border-top:1px solid @lineColor;
+}
+//面包屑
+.crumbs-nav{
+    width:@baseWidth;
+    margin: 10px auto;
+    line-height: 22px;
+    .crumbs-title{
+        font-weight: bold;
+    }
+    .crumbs-search{
+        display: inline-block;
+        position:relative;
+        input[type=text]{
+            padding:0 3px;
+            width: 120px;
+            box-sizing: border-box;
+            height: 22px;
+        }
+        button{
+            height: 22px;
+            background: none;
+            box-sizing: border-box;
+            border:none;
+            position: absolute;
+            right:0;
+            top:0;
+            color:#ccc;
+        }
+    }
+    a,span{
+        display: inline-block;
+        margin-right: 5px;
+    }
+    a:hover{
+        color:@redColor;
+    }
+    .crumbs-arrow{
+        &:before{
+            content:'>';
+            margin-right: 5px;
+        }
+    }
+}
+
+.radius-box{
+    border:1px solid @lineColor;
+    border-bottom:none;
+    margin-bottom: 20px;
+    .rb-title{
+        .clearfix;
+        background: #f3f3f3;
+        line-height: 32px;
+        padding:0 20px;
+        border-bottom:1px solid @lineColor;
+        h2{
+            .fl();
+            font-size: 14px;
+        }
+        a{
+            .fl(@f: right);
+        }
+    }
+    .rb-main{
+        padding:20px;
+        border-bottom:1px solid @lineColor;
+        dl{
+            line-height: 26px;
+            margin-bottom: 8px;
+            dt,dd{
+                display: inline-block;
+                vertical-align: top;
+            }
+            dd{
+                margin-left: 5px;
+            }
+        }
+    }
+}
+.refund-box{
+    .rb-main{
+        dl{
+            margin-bottom: 25px;
+        }
+    }
+    .refund-explain{
+        width:400px;
+        height: 100px;
+        border:1px solid @lineColor;
+    }
+}
+
+//评价
+.com-shop-info{
+    margin:10px auto;
+    padding:20px 20px 20px 0;
+    .clearfix;
+    .csi-logo{
+        .fl();
+        .borderRadius(@value: 50%);
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        border:1px solid @lineColor;
+    }
+    .csi-info{
+        line-height: 16px;
+        margin-left: 15px;
+        .fl();
+        .csi-name{
+            font-size: 16px;
+        }
+        .csi-user{
+            margin: 5px auto;
+        }
+        .csi-score{
+            .clearfix;
+            .title{
+                float: left;
+            }
+        }
+    }
+}
+.com-main{
+    h2{
+        margin-bottom: 10px;
+    }
+    .rb-main{
+        .clearfix;
+    }
+    .cb-product{
+        .fl();
+        width: 35%;
+    }
+    .cb-comment{
+        .fl(@f: right);
+        width: 60%;
+    }
+    .comment-info{
+        border:1px solid @lineColor;
+        margin: 10px auto;
+        .comment-text{
+            height: 100px;
+            width: 100%;
+            border:none;
+            box-sizing:border-box;
+            padding: 10px;
+        }
+        .comment-img{
+            background: #f3f3f3;
+            padding:10px;
+            .clearfix;
+            .show-img{
+                .clearfix;
+                .fl();
+                margin-left:-5px;
+                li{
+                    float: left;
+                    margin:0 5px;
+                    border:1px solid @lineColor;
+                    img{
+                        width:30px;
+                        height: 30px;
+                    }
+                }
+            }
+            .img-num{
+                .fl();
+            }
+            .up-comimg{
+                .fl();
+                margin-left: 20px;
+            }
+        }
+    }
+}
+.comment-list-info{
+    margin: 0 20px;
+    .com-info{
+        margin-bottom: 10px;
+    }
+    .con-img{
+        border-top: 1px dashed @lineColor;
+        padding-top: 10px;
+        margin:0 -5px;
+        .clearfix;
+        li{
+            .fl();
+            margin:0 5px;
+            img{
+                width: 50px;
+                height: 50px;
+                border:1px solid @lineColor;
+            }
+        }
+    }
+}
+
+//评分
+.star-score{
+    background: url(../images/icon/score_gray.png) no-repeat;
+    width:140px;
+    height: 16px;
+    line-height: 16px;
+    .pink{
+        background: url(../images/icon/score_pink.png) no-repeat;
+        height: 16px;
+        display: inline-block;
+    }
+    .txt{
+        display: inline-block;
+        line-height: 16px;
+        float: right;
+    }
+}
+
+//我的消息
+.msg-panle{
+    margin-top: 20px;
+    ul{
+        li{
+            background: #f3f3f3;
+            box-sizing:border-box;
+            padding:10px;
+            border:1px solid #f3f3f3;
+            position:relative;
+            line-height: 24px;
+            margin-bottom: 10px;
+            .msg-time{
+                border-bottom:1px dashed @lineColor;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+            }
+            &:hover{
+                border:1px solid #ccc;
+            }
+            i.iconfont{
+                position:absolute;
+                top:5px;
+                right:10px;
+                color:#999;
+                font-size: 12px;
+            }
+            a.more{
+                position:absolute;
+                color:@blueColor;
+                right:10px;
+                bottom:10px;
+                &:hover{
+                    color:@blueDepColor;
+                }
+            }
+        }
+    }
+}
+
+//购物车
+.cart-panle{
+    border-top:1px solid @lineColor;
+    padding-top: 20px;
+    .cart-main{
+        width: @baseWidth;
+        margin:0 auto;
+    }
+    
+    .cart-count{
+        width: 80px;
+        height: 26px;
+        margin:auto;
+        .clearfix;
+        position:relative;
+        button{
+            position: absolute;
+            background: #f0f0f0;
+            height: 26px;
+            border:1px solid @lineColor;
+            z-index: 1;
+            width: 20px;
+            text-align: center;
+            &.plus{
+                right: 0;
+            }
+            &.minus{
+                left:0;
+            }
+        }
+        input{
+            height: 26px;
+            border:1px solid #aaaaaa;
+            box-sizing: border-box;
+            position:absolute;
+            width: 40px;
+            left:20px;
+            right:20px;
+            z-index: 2;
+            text-align: center;
+        }
+    }
+    
+    .cart-thead{
+        border-bottom:2px solid @lineColor;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+    .cart-table-th{
+        .clearfix;
+        .th{
+            .fl();
+        }
+        .th-chk-txt{
+            width:100px;
+        }
+        .th-chk{
+            width:40px;
+            text-align: center;
+        }
+        .th-info{
+            width:360px;
+        }
+        .th-attribute{
+            width: 220px;
+            color: #9c9c9c;
+        }
+        .th-price,.th-count,.th-total,.th-operate{
+            width: 130px;
+            text-align: center;
+        }
+    }
+    .cart-shop-info{
+        margin-bottom: 10px;
+        line-height: 20px;
+        .clearfix;
+        input{
+            .fl();
+            margin-top: 4px;
+        }
+        .shop-name{
+            .fl();
+            margin:0 10px;
+            img{
+                .fl();
+                margin-right: 5px;
+            }
+        }
+        .csi-coupon{
+            border:1px dashed @pinkColor;
+            .fl();
+            color: @pinkColor;
+            padding:0 10px;
+            box-sizing: border-box;
+        }
+    }
+    .cart-shop-item{
+        margin-bottom: 20px;
+    }
+    .cart-item{
+        border:1px solid @lineColor;
+        box-sizing: border-box;
+        margin-top: -1px;
+        padding:15px 0;
+        background: #f8f8f8;
+        position:relative;
+        z-index: 1;
+        .th-info{
+            width:418px;
+        }
+        &:hover{
+            border-color:#ccc;
+            z-index: 2;
+        }
+    }
+    
+    .float-bar-holder{
+        @height:50px;
+        @color:#ff001f;
+        background: #e4e4e4;
+        height: @height;
+        width:@baseWidth;
+        margin:20px auto;
+        line-height: @height;
+        .clearfix;
+        .fbh-sellectAll{
+            .fl();
+            margin-left: 10px;
+            a{
+                margin-left: 10px;
+            }
+        }
+        .fbh-total{
+            .fl(@f: right);
+            margin-right: 20px;
+            i{
+                font-style: normal;
+                color: @color;
+            }
+            .total{
+                font-size: 24px;
+                color: @color;
+            }
+        }
+        .fbh-right{
+            .fl(@f: right);
+            width: 120px;
+            a{
+                display: block;
+                font-size: 18px;
+                color:#fff;
+                background: @color;
                 text-align: center;
             }
         }

@@ -4,7 +4,12 @@ define(function (require, exports, module) {
         router = require('angular-ui-router');
 
     var app = angular.module('app', ['ui.router']);
-
+    app.config(['$httpProvider', function ($httpProvider) {
+        // Use raw Content-Type
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/raw';
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/raw';
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }]);
 
     app.run(['$rootScope', '$state', '$stateParams',
         function ($rootScope, $state, $stateParams) {

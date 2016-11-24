@@ -2,14 +2,14 @@ define(function (require, exports, module) {
     var angular = require('angular'),
         $ = require('jquery');
 
-    var module = angular.module('search', []);
+    var ngModule = angular.module('search', []);
 
     document.createElement('search-bar');
-    module.directive('searchBar', ['$timeout', function ($timeout) {
+    ngModule.directive('searchBar', ['$timeout', function ($timeout) {
         return {
             restrict: 'E',
             template: '<div id="header">' +
-            '<div class="mall-logo"></div>' +
+            '<div class="mall-logo"><img src="images/mall_logo.png" alt=""></div>' +
             '<div class="mall-search">' +
             '<div class="ms-form">' +
             '<input type="text" class="ms-input">' +
@@ -40,5 +40,5 @@ define(function (require, exports, module) {
         }
     }]);
 
-    module.exports = module;
+    module.exports = ngModule;
 });

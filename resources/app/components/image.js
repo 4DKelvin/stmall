@@ -3,9 +3,9 @@ define(function (require, exports, module) {
         $ = require('jquery'),
         unveil = require('unveil');
 
-    var module = angular.module('image', []);
+    var ngModule = angular.module('image', []);
 
-    module.directive('ngLazy', ['$timeout', function ($timeout) {
+    ngModule.directive('ngLazy', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
             scope: {
@@ -23,5 +23,5 @@ define(function (require, exports, module) {
         }
     }]);
 
-    module.exports = module;
+    module.exports = ngModule;
 });

@@ -1,0 +1,97 @@
+<header></header>
+<search-bar></search-bar>
+<!--内容-->
+<div id="container">
+    <div class="main-nav">
+        <div class="nav-inner">
+            <ul class="nav-con page-nav">
+                <li><a ui-sref="my" class="cut">首页</a></li>
+                <li><a href="#">账户</a></li>
+                <li><a ui-sref="my/message">消息</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="con-panle">
+        <!--边侧导航-->
+        <sub-nav></sub-nav>
+
+        <!--正文-->
+        <div class="col-main">
+            <div class="cp-title">
+                <h1>添加银行卡</h1>
+            </div>
+            <div class="bankCard-panle" ng-init="cardType=true">
+                <div class="bcp-tab">
+                    <label><input type="radio" name="cardType" ng-value="true" ng-model="cardType">借记卡</label>
+                    <label><input type="radio" name="cardType" ng-value="false" ng-model="cardType">信用卡</label>
+                </div>
+                <div class="bcp-add" ng-show="cardType">
+                    <dl class="dl-line">
+                        <dt>银行卡号：</dt>
+                        <dd><input type="text" class="input-txt txt-big"></dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" class="input-txt  txt-big"></dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>身份账号：</dt>
+                        <dd><input type="text" class="input-txt  txt-big"></dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>手机号码：</dt>
+                        <dd>
+                            <input type="text" class="input-txt  txt-big">
+                            <p>请填写您在银行预留的手机号码,以验证银行卡是否属于您本人</p>
+                        </dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>&nbsp;</dt>
+                        <dd>
+                            <button class="btn bigBtn purplebtn">下一步</button>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="bcp-add" ng-hide="cardType">
+                    <dl class="dl-line">
+                        <dt>信用卡号：</dt>
+                        <dd><input type="text" class="input-txt txt-big"></dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>有效期：</dt>
+                        <dd><input type="text" class="input-txt txt-xsmall"></dd>
+                        <dd>月</dd>
+                        <dd><input type="text" class="input-txt txt-xsmall"></dd>
+                        <dd>年</dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>安全码：</dt>
+                        <dd><input type="text" placeholder="信用卡背面三位数字" class="input-txt txt-big"></dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" class="input-txt  txt-big"></dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>身份账号：</dt>
+                        <dd><input type="text" class="input-txt  txt-big"></dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>手机号码：</dt>
+                        <dd>
+                            <input type="text" class="input-txt  txt-big">
+                            <p>请填写您在银行预留的手机号码,以验证银行卡是否属于您本人</p>
+                        </dd>
+                    </dl>
+                    <dl class="dl-line">
+                        <dt>&nbsp;</dt>
+                        <dd>
+                            <button class="btn bigBtn purplebtn">下一步</button>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer></footer>

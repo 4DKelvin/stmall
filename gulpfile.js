@@ -15,7 +15,7 @@ var gulp = require('gulp'),
     string = require('gulp-inject-string'),
     bowerfile = require('main-bower-files'),
     less = require('gulp-less'),
-    useMock = true,
+    useMock = false,
     settings = {
         removeComments: true,
         collapseWhitespace: true,
@@ -52,7 +52,7 @@ gulp.task('config', function () {
 gulp.task('app', function () {
     return gulp.src(path.join(ROOT, 'app', '**', '**.js'))
         .pipe(plumber())
-        .pipe(gulpif(ENV != 'dist', minifier(jsOptions, uglify)))
+        .pipe(gulpif(ENV == 'dist', minifier(jsOptions, uglify)))
         .pipe(gulp.dest(path.join(ENV, 'app')));
 });
 gulp.task('html', function () {

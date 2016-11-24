@@ -4,9 +4,9 @@ define(function (require, exports, module) {
 
 
     document.createElement('footer');
-    var module = angular.module('footer', []);
+    var ngModule = angular.module('footer', []);
 
-    module.directive('footer', ['$timeout', function ($timeout) {
+    ngModule.directive('footer', ['$timeout', function ($timeout) {
         return {
             restrict: 'E',
             template: '<div id="footer">' +
@@ -73,5 +73,5 @@ define(function (require, exports, module) {
         }
     }]);
 
-    module.exports = module;
+    module.exports = ngModule;
 });

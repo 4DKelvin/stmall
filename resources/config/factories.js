@@ -5,10 +5,10 @@ define(function (require, exports, module) {
         /**
          * 请求(继承于$http)
          */
-        $request: ['$http', '$q', 'apiUri', function ($http, $q, apiUri) {
+        $request: ['$http', '$q', 'apiUri', '$cookie', function ($http, $q, apiUri, $cookie) {
             var request = function (path, params, method) {
                 var deferred = $q.defer(),
-                    profile = $.parseJSON(/*$cookies.get('profile') ||*/ '{}'),
+                    profile = $cookie('profile'),
                     token = profile.token,
                     memberId = profile.memberId,
                     data = {_seed: new Date().getTime()};
@@ -28,30 +28,29 @@ define(function (require, exports, module) {
                 var options = {
                     url: typeof mock == 'undefined' ? apiUri + path : path,
                     method: method,
-                    contentType: 'application/raw',
-                    cache: false,
-                    data: data,
-                    beforeSend: function () {
-                        $('body').addClass('loading');
-                    },
-                    complete: function () {
-                        $('body').removeClass('loading');
-                    }
+                    cache: false
                 };
+                options[method == 'GET' || method == 'DELETE' ? 'params' : 'data'] = data;
                 console.log('[请求][' + options.url + '][' + options.method + ']数据接口,参数:', data);
                 try {
-                    $.ajax(options).success(function (data) {
+                    $http(options).success(function (data) {
                         console.log('[响应][' + options.url + '][' + options.method + ']数据接口,返回:', data);
-                        if (data.responseCode == "000000") {
-                            deferred.resolve(data.responseData);
-                        } else {
-                            deferred.reject(data.desc);
+                        switch (data.responseCode) {
+                            case "000000":
+                                deferred.resolve(data.responseData);
+                                break;
+                            case "999999":
+                            case "210016":
+                            case "800005":
+                            default :
+                                deferred.reject(data.desc);
+                                break;
                         }
-                    }).error(function (err) {
+                    }).error(function (err, status) {
                         deferred.reject('网络出现问题');
                     });
                 } catch (e) {
-
+                    deferred.reject('程序出现问题');
                 }
                 return deferred.promise;
             };

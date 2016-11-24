@@ -1,4 +1,6 @@
 define(function (require, exports, module) {
+    var $ = require('jquery'),
+        cookie = require('cookie');
 
     var constants = {
         apiUri: 'http://121.43.178.103:8888/o2o-api/',
@@ -7,6 +9,16 @@ define(function (require, exports, module) {
         },
         $template: function (url) {
             return 'app/views/' + url + '.html';
+        },
+        $cookie: function (key, value) {
+            if (value) {
+                $.cookie(key, JSON.stringify(value));
+            } else {
+                return $.cookie(key)?$.parseJSON($.cookie(key)):false;
+            }
+        },
+        $removeCookie: function (key) {
+            $.removeCookie(key);
         }
     };
 
