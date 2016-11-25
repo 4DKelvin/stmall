@@ -42,9 +42,9 @@ define(function (require, exports, module) {
                             controller: 'addressManage'
                         })
                         .state('my/orderList', {
-                            url: '/my/orders/:order_type/:page',//我的订单,
+                            url: '/my/orders/:order_status/:page',//我的订单,
                             params: {
-                                order_type: '0',
+                                order_status: '0',
                                 page: '1'
                             },
                             templateUrl: $template('/my/orderList'),
@@ -134,6 +134,12 @@ define(function (require, exports, module) {
                             templateUrl: $template('/product/productList'),
                             controllerUrl: $action('product'),
                             controller: 'productList'
+                        })
+                        .state('shop/shopList', {
+                            url: '/shop/shopList',//商品列表
+                            templateUrl: $template('/shop/shopList'),
+                            controllerUrl: $action('shop'),
+                            controller: 'shopList'
                         });
                 }]);
 
@@ -141,14 +147,19 @@ define(function (require, exports, module) {
                 function ($rootScope, $timeout, $cookie) {
                     $rootScope.$on('$stateChangeStart',
                         function (event, toState) {
-                            if (toState.url.indexOf('/my') == 0) {
-                                //进入我的小能人
-                                if (!$cookie('profile')) {
-                                    event.preventDefault();//中断跳转
-                                    $rootScope.$state.go('login');//调到登录
+                            ["/my/", '/cart/'].every(function (obj, index, objs) {
+                                // console.log(arguments);
+                                if (toState.url.indexOf(obj) == 0) {
+                                    //进入我的小能人
+                                    if (!$cookie('profile')) {
+                                        event.preventDefault();//中断跳转
+                                        $rootScope.$state.go('login');//调到登录
+                                        return false;
+                                    }
                                 }
+                                return true;
+                            });
 
-                            }
                         });
 
                 }]);

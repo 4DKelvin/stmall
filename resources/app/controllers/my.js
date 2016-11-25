@@ -5,10 +5,11 @@ define(function (require) {
         search = require('components/search'),
         footer = require('components/footer'),
         subNav = require('components/subNav'),
+        pager = require('components/pager'),
         member = require('services/member.service'),
         order = require('services/order.service');
 
-    var orderType = [
+    var orderStatuses = [
         {'value': 0, 'name': '全部订单'},
         {'value': 1, 'name': '待付款'},
         {'value': 2, 'name': '待发货'},
@@ -17,7 +18,8 @@ define(function (require) {
     ];
 
     /** ng异步载入 */
-    app.useModule(['image', 'header', 'search', 'footer', 'subNav', 'member.service', 'order.service']);
+    app.useModule(['image', 'header', 'search', 'footer', 'subNav', 'pager', 'member.service', 'order.service']);
+
     app.controller('myIndex', ['$scope', 'memberService', function ($scope, memberService) {
         //我的 首页
     }]).controller('collectProduct', ['$scope', 'memberService', function ($scope, memberService) {
@@ -35,6 +37,7 @@ define(function (require) {
             memberService.defaultAddress(address.id).then(function (res) {
                 $scope.list = $scope.list.map(function (item) {
                     item.default = false;
+                    return item;
                 });
                 address.default = true;
             });
@@ -44,12 +47,17 @@ define(function (require) {
                 $scope.list.splice($scope.list.indexOf(address), 1);
             });
         };
-    }]).controller('orderList', ['$scope', 'orderService', '$rootScope',
-        function ($scope, orderService, $rootScope) {
+    }]).controller('orderList', ['$scope', 'orderService', '$rootScope', '$state',
+        function ($scope, orderService, $rootScope, $state) {
             //我的订单
-            $scope.orderTypes = orderType;
-            $scope.orderType = $rootScope.$stateParams.order_type;
-            orderService.orders($rootScope.$stateParams.order_type, $rootScope.$stateParams.page, 10).then(function (res) {
+            $scope.orderStatuses = orderStatuses;
+            $scope.orderStatus = $rootScope.$stateParams.order_status;
+            orderService.orders($rootScope.$stateParams.order_status, ($rootScope.$stateParams.page - 1) * 10 + 1, 10).then(function (res) {
+                $scope.pager = {
+                    pageSize: res.pageSize,
+                    startIndex: res.startIndex,
+                    total: res.total
+                };
                 $scope.list = res ? res.list.map(function (item) {
                     var arr = item.operationDesc.split(',');
                     item.operations = [];
@@ -69,6 +77,12 @@ define(function (require) {
             }, function (err) {
 
             });
+            $scope.change = function (page) {
+                $state.go('my/orderList', {
+                    page: page,
+                    order_status: $scope.orderStatus
+                });
+            };
             $scope.remove = function (item) {
                 orderService.remove(item.id).then(function () {
                     $rootScope.$state.reload();

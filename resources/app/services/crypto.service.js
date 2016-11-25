@@ -1,12 +1,8 @@
 define(function (require, exports, module) {
     var angular = require('angular'),
         $ = require('jquery'),
-        CryptoJS = require('cryptojs.core');
+        CryptoJS = require('cryptojs');
 
-    require('cryptojs.md5');
-    require('cryptojs.aes');
-    require('cryptojs.pad');
-    require('cryptojs.mode');
 
     var ngModule = angular.module('crypto.service', []);
 

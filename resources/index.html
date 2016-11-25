@@ -11,7 +11,7 @@
     <meta name="keywords" content="#"/>
     <meta name="description" content="#"/>
     <meta name="author" content="#"/>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_vjsimvth3kn019k9.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_h55bp410xzloko6r.css">
     <!-- inject:css --><!-- endinject -->
 </head>
 <body>
@@ -33,11 +33,7 @@
             'jquery': '../lib/jquery.min',
             'cookie': '../lib/jquery.cookie',
             'unveil': '../lib/jquery.unveil.min',
-            'cryptojs.core': "../lib/core",
-            'cryptojs.md5': "../lib/md5",
-            'cryptojs.pad': "../lib/pad-zeropadding",
-            'cryptojs.aes': "../lib/aes",
-            'cryptojs.mode': "../lib/mode-ecb",
+            'cryptojs': "../lib/cryptojs",
             'app': '../config/app',
             'routes': '../config/routes',
             'constants': '../config/constants',
@@ -50,11 +46,7 @@
             'cookie': {deps: ['jquery'], exports: 'jquery'},
             'angular': {exports: 'angular'},
             'angular-ui-router': {deps: ['angular']},
-            'cryptojs.core': {exports: "CryptoJS"},
-            'cryptojs.md5': {deps: ['cryptojs.core'], exports: "CryptoJS"},
-            'cryptojs.aes': {deps: ['cryptojs.core'], exports: "CryptoJS"},
-            'cryptojs.pad': {deps: ['cryptojs.core'], exports: "CryptoJS"},
-            'cryptojs.mode': {deps: ['cryptojs.core'], exports: "CryptoJS"},
+            'cryptojs': {exports: "CryptoJS"},
             /** @Inject:mock-dependencies */
         }
         /** @Inject:version */

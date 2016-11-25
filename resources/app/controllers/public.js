@@ -8,7 +8,7 @@ define(function (require) {
         crypto = require('services/crypto.service');
 
     /** ng异步载入 */
-    app.useModule(['image', 'header', 'search', 'footer', 'public.service', 'crypto.service']);
+    app.useModule(['public.service', 'crypto.service']);
     app.controller('login', ['$scope', 'publicService', '$state', '$cookie', 'AES',
         function ($scope, publicService, $state, $cookie, AES) {
             $scope.submit = function () {
