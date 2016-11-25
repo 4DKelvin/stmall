@@ -19,18 +19,18 @@
         <div class="col-main">
             <div class="cp-title">
                 <ul class="cp-tab-title">
-                    <li class="cut"><a href="javascript:void(0)">所有订单</a></li>
-                    <li><a href="javascript:void(0)">待付款</a></li>
-                    <li><a href="javascript:void(0)">待发货</a></li>
-                    <li><a href="javascript:void(0)">待收货</a></li>
-                    <li><a href="javascript:void(0)">待评价</a></li>
+                    <li ng-class="{'cut':type.value==orderType}" ng-repeat="type in orderTypes">
+                        <a href="javascript:void(0)" ui-sref="my/orderList({order_type:type.value,page:1})"
+                           ng-bind="type.name"></a>
+                    </li>
                 </ul>
             </div>
-            <div class="om-search">
+            <div class="om-search" ng-init="more=false">
                 <input type="text" class="om-id-text" placeholder="输入商品标题或订单号进行搜索">
                 <button class="om-id-btn">订单搜索</button>
-                <a href="javascript:void(0)">更多筛选条件</a>
-                <div class="search-more">
+                <a href="javascript:void(0)" ng-click="more = !more">更多筛选条件</a>
+
+                <div class="search-more" ng-show="more">
                     <div class="search-mod sm-col-4">
                         <label>成交时间</label>
                         <input type="text" class="txt-inside"> -
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <table class="order-title-table">
+            <table class="order-title-table" ng-if="list">
                 <tr>
                     <td class="left" width="35%">商品</td>
                     <td width="15%">单价</td>
@@ -64,203 +64,50 @@
                 </tr>
             </table>
             <div class="om-main">
-                <div class="om-item">
+                <div class="om-item" ng-repeat="item in list">
                     <table class="order-main-table">
                         <thead>
                         <tr>
-                            <td class="left">秀峰区紫慧文体经营部</td>
-                            <td colspan="2" class="left">订单号：23885485976545789494595</td>
+                            <td class="left" ng-bind="item.shopName"></td>
+                            <td colspan="2" class="left" ng-bind="'订单号：'+item.id"></td>
                             <td colspan="2">时间：2016-10-19 10:34:59</td>
-                            <td><i class="iconfont icon-shanchu-shanchuchengyuan"></i></td>
+                            <td>
+                                <a href="javascript:void(0);" ng-if="item.canDelete" ng-click="remove(item)"><i class="iconfont icon-shanchu-shanchuchengyuan"></i></a></td>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td width="35%"  class="left">
+                        <tr ng-repeat="product in item.list">
+                            <td width="35%" class="left">
                                 <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
+                                    <img ng-lazy="product.mainImage"/>
+
+                                    <p ng-bind="product.title + ' ' + (product.skuDesc||'')"></p>
                                 </div>
                             </td>
                             <td width="15%">
-                                <span class="font-through">￥1599.00</span>
-                                <span class="font-red">￥1299.00</span>
+                                <span class="font-through" ng-bind="'￥'+(product.marketPrice|number:2)"></span>
+                                <span class="font-red" ng-bind="'￥'+(product.shopPrice|number:2)"></span>
                             </td>
-                            <td width="10%">2</td>
+                            <td width="10%" ng-bind="product.productNum">2</td>
                             <td width="15%">
-                                <span>￥1299.00</span>
-                                <span>（含运费￥0.00）</span>
+                                <span ng-bind="'￥'+(item.payAmount|number:2)"></span>
+                                <span ng-bind="'(含运费￥'+(item.shippingFee|number:2)+')'"></span>
                             </td>
                             <td width="10%">
-                                <span>已付款</span>
+                                <span ng-bind="item.orderStatusDesc">已付款</span>
                                 <a href="javascript:void(0)">订单详情</a>
                             </td>
                             <td width="15%">
-                                <a ui-sref="my/applyRefund" class="btn redbtn">申请退款</a> <br>
-                                <a href="javascript:void(0)">取消订单</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="om-item">
-                    <table class="order-main-table">
-                        <thead>
-                        <tr>
-                            <td class="left">秀峰区紫慧文体经营部</td>
-                            <td colspan="2" class="left">订单号：23885485976545789494595</td>
-                            <td colspan="2">时间：2016-10-19 10:34:59</td>
-                            <td><i class="iconfont icon-shanchu-shanchuchengyuan"></i></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td width="35%"  class="left">
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td width="15%">
-                                <span class="font-through">￥1599.00</span>
-                                <span class="font-red">￥1299.00</span>
-                            </td>
-                            <td width="10%">2</td>
-                            <td width="15%">
-                                <span>￥1299.00</span>
-                                <span>（含运费￥0.00）</span>
-                            </td>
-                            <td width="10%">
-                                <span>已付款</span>
-                                <a href="javascript:void(0)">订单详情</a>
-                            </td>
-                            <td width="15%">
-                                <a ui-sref="my/applyRefund" class="btn redbtn">申请退款</a> <br>
-                                <a href="javascript:void(0)">取消订单</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="om-item">
-                    <table class="order-main-table">
-                        <thead>
-                        <tr>
-                            <td class="left">秀峰区紫慧文体经营部</td>
-                            <td colspan="2" class="left">订单号：23885485976545789494595</td>
-                            <td colspan="2">时间：2016-10-19 10:34:59</td>
-                            <td><i class="iconfont icon-shanchu-shanchuchengyuan"></i></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td width="35%"  class="left">
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td width="15%">
-                                <span class="font-through">￥1599.00</span>
-                                <span class="font-red">￥1299.00</span>
-                            </td>
-                            <td width="10%">2</td>
-                            <td width="15%">
-                                <span>￥1299.00</span>
-                                <span>（含运费￥0.00）</span>
-                            </td>
-                            <td width="10%">
-                                <span>已付款</span>
-                                <a href="javascript:void(0)">订单详情</a>
-                            </td>
-                            <td width="15%">
-                                <a ui-sref="my/applyRefund" class="btn redbtn">申请退款</a> <br>
-                                <a href="javascript:void(0)">取消订单</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="om-item">
-                    <table class="order-main-table">
-                        <thead>
-                        <tr>
-                            <td class="left">秀峰区紫慧文体经营部</td>
-                            <td colspan="2" class="left">订单号：23885485976545789494595</td>
-                            <td colspan="2">时间：2016-10-19 10:34:59</td>
-                            <td><i class="iconfont icon-shanchu-shanchuchengyuan"></i></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td width="35%"  class="left">
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td width="15%">
-                                <span class="font-through">￥1599.00</span>
-                                <span class="font-red">￥1299.00</span>
-                            </td>
-                            <td width="10%">2</td>
-                            <td width="15%">
-                                <span>￥1299.00</span>
-                                <span>（含运费￥0.00）</span>
-                            </td>
-                            <td width="10%">
-                                <span>已付款</span>
-                                <a href="javascript:void(0)">订单详情</a>
-                            </td>
-                            <td width="15%">
-                                <a ui-sref="my/applyRefund" class="btn redbtn">申请退款</a> <br>
-                                <a href="javascript:void(0)">取消订单</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="om-item">
-                    <table class="order-main-table">
-                        <thead>
-                        <tr>
-                            <td class="left">秀峰区紫慧文体经营部</td>
-                            <td colspan="2" class="left">订单号：23885485976545789494595</td>
-                            <td colspan="2">时间：2016-10-19 10:34:59</td>
-                            <td><i class="iconfont icon-shanchu-shanchuchengyuan"></i></td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td width="35%"  class="left">
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td width="15%">
-                                <span class="font-through">￥1599.00</span>
-                                <span class="font-red">￥1299.00</span>
-                            </td>
-                            <td width="10%">2</td>
-                            <td width="15%">
-                                <span>￥1299.00</span>
-                                <span>（含运费￥0.00）</span>
-                            </td>
-                            <td width="10%">
-                                <span>已付款</span>
-                                <a href="javascript:void(0)">订单详情</a>
-                            </td>
-                            <td width="15%">
-                                <a ui-sref="my/applyRefund" class="btn redbtn">申请退款</a> <br>
-                                <a href="javascript:void(0)">取消订单</a>
+                                <a href="javascript:void(0)" ng-class="{'btn redbtn':$index==0}"
+                                   ng-if="item.operations"
+                                   ng-repeat="oper in item.operations" ng-bind="oper.name"></a>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="page">
+            <div class="page" ng-if="list">
                 分页
             </div>
         </div>

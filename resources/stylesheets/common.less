@@ -2348,3 +2348,169 @@ input[type=radio]{
         }
     }
 }
+
+.product-list-panle{
+    @color:#876f66;
+    @lineColor:#e6e2e1;
+    @bgColor:#f7f5f5;
+    @iconColor:#806f66;
+    .plp-filter{
+        border-bottom:5px solid #efebea;
+        .fil-item{
+            border:1px solid @lineColor;
+            margin-top: -1px;
+            display: table;
+            box-sizing: border-box;
+            &.fil-brand{
+                border:2px solid #d1ccc7;
+                .fil-name{
+                    width: 97px;
+                }
+            }
+        }
+        .fil-name{
+            display: table-cell;
+            vertical-align: top;
+            width: 98px;
+            padding: 10px;
+            background: @bgColor;
+        }
+        .fil-list{
+            display: table-cell;
+            width: 1040px;
+            padding:10px 20px;
+            position: relative;
+            a{
+                color:@color;
+            }
+            .fil-more,.fil-select{
+                position: absolute;
+                right:10px;
+                top:10px;
+                line-height: 22px;
+                i{
+                    font-size: 10px;
+                }
+            }
+            .fil-select{
+                right:60px;
+                background: @bgColor;
+                padding: 0 5px;
+            }
+        }
+        .fl-list{
+            .clearfix;
+            li{
+                width: 150px;
+                .fl();
+                .ellipsis;
+            }
+        }
+        .brand-list{
+            .clearfix;
+            li{
+                .fl();
+                width:106px;
+                height: 55px;
+                padding:10px;
+                box-sizing: border-box;
+                border:1px solid @lineColor;
+                margin-left: -1px;
+                margin-top: -1px;
+                img{
+                    width:86px;
+                    height: 35px;
+                }
+            }
+        }
+    }
+    .filter-more{
+        text-align: right;
+        a{
+            background: #efebea;
+            padding:0 10px;
+            line-height: 26px;
+            display: inline-block;
+            i{
+                font-size: 10px;
+            }
+        }
+    }
+    .plp-sort{
+        background: @bgColor;
+        padding:5px;
+        margin:15px auto;
+        line-height: 22px;
+        .clearfix;
+        .pSort,.eSort{
+            .fl();
+            border:1px solid @lineColor;
+            margin:0 0 0 -1px;
+            padding:0 5px 0 8px;
+            height: 22px;
+            i{
+                font-size: 12px;
+                color: @iconColor;
+            }
+            &-cut{
+                color:@redColor;
+                i{
+                    color:@redColor;
+                }
+            }
+        }
+        .ml{
+            margin-left:10px;
+        }
+    }
+    .plp-list{
+        .clearfix;
+        margin:-10px -10px 0;
+        .pList-item{
+            .fl();
+            width: 224px;
+            margin:10px;
+            border:2px solid #fff;
+            box-sizing: border-box;
+            &:hover{
+                border-color:@redColor;
+            }
+        }
+        .pi-bigImg{
+            img{
+                width: 220px;
+                height: 220px;
+            }
+        }
+        .pi-smallImg-item{
+            margin: 10px auto 5px;
+            .clearfix;
+            li{
+                .fl();
+                margin:0 5px;
+                width: 34px;
+                height: 34px;
+                border:1px solid @lineColor;
+                box-sizing: border-box;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+                &.cut{
+                    border-color:@redColor;
+                }
+            }
+        }
+        .pi-price{
+            font-size: 14px;
+            color: @redColor;
+            margin: 0 3px;
+        }
+        .pi-name{
+            height: 36px;
+            overflow: hidden;
+            line-height: 18px;
+            padding:3px;
+        }
+    }
+}

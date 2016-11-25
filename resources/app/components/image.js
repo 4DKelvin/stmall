@@ -14,7 +14,7 @@ define(function (require, exports, module) {
             controller: function ($scope, $element, $attrs) {
                 $element.attr('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
                 $scope.$watch('ngLazy', function () {
-                    $element.attr('data-src', isNaN($scope.ngLazy) ? $attrs.ngLazy : $scope.ngLazy);
+                    $element.attr('data-src', $attrs.ngLazy.indexOf('/') != -1 ? $attrs.ngLazy : $scope.ngLazy);
                     $timeout(function () {
                         $($element).unveil();
                     });

@@ -42,7 +42,11 @@ define(function (require, exports, module) {
                             controller: 'addressManage'
                         })
                         .state('my/orderList', {
-                            url: '/my/orderList',//我的订单
+                            url: '/my/orders/:order_type/:page',//我的订单,
+                            params: {
+                                order_type: '0',
+                                page: '1'
+                            },
                             templateUrl: $template('/my/orderList'),
                             controllerUrl: $action('my'),
                             controller: 'orderList'
@@ -113,21 +117,21 @@ define(function (require, exports, module) {
                             controllerUrl: $action('my'),
                             controller: 'message'
                         })
-                        .state('cart/cart',{
-                            url:'/cart/cart',//购物车
-                            templateUrl:$template('/cart/cart'),
+                        .state('cart/cart', {
+                            url: '/cart/cart',//购物车
+                            templateUrl: $template('/cart/cart'),
                             controllerUrl: $action('cart'),
                             controller: 'cart'
                         })
-                        .state('product/productDetail',{
-                            url:'/product/productDetail',//商品详情
-                            templateUrl:$template('/product/productDetail'),
+                        .state('product/productDetail', {
+                            url: '/product/productDetail',//商品详情
+                            templateUrl: $template('/product/productDetail'),
                             controllerUrl: $action('product'),
                             controller: 'productDetail'
                         })
-                        .state('product/productList',{
-                            url:'/product/productList',//商品列表
-                            templateUrl:$template('/product/productList'),
+                        .state('product/productList', {
+                            url: '/product/productList',//商品列表
+                            templateUrl: $template('/product/productList'),
                             controllerUrl: $action('product'),
                             controller: 'productList'
                         });
