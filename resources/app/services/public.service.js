@@ -11,6 +11,15 @@ define(function (require, exports, module) {
                     password: password
                 })
             },
+            information: function (memberId) {
+                return $request.get('user/personalInfo', {
+                    member: memberId
+                })
+            },
+            suggests: function () {
+                //猜你喜欢的
+                return $request.get('user/cart/product', {});
+            },
             register: function (mobile, verifyCode, account, password, accountManagerId) {
                 return $request.post('register', {
                     mobile: mobile,
@@ -18,11 +27,6 @@ define(function (require, exports, module) {
                     account: account,
                     password: password,
                     accountManagerId: accountManagerId
-                })
-            },
-            personInfo: function (memberId) {
-                return $request.get('user/personalInfo', {
-                    member: memberId
                 })
             },
             verifyCode: function (mobile, type) {

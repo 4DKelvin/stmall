@@ -7,36 +7,44 @@ define(function (require, exports, module) {
     document.createElement('sub-nav');
     var ngModule = angular.module('subNav', []);
 
-    ngModule.directive('subNav', ['$cookie', function ($cookie) {
+    ngModule.directive('subNav', ['$cookie', '$state', function ($cookie, $state) {
         return {
             restrict: 'E',
             template: '<div class="col-sub">' +
             '<dl>' +
-            '<dt><a ui-sref="my/orderList">我的订单</a></dt>' +
+            '<dt><a ng-class="{\'cut\':isActive(\'my/orderList\')}" ui-sref="my/orderList">我的订单</a></dt>' +
             '</dl>' +
             '<dl>' +
-            '<dt><a ui-sref="my/refundList">我的退款</a></dt>' +
+            '<dt><a ng-class="{\'cut\':isActive(\'my/refundList\')}" ui-sref="my/refundList">我的退款</a></dt>' +
             '</dl>' +
             '<dl>' +
             '<dt>' +
             '<a href="javascript:void(0);" ng-click="navStatus.c1=!navStatus.c1">我的优惠</a>' +
             '<i class="iconfont" ng-class="{\'icon-xia\':!c1,\'icon-circle_up_on\':c1}"></i>' +
             '</dt>' +
-            '<dd ng-show="navStatus.c1"><a ui-sref="my/redPacket">我的红包</a></dd>' +
-            '<dd ng-show="navStatus.c1"><a ui-sref="my/coupon">我的优惠劵</a></dd>' +
+            '<dd ng-show="navStatus.c1">' +
+            '<a ng-class="{\'cut\':isActive(\'my/redPacket\')}" ui-sref="my/redPacket">我的红包</a>' +
+            '</dd>' +
+            '<dd ng-show="navStatus.c1">' +
+            '<a ng-class="{\'cut\':isActive(\'my/coupon\')}" ui-sref="my/coupon">我的优惠劵</a>' +
+            '</dd>' +
             '</dl>' +
-            '<dl><dt><a ui-sref="my/score">我的积分</a></dt></dl>' +
-            '<dl><dt><a ui-sref="my/commentList">我的评价</a></dt></dl>' +
-            '<dl><dt><a ui-sref="my/bankCard">我的银行卡</a></dt></dl>' +
-            '<dl><dt><a ui-sref="my/complain">我的投诉</a></dt></dl>' +
-            '<dl><dt><a ui-sref="my/collectProduct">我的收藏</a></dt></dl>' +
+            '<dl><dt><a ng-class="{\'cut\':isActive(\'my/score\')}" ui-sref="my/score">我的积分</a></dt></dl>' +
+            '<dl><dt><a ng-class="{\'cut\':isActive(\'my/commentList\')}" ui-sref="my/commentList">我的评价</a></dt></dl>' +
+            '<dl><dt><a ng-class="{\'cut\':isActive(\'my/bankCard\')}" ui-sref="my/bankCard">我的银行卡</a></dt></dl>' +
+            '<dl><dt><a ng-class="{\'cut\':isActive(\'my/complain\')}" ui-sref="my/complain">我的投诉</a></dt></dl>' +
+            '<dl><dt><a ng-class="{\'cut\':isActive(\'my/collectProduct\')}" ui-sref="my/collectProduct">我的收藏</a></dt></dl>' +
             '<dl>' +
             '<dt>' +
             '<a href="javascript:void(0);" ng-click="navStatus.c2=!navStatus.c2">个人信息</a>' +
             '<i class="iconfont" ng-class="{\'icon-xia\':!c2,\'icon-circle_up_on\':c2}"></i>' +
             '</dt>' +
-            '<dd ng-show="navStatus.c2"><a href="javascript:void(0);">基本资料</a></dd>' +
-            '<dd ng-show="navStatus.c2"><a ui-sref="my/addressManage">收货地址</a></dd>' +
+            '<dd ng-show="navStatus.c2">' +
+            '<a href="javascript:void(0);">基本资料</a>' +
+            '</dd>' +
+            '<dd ng-show="navStatus.c2">' +
+            '<a ng-class="{\'cut\':isActive(\'my/addressManage\')}" ui-sref="my/addressManage">收货地址</a>' +
+            '</dd>' +
             '</dl>' +
             '<dl>' +
             '<dt>' +
@@ -52,7 +60,10 @@ define(function (require, exports, module) {
                 $scope.navStatus = $cookie('navStatus') || {};
                 $scope.$watch('navStatus', function () {
                     $cookie('navStatus', $scope.navStatus);
-                }, true)
+                }, true);
+                $scope.isActive = function (url) {
+                    return $state.$current.self.name == url;
+                }
             }
         }
     }]);

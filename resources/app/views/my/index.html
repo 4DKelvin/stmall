@@ -20,8 +20,8 @@
             <!--我的信息-->
             <div class="my-data">
                 <div class="md-info">
-                    <div class="md-head-pic"><img src="images/tem/my-head-img.jpg" alt=""></div>
-                    <div class="md-name">menghongyuan</div>
+                    <div class="md-head-pic"><img ng-lazy="profile.avatar"></div>
+                    <div class="md-name" ng-bind="profile.nickName+' ('+profile.account+') '"></div>
                     <div class="md-link">
                         <a ui-sref="my/addressManage">我的收货地址</a> |
                         <a href="javascript:void(0);">我的优惠信息</a>
@@ -47,51 +47,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr ng-repeat="item in list">
                             <td>
                                 <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td>￥1299.00</td>
-                            <td>2</td>
-                            <td>￥1299.00 <br>（含运费￥0.00）</td>
-                            <td>已付款</td>
-                            <td>
-                                <a ui-sref="my/applyRefund" class="btn redbtn">申请退款</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
+                                    <img ng-lazy="item.list[0].mainImage" alt="">
 
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
+                                    <p ng-bind="item.list[0].title +' '+(item.list[0].skuDesc||'')"></p>
                                 </div>
                             </td>
-                            <td>￥1299.00</td>
+                            <td ng-bind="'￥'+(item.list[0].shopPrice|number:2)"></td>
                             <td>2</td>
-                            <td>￥1299.00 <br>（含运费￥0.00）</td>
-                            <td>已完成</td>
+                            <td><span ng-bind="'￥'+(item.payAmount|number:2)">￥1299.00</span> <br>（含运费<span ng-bind="'￥'+(item.shippingFee|number:2)"></span>）</td>
+                            <td ng-bind="item.orderStatusDesc"></td>
                             <td>
-                                <a ui-sref="my/comment" class="btn redbtn">评价</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td>￥1299.00</td>
-                            <td>2</td>
-                            <td>￥1299.00 <br>（含运费￥0.00）</td>
-                            <td>待付款</td>
-                            <td>
-                                <a class="btn redbtn">立即付款</a>
+                                <a href="javascript:void(0)" ng-class="{'btn redbtn':$index==0}"
+                                   ng-if="item.operations"
+                                   ng-repeat="oper in item.operations" ng-bind="oper.name"></a>
                             </td>
                         </tr>
                         </tbody>
@@ -300,69 +271,7 @@
                     </div>
                 </div>
             </div>
-
-            <!--为我推荐-->
-            <div class="my-recommend my-box">
-                <div class="mb-title">
-                    <h2>为我推荐</h2>
-                </div>
-                <div class="mb-main paddingTB">
-                    <div class="shop-product">
-                        <ul class="p-list">
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <suggest size="5" frame="true"></suggest>
         </div>
     </div>
 </div>

@@ -82,7 +82,8 @@
                                 <div class="inner-td-pro">
                                     <img ng-lazy="product.mainImage"/>
 
-                                    <p ng-bind="product.title + ' ' + (product.skuDesc||'')"></p>
+                                    <p ng-bind="product.title"></p>
+                                    <p ng-bind="(product.skuDesc||'')"></p>
                                 </div>
                             </td>
                             <td width="15%">
@@ -111,112 +112,6 @@
             <pager ng-model="pager" ng-change="change(page)" class="page" ng-if="list"></pager>
         </div>
     </div>
-
-    <!--为你推荐-->
-    <div class="base-recommend">
-        <h2 class="title">为你推荐</h2>
-        <ul class="br-main">
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <suggest size="10"></suggest>
 </div>
 <footer></footer>

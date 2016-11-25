@@ -4,10 +4,12 @@ define(function (require) {
         header = require('components/header'),
         search = require('components/search'),
         footer = require('components/footer'),
+        suggest = require('components/suggest'),
         subNav = require('components/subNav'),
         pager = require('components/pager'),
         member = require('services/member.service'),
-        order = require('services/order.service');
+        order = require('services/order.service'),
+        refund = require('services/refund.service');
 
     var orderStatuses = [
         {'value': 0, 'name': '全部订单'},
@@ -16,12 +18,48 @@ define(function (require) {
         {'value': 3, 'name': '待收货'},
         {'value': 5, 'name': '待评价'}
     ];
+    var refundStatuses = [
+        {
+            value: 0,
+            name: '全部退款'
+        }, {
+            value: 1,
+            name: '待处理'
+        }, {
+            value: 3,
+            name: '拒绝退款'
+        }, {
+            value: 2,
+            name: '已完成'
+        }
+    ];
 
     /** ng异步载入 */
-    app.useModule(['image', 'header', 'search', 'footer', 'subNav', 'pager', 'member.service', 'order.service']);
+    app.useModule(['image', 'suggest', 'header', 'search', 'footer', 'subNav', 'pager', 'member.service', 'order.service', 'refund.service']);
 
-    app.controller('myIndex', ['$scope', 'memberService', function ($scope, memberService) {
+    app.controller('myIndex', ['$scope', 'orderService', '$cookie', function ($scope, orderService, $cookie) {
         //我的 首页
+        $scope.profile = $cookie('profile');
+        orderService.orders(0, 1, 3).then(function (res) {
+            $scope.list = res ? res.list.map(function (item) {
+                var arr = item.operationDesc.split(',');
+                item.operations = [];
+                arr.forEach(function (e) {
+                    if (e == '删除') {
+                        item.canDelete = true;
+                    } else {
+                        if (e) {
+                            item.operations.push({
+                                name: e
+                            });
+                        }
+                    }
+                });
+                return item;
+            }) : [];
+        }, function (err) {
+
+        });
     }]).controller('collectProduct', ['$scope', 'memberService', function ($scope, memberService) {
         //我的收藏商品
     }]).controller('collectShop', ['$scope', 'memberService', function ($scope, memberService) {
@@ -48,7 +86,7 @@ define(function (require) {
             });
         };
     }]).controller('orderList', ['$scope', 'orderService', '$rootScope', '$state',
-        function ($scope, orderService, $rootScope, $state) {
+        function ($scope, orderService, $rootScope) {
             //我的订单
             $scope.orderStatuses = orderStatuses;
             $scope.orderStatus = $rootScope.$stateParams.order_status;
@@ -78,7 +116,7 @@ define(function (require) {
 
             });
             $scope.change = function (page) {
-                $state.go('my/orderList', {
+                $rootScope.$state.go('my/orderList', {
                     page: page,
                     order_status: $scope.orderStatus
                 });
@@ -100,8 +138,44 @@ define(function (require) {
         //我的优惠券
     }]).controller('bankCard', ['$scope', 'memberService', function ($scope, memberService) {
         //我的银行卡
-    }]).controller('refund', ['$scope', 'memberService', function ($scope, memberService) {
+    }]).controller('refund', ['$scope', 'refundService', '$rootScope', function ($scope, refundService, $rootScope) {
         //申请退款 我的退款
+        $scope.refundStatuses = refundStatuses;
+        $scope.refundStatus = $rootScope.$stateParams.refund_status;
+        refundService.list($rootScope.$stateParams.refund_status, ($rootScope.$stateParams.page - 1) * 10 + 1, 10).then(function (res) {
+            $scope.pager = {
+                pageSize: res.pageSize,
+                startIndex: res.startIndex,
+                total: res.total
+            };
+            $scope.list = res ? res.list.map(function (item) {
+                var arr = item.operationDesc.split(',');
+                item.operations = [];
+                arr.forEach(function (e) {
+                    if (e) {
+                        item.operations.push({
+                            name: e
+                        });
+                    }
+                });
+                return item;
+            }) : [];
+        }, function (err) {
+
+        });
+        $scope.change = function (page) {
+            $rootScope.$state.go('my/refundList', {
+                page: page,
+                refund_status: $scope.refundStatus
+            });
+        };
+        $scope.remove = function (item) {
+            refundService.remove(item.id).then(function () {
+                $rootScope.$state.reload();
+            }, function (err) {
+
+            });
+        }
     }]).controller('comment', ['$scope', 'memberService', function ($scope, memberService) {
         //评价
     }]).controller('message', ['$scope', 'memberService', function ($scope, memberService) {

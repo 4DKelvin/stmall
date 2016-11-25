@@ -24,8 +24,9 @@
                 <input type="text" class="om-id-text" placeholder="输入订单号">
                 <input type="text" class="om-id-text" placeholder="退款单号">
                 <button class="om-id-btn">搜索</button>
-                <a href="javascript:void(0)">更多筛选条件</a>
-                <div class="search-more">
+                <a href="javascript:void(0)" ng-click="more=!more">更多筛选条件</a>
+
+                <div class="search-more" ng-show="more">
                     <div class="search-mod sm-col-4">
                         <label>退款时间</label>
                         <input type="text" class="txt-inside"> -
@@ -52,214 +53,47 @@
                 </tr>
             </table>
             <div class="om-main">
-                <div class="om-item">
+                <div class="om-item" ng-repeat="item in list">
                     <table class="order-main-table">
                         <thead>
                         <tr>
-                            <td width="35%" class="left">订单号：23885485976545789494595</td>
-                            <td colspan="4" class="left">退款编号：23885485976545789494595</td>
+                            <td width="35%" class="left" ng-bind="'订单号：'+item.orderId"></td>
+                            <td colspan="4" class="left" ng-bind="'退款编号：'+item.id"></td>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr ng-repeat="product in item.list">
                             <td class="left">
                                 <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
+                                    <img ng-lazy="product.mainImage">
+
+                                    <p ng-bind="product.productTitle"></p>
+
+                                    <p ng-bind="(product.skuDesc||'') + ' x '+(product.refundProductNum||1)"></p>
                                 </div>
                             </td>
                             <td width="15%">
-                                <span class="font-red">￥1599.00</span>
+                                <span class="font-red" ng-bind="'￥'+(item.refundAmount|number:2)"></span>
                             </td>
                             <td width="20%">
                                 2016-10-19 10:34:59
                             </td>
                             <td width="15%">
-                                <span>待处理</span>
+                                <span ng-bind="item.orderRefundStatusDesc"></span>
                             </td>
                             <td width="15%">
-                                <a class="btn redbtn">撤销退款</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="om-item">
-                    <table class="order-main-table">
-                        <thead>
-                        <tr>
-                            <td width="35%" class="left">订单号：23885485976545789494595</td>
-                            <td colspan="4" class="left">退款编号：23885485976545789494595</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="left">
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td width="15%">
-                                <span class="font-red">￥1599.00</span>
-                            </td>
-                            <td width="20%">
-                                2016-10-19 10:34:59
-                            </td>
-                            <td width="15%">
-                                <span>退款成功</span>
-                            </td>
-                            <td width="15%">
-                                <a class="btn redbtn">删除</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="om-item">
-                    <table class="order-main-table">
-                        <thead>
-                        <tr>
-                            <td width="35%" class="left">订单号：23885485976545789494595</td>
-                            <td colspan="4" class="left">退款编号：23885485976545789494595</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="left">
-                                <div class="inner-td-pro">
-                                    <img src="images/tem/tem_floor_pro.jpg" alt="">
-                                    <p>Mo&Co.圆领套头落肩喇叭袖纯色百搭羊毛针织衫MA1633SWT25 moco</p>
-                                </div>
-                            </td>
-                            <td width="15%">
-                                <span class="font-red">￥1599.00</span>
-                            </td>
-                            <td width="20%">
-                                2016-10-19 10:34:59
-                            </td>
-                            <td width="15%">
-                                <span>商家拒绝</span>
-                            </td>
-                            <td width="15%">
-                                <a class="btn redbtn">投诉</a>
+                                <a href="javascript:void(0)" ng-class="{'btn redbtn':$index==0}"
+                                   ng-if="item.operations"
+                                   ng-repeat="oper in item.operations" ng-bind="oper.name"></a>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="page">
-                分页
-            </div>
+            <pager class="page" ng-model="pager" ng-if="list" ng-change="change(page)"></pager>
         </div>
     </div>
-
-    <!--为你推荐-->
-    <div class="base-recommend">
-        <h2 class="title">为你推荐</h2>
-        <ul class="br-main">
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-            <li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>
-        </ul>
-    </div>
+    <suggest size="10"></suggest>
 </div>
 <footer></footer>

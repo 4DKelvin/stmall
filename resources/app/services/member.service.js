@@ -3,7 +3,7 @@ define(function (require, exports, module) {
 
     var ngModule = angular.module('member.service', []);
 
-    ngModule.factory('memberService', ['$request', function ($request) {
+    ngModule.factory('memberService', ['$request', '$cookie', function ($request, $cookie) {
         return {
             saveAddress: function (method, address) {
                 var addressParam = {

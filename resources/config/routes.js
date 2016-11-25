@@ -94,7 +94,11 @@ define(function (require, exports, module) {
                             controller: 'refund'
                         })
                         .state('my/refundList', {
-                            url: '/my/refundList',//退款列表
+                            url: '/my/refunds/:refund_status/:page',//退款列表
+                            params: {
+                                refund_status: '0',
+                                page: '1'
+                            },
                             templateUrl: $template('/my/refundList'),
                             controllerUrl: $action('my'),
                             controller: 'refund'
@@ -135,8 +139,14 @@ define(function (require, exports, module) {
                             controllerUrl: $action('product'),
                             controller: 'productList'
                         })
+                        .state('product/productListSmall', {
+                            url: '/product/productListSmall',//商品列表小图
+                            templateUrl: $template('/product/productListSmall'),
+                            controllerUrl: $action('product'),
+                            controller: 'productList'
+                        })
                         .state('shop/shopList', {
-                            url: '/shop/shopList',//商品列表
+                            url: '/shop/shopList',//商户列表
                             templateUrl: $template('/shop/shopList'),
                             controllerUrl: $action('shop'),
                             controller: 'shopList'
