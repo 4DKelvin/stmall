@@ -109,10 +109,6 @@
 @blueColor: #0085c9;
 
 .reset();
-#container {
-    width: @baseWidth;
-    margin: auto;
-}
 
 .clearfix {
     display: block;
@@ -2690,12 +2686,12 @@ input[type=radio] {
             .fl();
             width: 135px;
             text-align: center;
-            &.done{
+            &.done {
                 .step-no {
                     background-position: 50% -170px;
                 }
             }
-            &.cut{
+            &.cut {
                 .step-no {
                     background-position: 50% 0;
                 }
@@ -2713,7 +2709,7 @@ input[type=radio] {
             }
         }
         .step-first {
-            &.cut,&.done{
+            &.cut, &.done {
                 .step-no {
                     background-position: 50% -204px;
                 }
@@ -2849,7 +2845,7 @@ input[type=radio] {
         .oi-head {
             background: #fff8e1;
             border: 1px solid #faeab5;
-            padding:0 10px;
+            padding: 0 10px;
             box-sizing: border-box;
             .th {
                 line-height: 30px;
@@ -2864,7 +2860,7 @@ input[type=radio] {
             }
             .th-info {
                 width: 36%;
-                .inner-td-pro{
+                .inner-td-pro {
                     padding-right: 20px;
                 }
             }
@@ -2875,9 +2871,9 @@ input[type=radio] {
                 text-align: center;
             }
         }
-        .oi-item{
+        .oi-item {
             margin-bottom: 20px;
-            .oi-thead{
+            .oi-thead {
                 border: 1px solid #ccc;
                 background: #eeeeee;
                 position: relative;
@@ -2885,19 +2881,19 @@ input[type=radio] {
                 padding: 5px 10px;
                 line-height: 26px;
                 height: 26px;
-                img{
+                img {
                     width: 26px;
                     height: 26px;
                     .fl();
                 }
-                .shop-name{
+                .shop-name {
                     .fl();
                     display: inline-block;
                     margin-left: 10px;
                 }
             }
             .oi-tbody {
-                padding:10px;
+                padding: 10px;
                 border: 1px solid @lineColor;
                 box-sizing: border-box;
                 position: relative;
@@ -2905,32 +2901,32 @@ input[type=radio] {
                 z-index: 1;
             }
         }
-        .oi-orderExt,.oi-total{
+        .oi-orderExt, .oi-total {
             background: #def6ff;
-            padding:10px 20px;
+            padding: 10px 20px;
             .clearfix;
-            .oi-sendMsg{
+            .oi-sendMsg {
                 width: 60%;
                 .fl();
                 .clearfix;
-                label,textarea,span{
+                label, textarea, span {
                     display: inline-block;
                     .fl();
-                    margin:0 5px;
+                    margin: 0 5px;
                 }
             }
-            .oi-extInfo{
+            .oi-extInfo {
                 width: 30%;
                 .fl(@f: right);
-                .ext-item{
-                    margin:5px 0;
-                    label,span,select{
+                .ext-item {
+                    margin: 5px 0;
+                    label, span, select {
                         display: inline-block;
                     }
-                    label{
-                        width:70px;
+                    label {
+                        width: 70px;
                     }
-                    .ei-price{
+                    .ei-price {
                         text-align: right;
                         color: @redColor;
                         width: 80px;
@@ -2938,10 +2934,10 @@ input[type=radio] {
                 }
             }
         }
-        .oi-total{
+        .oi-total {
             text-align: right;
             margin-top: 1px;
-            span{
+            span {
                 font-size: 20px;
                 color: @redColor;
             }
@@ -2984,44 +2980,102 @@ input[type=radio] {
 }
 
 //支付成功
-.pay-tips{
-    border-top:1px solid @lineColor;
+.pay-tips {
+    border-top: 1px solid @lineColor;
     text-align: center;
-    padding:50px 0;
-    .tips-info{
+    padding: 50px 0;
+    .tips-info {
         font-size: 32px;
-        i{
+        i {
             display: block;
             font-size: 120px;
         }
     }
-    &.success{
-        .tips-info{
-            i{
-                color:#00ac43;
+    &.success {
+        .tips-info {
+            i {
+                color: #00ac43;
             }
         }
     }
-    &.failed{
-        .tips-info{
-            i{
-                color:#bfbfbf;
+    &.failed {
+        .tips-info {
+            i {
+                color: #bfbfbf;
             }
         }
     }
-    .operate{
-        margin-top:50px;
-        a{
-            display:inline-block;
-            margin:0 10px;
+    .operate {
+        margin-top: 50px;
+        a {
+            display: inline-block;
+            margin: 0 10px;
             background: #bfbfbf;
-            color:#fff;
-            padding:0 30px;
+            color: #fff;
+            padding: 0 30px;
             line-height: 32px;
             .borderRadius(@value: 5px);
         }
-        a.go-shopping{
+        a.go-shopping {
             background: @redDepColor;
+        }
+    }
+}
+
+//注册
+.user-head {
+    width: 100%;
+    min-width: @baseMinWidth;
+    background: #eeeeee;
+    border-bottom: 1px solid #dcdcdc;
+    .head-main {
+        width: @baseMinWidth;
+        margin: 0 auto;
+        h1 {
+            font-size: 24px;
+            line-height: 30px;
+            padding: 30px 0;
+        }
+    }
+}
+
+.register {
+    width: @baseWidth;
+    margin: 20px auto;
+    .reg-step {
+        ul {
+            .clearfix;
+            border-bottom: 2px solid @lineColor;
+            height: 40px;
+            padding:0 200px;
+        }
+        li {
+            line-height: 30px;
+            height: 30px;
+            .fl();
+            margin: 0 20px;
+            font-size: 16px;
+            padding: 0 0 10px;
+            width: 180px;
+            text-align: center;
+            &.cut {
+                border-bottom: 2px solid @purpleColor;
+                position: relative;
+                color: @purpleColor;
+                .rs-num{
+                    background: url(../images/bg/bg_res_step.png) no-repeat 0 0;
+                }
+            }
+            .rs-num, .rs-name {
+                display: inline-block;
+            }
+            .rs-num {
+                width: 30px;
+                height: 30px;
+                background: url(../images/bg/bg_res_step.png) no-repeat 0 -30px;
+                color:#fff;
+                text-align: center;
+            }
         }
     }
 }

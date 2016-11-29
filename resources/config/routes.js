@@ -176,10 +176,16 @@ define(function (require, exports, module) {
                             controller: 'confirmOrder'
                         })
                         .state('pay/payResult', {
-                            url: '/pay/payResult',//支付成功
+                            url: '/pay/payResult',//支付结果
                             templateUrl: $template('/pay/payResult'),
                             controllerUrl: $action('pay'),
                             controller: 'confirmOrder'
+                        })
+                        .state('register/register', {
+                            url: '/register/register',//注册
+                            templateUrl: $template('/register/register'),
+                            controllerUrl: $action('register'),
+                            controller: 'register'
                         });
                 }]);
 
