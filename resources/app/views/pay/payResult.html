@@ -1,0 +1,51 @@
+<header min="true"></header>
+<div id="header" class="min">
+    <div class="mall-logo">
+        <img src="images/mall_logo.png" alt="">
+    </div>
+    <div class="order-stepbar">
+        <ul>
+            <li class="step-first done">
+                <div class="step-name">查看购物车</div>
+                <div class="step-no"></div>
+            </li>
+            <li class="done">
+                <div class="step-name">确认订单</div>
+                <div class="step-no"></div>
+            </li>
+            <li class="cut">
+                <div class="step-name">支付成功</div>
+                <div class="step-no">3</div>
+            </li>
+            <li class="step-last">
+                <div class="step-name">完成</div>
+                <div class="step-no">4</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--内容-->
+<div id="min-content" ng-switch="result">
+    <div class="pay-tips success" ng-switch-when="success">
+        <div class="tips-info">
+            <i class="iconfont icon-ok"></i>
+            支付成功!
+        </div>
+        <div class="operate">
+            <a href="javascript:void(0)">查看订单</a>
+            <a class="go-shopping" href="javascript:void(0)">继续购物</a>
+        </div>
+    </div>
+    <div class="pay-tips failed" ng-switch-when="failed">
+        <div class="tips-info">
+            <i class="iconfont icon-cancel"></i>
+            支付失败!
+        </div>
+        <div class="operate">
+            <a class="go-shopping" href="javascript:void(0)">继续购物</a>
+        </div>
+    </div>
+</div>
+
+<footer></footer>

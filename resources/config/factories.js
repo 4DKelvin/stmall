@@ -5,7 +5,7 @@ define(function (require, exports, module) {
         /**
          * 请求(继承于$http)
          */
-        $request: ['$http', '$q', 'apiUri', '$cookie', function ($http, $q, apiUri, $cookie) {
+        $request: ['$http', '$q', 'apiUri', '$cookie', '$state', function ($http, $q, apiUri, $cookie, $state) {
             var request = function (path, params, method) {
                 var deferred = $q.defer(),
                     profile = $cookie('profile'),
@@ -40,17 +40,20 @@ define(function (require, exports, module) {
                                 deferred.resolve(data.responseData);
                                 break;
                             case "999999":
+                                deferred.resolve({desc: '登录已经失效,请重新登录'});
+                                $state.go('login');
+                                break;
                             case "210016":
                             case "800005":
                             default :
-                                deferred.reject(data.desc);
+                                deferred.reject(data);
                                 break;
                         }
                     }).error(function (err, status) {
-                        deferred.reject('网络出现问题');
+                        deferred.reject({desc: '网络出现问题'});
                     });
                 } catch (e) {
-                    deferred.reject('程序出现问题');
+                    deferred.reject({desc: '程序出现问题'});
                 }
                 return deferred.promise;
             };
@@ -68,6 +71,16 @@ define(function (require, exports, module) {
                     return request(path, params, 'DELETE');
                 }
             };
+        }],
+        $dialog: ['ngDialog', function (ngDialog) {
+            return $.extend(ngDialog, {
+                $alert: function (message) {
+                    ngDialog.open({
+                        template: '<p>' + message + '</p>',
+                        plain: true
+                    });
+                }
+            });
         }]
     };
     module.exports = {

@@ -11,7 +11,7 @@
     <meta name="keywords" content="#"/>
     <meta name="description" content="#"/>
     <meta name="author" content="#"/>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_h55bp410xzloko6r.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_lpvrxeged2y8ehfr.css">
     <!-- inject:css --><!-- endinject -->
 </head>
 <body>
@@ -30,6 +30,7 @@
             'angular': '../lib/angular.min',
             'angular-ui-router': '../lib/angular-ui-router.min',
             'angular-async-loader': '../lib/angular-async-loader.min',
+            'ng-dialog': '../lib/ngDialog',
             'jquery': '../lib/jquery.min',
             'cookie': '../lib/jquery.cookie',
             'unveil': '../lib/jquery.unveil.min',
@@ -46,6 +47,7 @@
             'cookie': {deps: ['jquery'], exports: 'jquery'},
             'angular': {exports: 'angular'},
             'angular-ui-router': {deps: ['angular']},
+            'ng-dialog': {deps: ['angular']},
             'cryptojs': {exports: "CryptoJS"},
             /** @Inject:mock-dependencies */
         }

@@ -6,7 +6,7 @@
         <div class="nav-inner">
             <ul class="nav-con page-nav">
                 <li><a ui-sref="my" class="cut">首页</a></li>
-                <li><a href="#">账户</a></li>
+                <li><a href="javascript:void(0);">账户</a></li>
                 <li><a ui-sref="my/message">消息</a></li>
             </ul>
         </div>
@@ -22,107 +22,23 @@
             </div>
             <div class="my-coupon">
                 <ul class="page-tab">
-                    <li class="cut">可用（5）</li>
-                    <li>过期（0）</li>
-                    <li>已用（0）</li>
+                    <li ng-class="{'cut':$stateParams.coupon_status == status.value}" ng-repeat="status in statuses">
+                        <a ui-sref="my/coupon({coupon_status:status.value,page:1})"
+                           ng-bind="status.name"></a>
+                    </li>
                 </ul>
                 <ul class="mc-list">
-                    <li>
+                    <li ng-repeat="item in list">
                         <div class="mc-type">
-                            <div class="mc-price">50</div>
-                            <div class="mc-limit">使用条件：满100.01</div>
-                            <div class="mc-time">有效期：2016.11.11-2016.11.12</div>
+                            <div class="mc-price" ng-bind="item.couponPrice">50</div>
+                            <div class="mc-limit" ng-bind="'使用条件：满 '+item.useLimit+' 减 '+item.couponPrice"></div>
+                            <div class="mc-time" ng-bind="'有效期至：'+(item.endTime|date:'yyyy-MM-dd')"></div>
                             <div class="mc-range">全店通用</div>
                             <div class="mc-type-top"></div>
                             <div class="mc-type-bottom"></div>
                         </div>
                         <div class="mc-msg">
-                            <div class="mc-shop">发行店铺：耐克官方旗舰店</div>
-                            <div class="mc-btn">
-                                <a href="javascript:void(0)" class="mc-enter">进入店铺</a>
-                                <a href="javascript:void(0)" class="mc-delete">删除</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="mc-type">
-                            <div class="mc-price">50</div>
-                            <div class="mc-limit">使用条件：满100.01</div>
-                            <div class="mc-time">有效期：2016.11.11-2016.11.12</div>
-                            <div class="mc-range">全店通用</div>
-                            <div class="mc-type-top"></div>
-                            <div class="mc-type-bottom"></div>
-                        </div>
-                        <div class="mc-msg">
-                            <div class="mc-shop">发行店铺：耐克官方旗舰店</div>
-                            <div class="mc-btn">
-                                <a href="javascript:void(0)" class="mc-enter">进入店铺</a>
-                                <a href="javascript:void(0)" class="mc-delete">删除</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="mc-type">
-                            <div class="mc-price">50</div>
-                            <div class="mc-limit">使用条件：满100.01</div>
-                            <div class="mc-time">有效期：2016.11.11-2016.11.12</div>
-                            <div class="mc-range">全店通用</div>
-                            <div class="mc-type-top"></div>
-                            <div class="mc-type-bottom"></div>
-                        </div>
-                        <div class="mc-msg">
-                            <div class="mc-shop">发行店铺：耐克官方旗舰店</div>
-                            <div class="mc-btn">
-                                <a href="javascript:void(0)" class="mc-enter">进入店铺</a>
-                                <a href="javascript:void(0)" class="mc-delete">删除</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="mc-type">
-                            <div class="mc-price">50</div>
-                            <div class="mc-limit">使用条件：满100.01</div>
-                            <div class="mc-time">有效期：2016.11.11-2016.11.12</div>
-                            <div class="mc-range">全店通用</div>
-                            <div class="mc-type-top"></div>
-                            <div class="mc-type-bottom"></div>
-                        </div>
-                        <div class="mc-msg">
-                            <div class="mc-shop">发行店铺：耐克官方旗舰店</div>
-                            <div class="mc-btn">
-                                <a href="javascript:void(0)" class="mc-enter">进入店铺</a>
-                                <a href="javascript:void(0)" class="mc-delete">删除</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="mc-type">
-                            <div class="mc-price">50</div>
-                            <div class="mc-limit">使用条件：满100.01</div>
-                            <div class="mc-time">有效期：2016.11.11-2016.11.12</div>
-                            <div class="mc-range">全店通用</div>
-                            <div class="mc-type-top"></div>
-                            <div class="mc-type-bottom"></div>
-                        </div>
-                        <div class="mc-msg">
-                            <div class="mc-shop">发行店铺：耐克官方旗舰店</div>
-                            <div class="mc-btn">
-                                <a href="javascript:void(0)" class="mc-enter">进入店铺</a>
-                                <a href="javascript:void(0)" class="mc-delete">删除</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="mc-type">
-                            <div class="mc-price">50</div>
-                            <div class="mc-limit">使用条件：满100.01</div>
-                            <div class="mc-time">有效期：2016.11.11-2016.11.12</div>
-                            <div class="mc-range">全店通用</div>
-                            <div class="mc-type-top"></div>
-                            <div class="mc-type-bottom"></div>
-                        </div>
-                        <div class="mc-msg">
-                            <div class="mc-shop">发行店铺：耐克官方旗舰店</div>
+                            <div class="mc-shop" ng-bind="item.shopName"></div>
                             <div class="mc-btn">
                                 <a href="javascript:void(0)" class="mc-enter">进入店铺</a>
                                 <a href="javascript:void(0)" class="mc-delete">删除</a>
@@ -130,9 +46,7 @@
                         </div>
                     </li>
                 </ul>
-                <div class="page">
-                    分页
-                </div>
+                <pager ng-model="pager" ng-change="change(page)" class="page" ng-if="list"></pager>
             </div>
         </div>
     </div>

@@ -16,18 +16,18 @@ define(function (require, exports, module) {
             '<button class="ms-submit">搜索</button>' +
             '</div>' +
             '<ul class="ms-hot-query">' +
-            '<li><a href="#">iphone7</a></li>' +
-            '<li><a href="#">坚果</a></li>' +
-            '<li><a href="#">洗衣机</a></li>' +
-            '<li><a href="#">电视机</a></li>' +
-            '<li><a href="#">电脑</a></li>' +
-            '<li><a href="#">空调</a></li>' +
-            '<li><a href="#">冰箱</a></li>' +
-            '<li><a href="#">衣服</a></li>' +
-            '<li><a href="#">吹风机</a></li>' +
-            '<li><a href="#">鞋子</a></li>' +
-            '<li><a href="#">夹克</a></li>' +
-            '<li><a href="#">干衣机</a></li>' +
+            '<li><a href="javascript:void(0);">iphone7</a></li>' +
+            '<li><a href="javascript:void(0);">坚果</a></li>' +
+            '<li><a href="javascript:void(0);">洗衣机</a></li>' +
+            '<li><a href="javascript:void(0);">电视机</a></li>' +
+            '<li><a href="javascript:void(0);">电脑</a></li>' +
+            '<li><a href="javascript:void(0);">空调</a></li>' +
+            '<li><a href="javascript:void(0);">冰箱</a></li>' +
+            '<li><a href="javascript:void(0);">衣服</a></li>' +
+            '<li><a href="javascript:void(0);">吹风机</a></li>' +
+            '<li><a href="javascript:void(0);">鞋子</a></li>' +
+            '<li><a href="javascript:void(0);">夹克</a></li>' +
+            '<li><a href="javascript:void(0);">干衣机</a></li>' +
             '</ul>' +
             '</div>' +
             '</div>',

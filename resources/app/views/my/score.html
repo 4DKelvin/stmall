@@ -6,7 +6,7 @@
         <div class="nav-inner">
             <ul class="nav-con page-nav">
                 <li><a ui-sref="my" class="cut">首页</a></li>
-                <li><a href="#">账户</a></li>
+                <li><a href="javascript:void(0);">账户</a></li>
                 <li><a ui-sref="my/message">消息</a></li>
             </ul>
         </div>
@@ -40,7 +40,8 @@
                     <p class="main">积分说明</p>
                 </div>
                 <div class="sp-action">
-                    <a href="javascript:void(0)" class="btn bigBtn redbtn">积分购物</a>
+                    <a href="javascript:void(0)" class="btn bigBtn redbtn" ng-click="link()"
+                       ng-bind="buttonText"></a>
                 </div>
             </div>
         </div>

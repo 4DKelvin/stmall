@@ -79,7 +79,7 @@ gulp.task('index', function () {
     return gulp.src(path.join(ROOT, 'index.html'))
         .pipe(gulp.dest(path.join(ENV)));
 });
-gulp.task('inject', ['index'], function () {
+gulp.task('inject', ['less', 'index'], function () {
     return gulp.src(path.join(ENV, 'index.html'))
         .pipe(plumber())
         .pipe(inject(gulp.src([path.join(ENV, 'css', '*.css')], {read: false}), {relative: true}))
@@ -89,7 +89,7 @@ gulp.task('inject', ['index'], function () {
         .pipe(gulpif(ENV == 'dist', html(settings)))
         .pipe(gulp.dest(path.join(ENV)));
 });
-gulp.task('default', ['clean', 'image', 'lib', 'config', 'app', 'less', 'html', 'inject'], function () {
+gulp.task('default', ['clean', 'image', 'lib', 'config', 'app', 'html', 'inject'], function () {
     return gulp.src(path.join(ENV, '**'))
         .pipe(gulpif(ENV == 'dist', size({title: 'compress', showFiles: true})));
 });
@@ -99,7 +99,7 @@ gulp.task('serve', ['default'], function () {
     gulp.watch(path.join(ROOT, 'app', '**', '**.html'), ['html']);
     gulp.watch(path.join(ROOT, 'index.html'), ['inject']);
     gulp.watch(path.join(ROOT, 'config', '**.js'), ['config']);
-    gulp.watch(path.join(ROOT, 'stylesheets', '**.less'), ['less']);
+    gulp.watch(path.join(ROOT, 'stylesheets', '**.less'), ['inject']);
     return nodemon({
         script: 'gulp-serve.js',
         ext: 'js html',

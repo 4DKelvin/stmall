@@ -6,7 +6,7 @@
         <div class="nav-inner">
             <ul class="nav-con page-nav">
                 <li><a ui-sref="my" class="cut">首页</a></li>
-                <li><a href="#">账户</a></li>
+                <li><a href="javascript:void(0);">账户</a></li>
                 <li><a ui-sref="my/message">消息</a></li>
             </ul>
         </div>
@@ -22,51 +22,21 @@
             </div>
             <div class="red-packet">
                 <ul class="page-tab">
-                    <li class="cut">可用（5）</li>
-                    <li>过期（0）</li>
-                    <li>已用（0）</li>
+                    <li ng-class="{'cut':$stateParams.packet_status == status.value}" ng-repeat="status in statuses">
+                        <a ui-sref="my/redPacket({packet_status:status.value,page:1})"
+                           ng-bind="status.name"></a>
+                    </li>
                 </ul>
                 <ul class="rp-main">
-                    <li>
-                        <div class="rp-name">国庆节红包活动</div>
-                        <div class="rp-type">全场满100减20</div>
-                        <div class="rp-time">有效期至2016-12-30-2017-01-03 24:00</div>
-                        <div class="rp-tag usable"></div>
-                    </li>
-                    <li>
-                        <div class="rp-name">国庆节红包活动</div>
-                        <div class="rp-type">全场满100减20</div>
-                        <div class="rp-time">有效期至2016-12-30-2017-01-03 24:00</div>
-                        <div class="rp-tag usable"></div>
-                    </li>
-                    <li>
-                        <div class="rp-name">国庆节红包活动</div>
-                        <div class="rp-type">全场满100减20</div>
-                        <div class="rp-time">有效期至2016-12-30-2017-01-03 24:00</div>
-                        <div class="rp-tag usable"></div>
-                    </li>
-                    <li class="no-user">
-                        <div class="rp-name">国庆节红包活动</div>
-                        <div class="rp-type">全场满100减20</div>
-                        <div class="rp-time">有效期至2016-12-30-2017-01-03 24:00</div>
-                        <div class="rp-tag used"></div>
-                    </li>
-                    <li class="no-user">
-                        <div class="rp-name">国庆节红包活动</div>
-                        <div class="rp-type">全场满100减20</div>
-                        <div class="rp-time">有效期至2016-12-30-2017-01-03 24:00</div>
-                        <div class="rp-tag overdue"></div>
-                    </li>
-                    <li>
-                        <div class="rp-name">国庆节红包活动</div>
-                        <div class="rp-type">全场满100减20</div>
-                        <div class="rp-time">有效期至2016-12-30-2017-01-03 24:00</div>
-                        <div class="rp-tag usable"></div>
+                    <li ng-repeat="item in list" ng-class="{'no-user':item.redPacketStatus>0}">
+                        <div class="rp-name" ng-bind="item.title"></div>
+                        <div class="rp-type" ng-bind="'全场满 '+item.condition+'元 减 '+item.redPacketAmount+'元'"></div>
+                        <div class="rp-time" ng-bind="'有效期至:'+(item.endTime|date:'yyyy-MM-dd hh:mm:ss')"></div>
+                        <div class="rp-tag"
+                             ng-class="{'usable':item.redPacketStatus==0,'used':item.redPacketStatus==1,'overdue':item.redPacketStatus==2}"></div>
                     </li>
                 </ul>
-                <div class="page">
-                    分页
-                </div>
+                <pager ng-model="pager" ng-change="change(page)" class="page" ng-if="list"></pager>
             </div>
         </div>
     </div>

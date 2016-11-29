@@ -6,7 +6,7 @@
         <div class="nav-inner">
             <ul class="nav-con page-nav">
                 <li><a ui-sref="my" class="cut">首页</a></li>
-                <li><a href="#">账户</a></li>
+                <li><a href="javascript:void(0);">账户</a></li>
                 <li><a ui-sref="my/message">消息</a></li>
             </ul>
         </div>
@@ -100,9 +100,10 @@
                                 <a href="javascript:void(0)">订单详情</a>
                             </td>
                             <td width="15%">
-                                <a href="javascript:void(0)" ng-class="{'btn redbtn':$index==0}"
-                                   ng-if="item.operations"
-                                   ng-repeat="oper in item.operations" ng-bind="oper.name"></a>
+                                <div ng-if="item.operations"
+                                        ng-repeat="oper in item.operations" >
+                                <a href="javascript:void(0)" ng-class="{'btn redbtn':$index==0}"ng-bind="oper.name"></a>
+                                </div>
                             </td>
                         </tr>
                         </tbody>

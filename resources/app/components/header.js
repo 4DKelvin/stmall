@@ -9,7 +9,7 @@ define(function (require, exports, module) {
         return {
             restrict: 'E',
             template: '<div id="site-nav">' +
-            '<div class="sn-box">' +
+            '<div class="sn-box" ng-class="{\'min\':min}">' +
             '<div class="sn-login-info">' +
             '<span ng-if="profile">您好, <span ng-bind="profile.nickName+\' (\'+profile.account+\')\'"></span> </span>' +
             '<em>欢迎来到小能人</em>' +
@@ -19,21 +19,23 @@ define(function (require, exports, module) {
             '</div>' +
             '<ul class="sn-quick-menu">' +
             '<li><a ui-sref="my">我的小能人</a></li>' +
-            '<li><a href="#"><i class="iconfont icon-like font-purple"></i>我的关注</a></li>' +
+            '<li><a href="javascript:void(0);"><i class="iconfont icon-like font-purple"></i>我的关注</a></li>' +
             '<li>' +
             '<a ui-sref="cart/cart"><i class="iconfont icon-gouwuche font-purple"></i>购物车 <span ng-bind="">0</span> 件</a>' +
             '</li>' +
             '<li>' +
-            '<div class="sn-menu">收藏夹</div>' +
+            '<a class="sn-menu" ui-sref="my/collectProduct">收藏夹</a>' +
             '</li>' +
             '<li>' +
-            '<a href="#"><i class="iconfont icon-shouji font-purple"></i>手机版</a>' +
+            '<a href="javascript:void(0);"><i class="iconfont icon-shouji font-purple"></i>手机版</a>' +
             '</li>' +
-            '<li><a href="#">商家中心</a></li>' +
+            '<li><a href="javascript:void(0);">商家中心</a></li>' +
             '</ul>' +
             '</div>' +
             '</div>',
-            scope: {},
+            scope: {
+                min:'='
+            },
             controller: function ($scope, $element, $attrs) {
                 $scope.profile = $cookie('profile');
                 $scope.logout = function () {

@@ -35,6 +35,7 @@
     "gulp-size": "^2.1.0",
     "gulp-uglify": "^2.0.0",
     "less": "^2.7.1",
+    "lodash": "^4.17.2",
     "main-bower-files": "^2.13.1",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",

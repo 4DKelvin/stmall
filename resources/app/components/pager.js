@@ -24,7 +24,7 @@ define(function (require, exports, module) {
                 $scope.pages = [];
                 $scope.$watch('ngModel', function () {
                     $scope.len = Math.ceil($scope.ngModel.total / $scope.ngModel.pageSize);
-                    $scope.index = Math.ceil($scope.ngModel.startIndex / $scope.ngModel.pageSize);
+                    $scope.index = Number($scope.ngModel.startIndex);
                     for (var i = ($scope.index - 2 > 0 ? $scope.index - 2 : 1); i <= ($scope.index + 2 <= $scope.len ? $scope.index + 2 : $scope.len); i++) {
                         $scope.pages.push({
                             active: i == $scope.index,

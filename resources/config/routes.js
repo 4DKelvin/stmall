@@ -24,13 +24,19 @@ define(function (require, exports, module) {
                             controller: 'myIndex'
                         })
                         .state('my/collectProduct', {
-                            url: '/my/collectProduct',//我的收藏商品
+                            url: '/my/favor/product/:page',//我的收藏商品
+                            params: {
+                                page: '1'
+                            },
                             templateUrl: $template('/my/collectProduct'),
                             controllerUrl: $action('my'),
                             controller: 'collectProduct'
                         })
                         .state('my/collectShop', {
-                            url: '/my/collectShop',//我的收藏店铺
+                            url: '/my/favor/shop/:page',//我的收藏店铺
+                            params: {
+                                page: '1'
+                            },
                             templateUrl: $template('/my/collectShop'),
                             controllerUrl: $action('my'),
                             controller: 'collectShop'
@@ -52,7 +58,11 @@ define(function (require, exports, module) {
                             controller: 'orderList'
                         })
                         .state('my/complain', {
-                            url: '/my/complain',//我的投诉
+                            url: '/my/complain/:complain_status/:page',//我的投诉
+                            params: {
+                                complain_status: '0',
+                                page: '1'
+                            },
                             templateUrl: $template('/my/complain'),
                             controllerUrl: $action('my'),
                             controller: 'complain'
@@ -64,13 +74,21 @@ define(function (require, exports, module) {
                             controller: 'score'
                         })
                         .state('my/redPacket', {
-                            url: '/my/redPacket',//我的红包
+                            url: '/my/packet/:packet_status/:page',//我的红包
+                            params: {
+                                packet_status: '0',
+                                page: '1'
+                            },
                             templateUrl: $template('/my/redPacket'),
                             controllerUrl: $action('my'),
                             controller: 'redPacket'
                         })
                         .state('my/coupon', {
-                            url: '/my/coupon',//我的红包
+                            url: '/my/coupon/:coupon_status/:page',//我的红包
+                            params: {
+                                coupon_status: '1',
+                                page: '1'
+                            },
                             templateUrl: $template('/my/coupon'),
                             controllerUrl: $action('my'),
                             controller: 'coupon'
@@ -150,6 +168,18 @@ define(function (require, exports, module) {
                             templateUrl: $template('/shop/shopList'),
                             controllerUrl: $action('shop'),
                             controller: 'shopList'
+                        })
+                        .state('pay/confirmOrder', {
+                            url: '/pay/confirmOrder',//确认订单
+                            templateUrl: $template('/pay/confirmOrder'),
+                            controllerUrl: $action('pay'),
+                            controller: 'confirmOrder'
+                        })
+                        .state('pay/payResult', {
+                            url: '/pay/payResult',//支付成功
+                            templateUrl: $template('/pay/payResult'),
+                            controllerUrl: $action('pay'),
+                            controller: 'confirmOrder'
                         });
                 }]);
 

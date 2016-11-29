@@ -6,7 +6,7 @@
         <div class="nav-inner">
             <ul class="nav-con page-nav">
                 <li><a ui-sref="my" class="cut">首页</a></li>
-                <li><a href="#">账户</a></li>
+                <li><a href="javascript:void(0);">账户</a></li>
                 <li><a ui-sref="my/message">消息</a></li>
             </ul>
         </div>
@@ -57,220 +57,23 @@
                             </td>
                             <td ng-bind="'￥'+(item.list[0].shopPrice|number:2)"></td>
                             <td>2</td>
-                            <td><span ng-bind="'￥'+(item.payAmount|number:2)">￥1299.00</span> <br>（含运费<span ng-bind="'￥'+(item.shippingFee|number:2)"></span>）</td>
+                            <td><span ng-bind="'￥'+(item.payAmount|number:2)">￥1299.00</span> <br>（含运费<span
+                                    ng-bind="'￥'+(item.shippingFee|number:2)"></span>）
+                            </td>
                             <td ng-bind="item.orderStatusDesc"></td>
                             <td>
-                                <a href="javascript:void(0)" ng-class="{'btn redbtn':$index==0}"
-                                   ng-if="item.operations"
-                                   ng-repeat="oper in item.operations" ng-bind="oper.name"></a>
+                                <div ng-if="item.operations" ng-repeat="oper in item.operations">
+                                    <a href="javascript:void(0)" ng-class="{'btn redbtn':$index==0}"
+                                       ng-bind="oper.name"></a>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-            <!--我关注的店铺-->
-            <div class="my-follow-shop my-box">
-                <div class="mb-title">
-                    <h2>我关注的店铺</h2>
-                </div>
-                <div class="mb-main">
-                    <div class="mb-item borderB">
-                        <div class="shop-info">
-                            <div class="logo">
-                                <img src="images/tem/my_shop_logo.jpg" alt="">
-                            </div>
-                            <div class="info">
-                                <h2>恋雨旗舰店</h2>
-                                <span>本店新品：冬季百搭男士休闲</span>
-                            </div>
-                        </div>
-                        <div class="shop-product">
-                            <ul class="p-list">
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="mb-item">
-                        <div class="shop-info">
-                            <div class="logo">
-                                <img src="images/tem/my_shop_logo.jpg" alt="">
-                            </div>
-                            <div class="info">
-                                <h2>恋雨旗舰店</h2>
-                                <span>本店新品：冬季百搭男士休闲</span>
-                            </div>
-                        </div>
-                        <div class="shop-product">
-                            <ul class="p-list">
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                                <li class="p-item">
-                                    <div class="img-controller">
-                                        <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                    </div>
-                                    <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                    <div class="price">
-                                        <span class="market-price">￥12.0</span>
-                                        <span class="shop-price">￥18.9</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--我收藏的商品-->
-            <div class="my-collect-product my-box">
-                <div class="mb-title">
-                    <h2>我收藏的商品</h2>
-                </div>
-                <div class="mb-main paddingTB">
-                    <div class="shop-product">
-                        <ul class="p-list">
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                            <li class="p-item">
-                                <div class="img-controller">
-                                    <a href="#"><img src="images/tem/tem_floor_pro.jpg" alt=""></a>
-                                </div>
-                                <div class="name">贝凯 毛巾架太空铝浴巾架 卫浴五金挂件浴室挂件厕所卫生间置</div>
-                                <div class="price">
-                                    <span class="market-price">￥12.0</span>
-                                    <span class="shop-price">￥18.9</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <favor size="5" type="shop"></favor>
+            <favor size="10" type="product"></favor>
             <suggest size="5" frame="true"></suggest>
         </div>
     </div>

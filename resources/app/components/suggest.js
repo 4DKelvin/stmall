@@ -35,7 +35,7 @@ define(function (require, exports, module) {
             '<ul class="p-list">' +
             '<li class="p-item" ng-repeat="product in list">' +
             '<div class="img-controller">' +
-            '<a href="#"><img ng-lazy="product.mainImage"></a>' +
+            '<a href="javascript:void(0);"><img ng-lazy="product.mainImage"></a>' +
             '</div>' +
             '<div class="name" ng-bind="product.title"></div>' +
             '<div class="price">' +
