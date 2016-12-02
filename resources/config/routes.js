@@ -156,12 +156,14 @@ define(function (require, exports, module) {
                             controller: 'productDetail'
                         })
                         .state('product/productList', {
-                            url: '/product/list/:page/:branch/:cate/:keyword',//商品列表
+                            url: '/product/list/:page/:branch/:cate/:sort/:ase/:keyword',//商品列表
                             params: {
                                 keyword: '',
                                 page: '1',
                                 cate: '0',
-                                branch: '0'
+                                branch: '0',
+                                sort: '0',
+                                ase: '1'
                             },
                             templateUrl: $template('/product/productList'),
                             controllerUrl: $action('product'),

@@ -65,11 +65,13 @@
             </div>
             <!--排序-->
             <div class="plp-sort">
-                <a class="pSort pSort-cut" href="javascript:void(0)">综合 <i class="iconfont icon-small-down"></i></a>
-                <a class="pSort" href="javascript:void(0)">人气 <i class="iconfont icon-small-up"></i></a>
-                <a class="pSort" href="javascript:void(0)">评价 <i class="iconfont icon-small-up"></i></a>
-                <a class="pSort" href="javascript:void(0)">销量 <i class="iconfont icon-small-up"></i></a>
-                <a class="pSort" href="javascript:void(0)">价格 <i class="iconfont icon-updownswitch"></i></a>
+                <a class="pSort" ng-class="{'pSort-cut':$stateParams.sort == type.value}"
+                   ng-init="type.ase = ($stateParams.sort == type.value?$stateParams.ase:1)"
+                   ui-sref="product/productList({page:1,sort:type.value,ase:$stateParams.sort == type.value?(type.ase>0?0:1):0})"
+                   ng-repeat="type in sortTypes">
+                    <span ng-bind="type.name"></span>
+                    <i class="iconfont" ng-class="{'icon-small-down':type.ase==0,'icon-small-up':type.ase==1}"></i>
+                </a>
 
                 <a class="eSort ml" href="javascript:void(0)">促销 <i class="iconfont icon-down-line"></i></a>
                 <a class="eSort" href="javascript:void(0)">筛选 <i class="iconfont icon-down-line"></i></a>
@@ -78,7 +80,7 @@
                 <a class="thSort thSort-cut" ui-sref="product/productList"><i class="iconfont icon-list-img"></i>大图</a>
                 <a class="thSort" ui-sref="product/productListSmall"><i class="iconfont icon-list"></i>小图</a>
 
-                <div class="min-page">
+                <div class="min-page" ng-hide="true">
                     <span>1/12</span>
                     <a href="javascript:void(0)"><i class="iconfont icon-left"></i></a>
                     <a href="javascript:void(0)"><i class="iconfont icon-right"></i></a>
@@ -88,160 +90,23 @@
             <!--商品列表-->
             <div class="plp-list">
 
-                <div class="pList-item">
+                <div class="pList-item" ng-repeat="item in list">
                     <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
+                        <img ng-lazy="item.mainImage">
                     </div>
                     <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
+                        <li class="cut"><img ng-lazy="item.mainImage"></li>
+                        <li><img ng-lazy="item.mainImage"></li>
+                        <li><img ng-lazy="item.mainImage"></li>
+                        <li><img ng-lazy="item.mainImage"></li>
+                        <li><img ng-lazy="item.mainImage"></li>
                     </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
-                </div>
-
-                <div class="pList-item">
-                    <div class="pi-bigImg">
-                        <img src="images/tem/tem_search_pro.png" alt="">
-                    </div>
-                    <ul class="pi-smallImg-item">
-                        <li class="cut"><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                        <li><img src="images/tem/tem_search_pro.png" alt=""></li>
-                    </ul>
-                    <div class="pi-price">￥1499.00</div>
-                    <div class="pi-name">MO&CO.2016欧美拼色双排扣中长款羊外套大衣MA631COT moco</div>
+                    <div class="pi-price" ng-bind="'￥'+(item.shopPrice|number:2)"></div>
+                    <div class="pi-name" ng-bind="item.title"></div>
                 </div>
 
             </div>
-
-            <!--分页-->
-            <div>分页</div>
+            <pager ng-model="pager" ng-change="change(page)" class="page" ng-if="list"></pager>
 
         </div>
     </div>

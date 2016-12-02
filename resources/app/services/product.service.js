@@ -42,6 +42,9 @@ define(function (require, exports, module) {
                     deferred.reject(err);
                 });
                 return deferred.promise;
+            },
+            products: function (params) {
+                return $request.post('products', params);
             }
         }
     }]);
