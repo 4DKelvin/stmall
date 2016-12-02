@@ -447,6 +447,7 @@ input[type=radio] {
         .gc-nav {
             height: 500px;
             background: #efe2e9;
+            overflow-y: auto;
         }
         .gc-nav-item {
             line-height: 32px;
@@ -524,7 +525,7 @@ input[type=radio] {
                     a {
                         color: #fff;
                         display: block;
-                        &.login {
+                        &.so-login {
                             background: @purpleColor;
                             margin: 5px auto;
                         }
@@ -535,6 +536,11 @@ input[type=radio] {
                         height: 70px;
                         border-radius: 50%;
                         margin-bottom: 10px;
+                        img{
+                          height: 70px;
+                          width: 70px;
+                          border-radius: 50%;
+                        }
                     }
                 }
                 .privileges {
@@ -2386,6 +2392,8 @@ input[type=radio] {
         .fbh-total {
             .fl(@f: right);
             margin-right: 20px;
+            line-height: 50px;
+            height: 50px;
             i {
                 font-style: normal;
                 color: @color;
@@ -2404,6 +2412,9 @@ input[type=radio] {
                 color: #fff;
                 background: @color;
                 text-align: center;
+                &.disabled{
+                    background: #999;
+                }
             }
         }
     }
@@ -3022,8 +3033,8 @@ input[type=radio] {
     }
 }
 
-//注册
-.user-head {
+//注册登录
+.reg-head {
     width: 100%;
     min-width: @baseMinWidth;
     background: #eeeeee;
@@ -3047,7 +3058,7 @@ input[type=radio] {
             .clearfix;
             border-bottom: 2px solid @lineColor;
             height: 40px;
-            padding:0 200px;
+            padding: 0 200px;
         }
         li {
             line-height: 30px;
@@ -3062,7 +3073,7 @@ input[type=radio] {
                 border-bottom: 2px solid @purpleColor;
                 position: relative;
                 color: @purpleColor;
-                .rs-num{
+                .rs-num {
                     background: url(../images/bg/bg_res_step.png) no-repeat 0 0;
                 }
             }
@@ -3073,9 +3084,176 @@ input[type=radio] {
                 width: 30px;
                 height: 30px;
                 background: url(../images/bg/bg_res_step.png) no-repeat 0 -30px;
-                color:#fff;
+                color: #fff;
                 text-align: center;
             }
         }
     }
+    .reg-main {
+        width: 600px;
+        margin: 20px auto;
+        .tips{
+            margin: 10px auto 20px;
+            line-height: 22px;
+            i{
+                color:@pinkColor;
+                margin-right: 5px;
+                margin-top: 2px;
+            }
+        }
+        .form-group {
+            padding: 10px 0;
+            .clearfix;
+            line-height: 36px;
+            .form-label {
+                width: 100px;
+                display: block;
+                text-align: right;
+                font-size: 14px;
+                .fl();
+            }
+            .form-text {
+                .fl();
+                margin-left: 10px;
+                p {
+                    line-height: 22px;
+                }
+            }
+            .reg-txt {
+                line-height: 36px;
+                height: 36px;
+                padding: 0 5px;
+                width: 280px;
+                border: 1px solid @lineColor;
+                box-sizing: border-box;
+            }
+        }
+        .form-operate {
+            padding: 10px 0 10px 110px;
+            .reg-btn {
+                .borderRadius(@value: 5px);
+                color: #fff;
+                display: inline-block;
+                padding: 0 40px;
+                line-height: 32px;
+                height: 32px;
+                font-size: 16px;
+                background: @purpleColor;
+            }
+            .disabled {
+                background: #ededed;
+            }
+        }
+        .reg-result {
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+            .tips-info {
+                font-size: 18px;
+                margin-bottom: 20px;
+                .iconfont {
+                    display: block;
+                    margin: auto;
+                    font-size: 80px;
+                }
+                &.success {
+                    .iconfont {
+                        color: #6dc33a;
+                    }
+                }
+                &.failed {
+                    .iconfont {
+                        color: #dcdcdc;
+                    }
+                }
+            }
+            .go-login {
+                display: inline-block;
+                margin: 20px auto;
+                background: @purpleColor;
+                padding: 0 40px;
+                line-height: 36px;
+                font-size: 16px;
+                color: #fff;
+                .borderRadius(@value: 5px);
+            }
+        }
+    }
+}
+
+.login-content {
+    width: 100%;
+    min-width: @baseWidth;
+    height: 600px;
+    background: url(../images/login_banner.jpg) no-repeat center;
+    .box {
+        width: @baseWidth;
+        position: relative;
+        margin: auto;
+        .main {
+            width: 350px;
+            height: 440px;
+            padding: 35px 25px;
+            box-sizing: border-box;
+            background: #fff;
+            position: absolute;
+            right: 0;
+            top: 80px;
+            h2.title {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            .form-item {
+                margin-bottom: 25px;
+                border: 1px solid #cbcbcb;
+                box-sizing: border-box;
+                height: 36px;
+                width: 300px;
+                .fi-icon {
+                    line-height: 34px;
+                    width: 34px;
+                    text-align: center;
+                    background: #dddddd;
+                    display: block;
+                    .fl();
+                }
+                .fi-text {
+                    display: block;
+                    .fl();
+                }
+                input {
+                    background: transparent;
+                    border: none;
+                    height: 34px;
+                    padding: 0 5px;
+                    width: 252px;
+                }
+            }
+            .form-btn {
+
+            }
+            .login-btn {
+                background: @purpleColor;
+                color: #fff;
+                line-height: 36px;
+                height: 36px;
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+            }
+            .form-operate {
+                text-align: right;
+                margin-top: 25px;
+                a {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+.login-footer{
+    width:@baseWidth;
+    margin:20px auto;
+    line-height: 30px;
+    text-align: center;
 }

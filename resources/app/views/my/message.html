@@ -18,42 +18,24 @@
         <!--正文-->
         <div class="col-main">
             <div class="cp-title">
-                <h1>我的消息</h1>
+                <ul class="cp-tab-title">
+                    <li ng-class="{'cut':type.value==$stateParams.type}" ng-repeat="type in messageTypes">
+                        <a href="javascript:void(0)" ui-sref="my/message({type:type.value,page:1})"
+                           ng-bind="type.name"></a>
+                    </li>
+                </ul>
             </div>
             <div class="msg-panle">
                 <ul>
-                    <li>
-                        <div class="msg-time">系统消息  2016-11-10 15:23:00</div>
-                        <div class="msg-title">评价我的二手宝贝:7，8层新iphone7全网通。</div>
-                        <a href="javascript:void(0)" class="more">查看详情 ></a>
-                        <i class="iconfont icon-shanchu-shanchuchengyuan"></i>
-                    </li>
-                    <li>
-                        <div class="msg-time">系统消息  2016-11-10 15:23:00</div>
-                        <div class="msg-title">评价我的二手宝贝:7，8层新iphone7全网通。</div>
-                        <a href="javascript:void(0)" class="more">查看详情 ></a>
-                        <i class="iconfont icon-shanchu-shanchuchengyuan"></i>
-                    </li>
-                    <li>
-                        <div class="msg-time">系统消息  2016-11-10 15:23:00</div>
-                        <div class="msg-title">评价我的二手宝贝:7，8层新iphone7全网通。</div>
-                        <a href="javascript:void(0)" class="more">查看详情 ></a>
-                        <i class="iconfont icon-shanchu-shanchuchengyuan"></i>
-                    </li>
-                    <li>
-                        <div class="msg-time">系统消息  2016-11-10 15:23:00</div>
-                        <div class="msg-title">评价我的二手宝贝:7，8层新iphone7全网通。</div>
-                        <a href="javascript:void(0)" class="more">查看详情 ></a>
-                        <i class="iconfont icon-shanchu-shanchuchengyuan"></i>
-                    </li>
-                    <li>
-                        <div class="msg-time">系统消息  2016-11-10 15:23:00</div>
-                        <div class="msg-title">评价我的二手宝贝:7，8层新iphone7全网通。</div>
+                    <li ng-repeat="item in list">
+                        <div class="msg-time" ng-bind="'系统消息 '+(item.sendtime|date:'yyyy-MM-dd hh:mm:ss')"></div>
+                        <div class="msg-title" ng-bind="item.content"></div>
                         <a href="javascript:void(0)" class="more">查看详情 ></a>
                         <i class="iconfont icon-shanchu-shanchuchengyuan"></i>
                     </li>
                 </ul>
             </div>
+            <pager ng-model="pager" ng-change="change(page)" class="page" ng-if="list"></pager>
         </div>
     </div>
 </div>

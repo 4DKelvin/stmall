@@ -12,7 +12,8 @@ define(function (require) {
         order = require('services/order.service'),
         refund = require('services/refund.service'),
         complain = require('services/complain.service'),
-        card = require('services/card.service');
+        card = require('services/card.service'),
+        message = require('services/message.service');
 
     var orderStatuses = [
         {'value': 0, 'name': '全部订单'},
@@ -49,14 +50,18 @@ define(function (require) {
         {value: 3, name: '服务质量问题'},
         {value: 4, name: '其他'}
     ];
+    var messageTypes = [
+        {value: 1, name: '服务提醒'},
+        {value: 2, name: '平台交易'},
+        {value: 4, name: '平台活动'}
+    ];
 
     /** ng异步载入 */
-    app.useModule(['image', 'suggest', 'header', 'search', 'footer', 'favor', 'subNav', 'pager', 'member.service', 'order.service', 'refund.service', 'complain.service', 'card.service']);
+    app.useModule(['image', 'suggest', 'header', 'search', 'footer', 'favor', 'subNav', 'pager', 'member.service', 'order.service', 'refund.service', 'complain.service', 'card.service', 'message.service']);
 
     app.controller('myIndex', ['$scope', 'orderService', '$cookie', '$rootScope',
         function ($scope, orderService, $cookie, $rootScope) {
             //我的 首页
-            $rootScope.$dialog.$alert('fuckyou');
             $scope.profile = $cookie('profile');
             orderService.orders(0, 0, 3).then(function (res) {
                 $scope.list = res ? res.list.map(function (item) {
@@ -345,8 +350,32 @@ define(function (require) {
         }]).controller('comment', ['$scope', 'memberService',
         function ($scope, memberService) {
             //评价
-        }]).controller('message', ['$scope', 'memberService',
-        function ($scope, memberService) {
+        }]).controller('message', ['$scope', 'messageService', '$rootScope',
+        function ($scope, messageService, $rootScope) {
             //我的消息
+            $scope.messageTypes = messageTypes;
+            messageService.list($rootScope.$stateParams.type, ($rootScope.$stateParams.page - 1) * 10, 10).then(function (res) {
+                $scope.pager = {
+                    pageSize: 10,
+                    startIndex: $rootScope.$stateParams.page,
+                    total: res ? res.total : 0
+                };
+                $scope.list = res ? res.list : [];
+            }, function (err) {
+
+            });
+            $scope.change = function (page) {
+                $rootScope.$state.go('my/message', {
+                    page: page,
+                    type: $rootScope.$stateParams.type
+                });
+            };
+            $scope.remove = function (item) {
+                messageService.remove(item.id).then(function () {
+                    $rootScope.$state.reload();
+                }, function (err) {
+
+                });
+            }
         }]);
 });

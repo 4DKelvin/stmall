@@ -6,32 +6,26 @@
     <div class="min-box">
         <!--面包屑-->
         <div class="crumbs-nav">
-            <a>全部</a>
-            <a class="crumbs-arrow">品牌女装</a>
+            <a ui-sref="product/productList({keyword:keyword,cate:0,page:1})">全部</a>
+            <a class="crumbs-arrow" ui-sref="product/productList({keyword:keyword,cate:selected.id,page:1})"
+               ng-repeat="selected in selectedCates" ng-bind="selected.name"></a>
+
             <div class="crumbs-arrow crumbs-search">
-                <input type="text">
-                <button><i class="iconfont icon-search"></i></button>
+                <input type="text" ng-model="keyword">
+                <button ui-sref="product/productList({keyword:keyword,cate:$stateParams.cate,page:1})"><i
+                        class="iconfont icon-search"></i></button>
             </div>
         </div>
 
-        <div class="product-list-panle">
+        <div class="product-list-panle" ng-init="more=true">
             <!--过滤条件-->
             <div class="plp-filter">
                 <div class="fil-item fil-brand">
                     <div class="fil-name">品牌</div>
                     <div class="fil-list">
                         <ul class="brand-list">
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
-                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a></li>
+                            <li><a href="javascript:void(0)"><img src="images/tem/tem_brand_shop_logo.jpg" alt=""></a>
+                            </li>
                         </ul>
                         <div class="fil-select">
                             <a href="javascript:void(0)"><i class="iconfont icon-add1"></i> 多选</a>
@@ -41,45 +35,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="fil-item">
-                    <div class="fil-name">品牌女装</div>
-                    <div class="fil-list">
-                        <ul class="fl-list">
-                            <li><a href="javascript:void(0)">专柜衬衫</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                        </ul>
+                <div ng-show="more">
+                    <div class="fil-item" ng-repeat="item in selectedCates" ng-if="item.items && $stateParams.cate">
+                        <div class="fil-name" ng-bind="item.name"></div>
+                        <div class="fil-list">
+                            <ul class="fl-list">
+                                <li ng-repeat="child in item.items">
+                                    <a ui-sref="product/productList({keyword:keyword,cate:child.id,page:1})"
+                                       ng-bind="child.name"></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="fil-item">
-                    <div class="fil-name">品牌男装</div>
-                    <div class="fil-list">
-                        <ul class="fl-list">
-                            <li><a href="javascript:void(0)">专柜衬衫</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="fil-item">
-                    <div class="fil-name">其它分类</div>
-                    <div class="fil-list">
-                        <ul class="fl-list">
-                            <li><a href="javascript:void(0)">专柜衬衫</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                            <li><a href="javascript:void(0)">专柜T恤</a></li>
-                        </ul>
+                    <div class="fil-item" ng-if="$stateParams.cate==0">
+                        <div class="fil-name">类别</div>
+                        <div class="fil-list">
+                            <ul class="fl-list">
+                                <li ng-repeat="item in categories">
+                                    <a ui-sref="product/productList({keyword:keyword,cate:item.id,page:1})"
+                                       ng-bind="item.name"></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="filter-more">
-                <a href="javascript:void(0)">更多选项 <i class="iconfont icon-down-line"></i></a>
+                <a href="javascript:void(0)" ng-click="more=!more">更多选项 <i class="iconfont icon-down-line"></i></a>
             </div>
             <!--排序-->
             <div class="plp-sort">

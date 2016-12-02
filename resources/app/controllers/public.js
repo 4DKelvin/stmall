@@ -6,12 +6,14 @@ define(function (require) {
         search = require('components/search'),
         footer = require('components/footer'),
         service = require('services/public.service'),
-        crypto = require('services/crypto.service');
+        crypto = require('services/crypto.service'),
+        geetest = require('geetest');
 
     /** ng异步载入 */
     app.useModule(['public.service', 'crypto.service']);
     app.controller('login', ['$scope', 'publicService', '$state', '$cookie', 'AES',
         function ($scope, publicService, $state, $cookie, AES) {
+
             $scope.submit = function () {
                 if ($scope.account && $scope.password) {
                     publicService.login($scope.account, AES.encrypt($scope.password)).then(function (res) {
@@ -26,6 +28,7 @@ define(function (require) {
                         //获取用户信息失败
                     });
                 }
-            }
+            };
         }]);
+
 });

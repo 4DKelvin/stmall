@@ -12,8 +12,8 @@ define(function (require, exports, module) {
                             controller: 'home'
                         })
                         .state('login', {
-                            url: '/login',
-                            templateUrl: $template('login'),
+                            url: '/user/login',
+                            templateUrl: $template('/user/login'),
                             controllerUrl: $action('public'),
                             controller: 'login'
                         })
@@ -134,7 +134,11 @@ define(function (require, exports, module) {
                             controller: 'comment'
                         })
                         .state('my/message', {
-                            url: '/my/message',//我的消息
+                            url: '/my/message/:type/:page',//我的消息
+                            params: {
+                                type: '1',
+                                page: '1'
+                            },
                             templateUrl: $template('/my/message'),
                             controllerUrl: $action('my'),
                             controller: 'message'
@@ -152,22 +156,16 @@ define(function (require, exports, module) {
                             controller: 'productDetail'
                         })
                         .state('product/productList', {
-                            url: '/product/productList',//商品列表
+                            url: '/product/list/:page/:branch/:cate/:keyword',//商品列表
+                            params: {
+                                keyword: '',
+                                page: '1',
+                                cate: '0',
+                                branch: '0'
+                            },
                             templateUrl: $template('/product/productList'),
                             controllerUrl: $action('product'),
                             controller: 'productList'
-                        })
-                        .state('product/productListSmall', {
-                            url: '/product/productListSmall',//商品列表小图
-                            templateUrl: $template('/product/productListSmall'),
-                            controllerUrl: $action('product'),
-                            controller: 'productList'
-                        })
-                        .state('shop/shopList', {
-                            url: '/shop/shopList',//商户列表
-                            templateUrl: $template('/shop/shopList'),
-                            controllerUrl: $action('shop'),
-                            controller: 'shopList'
                         })
                         .state('pay/confirmOrder', {
                             url: '/pay/confirmOrder',//确认订单
@@ -181,11 +179,17 @@ define(function (require, exports, module) {
                             controllerUrl: $action('pay'),
                             controller: 'confirmOrder'
                         })
-                        .state('register/register', {
-                            url: '/register/register',//注册
-                            templateUrl: $template('/register/register'),
+                        .state('register', {
+                            url: '/user/register',//注册
+                            templateUrl: $template('/user/register'),
                             controllerUrl: $action('register'),
                             controller: 'register'
+                        })
+                        .state('findPassWord', {
+                            url: '/user/findPassWord',//找回密码
+                            templateUrl: $template('/user/findPassWord'),
+                            controllerUrl: $action('findPassWord'),
+                            controller: 'findPassWord'
                         });
                 }]);
 

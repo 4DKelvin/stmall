@@ -19,52 +19,9 @@
         <div class="gc-con">
             <div class="gc-title"><i class="iconfont icon-fenlei"></i>商品分类</div>
             <ul class="gc-nav">
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i>
-                    <a ui-sref="product/productList" class="gc-item-a">女装</a> /
-                    <a href="javascript:void(0)">内衣</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">女鞋 /男鞋 /箱包</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">化妆品 /个人护理</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">腕表 /珠宝饰品 /眼镜</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">手机 /数码 /电脑办公</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">母婴玩具</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">零食 /进口食品 /茶酒</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">生鲜水果</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">大家电 /生活电器</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">家具建材</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">汽车 /配件 /用品</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">家纺 /家饰 /鲜花</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">医药保健</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">厨具 /收纳 /宠物</a>
-                </li>
-                <li class="gc-nav-item">
-                    <i class="iconfont"></i><a href="javascript:void(0);" class="gc-item-a">图书音像</a>
+                <li class="gc-nav-item" ng-repeat="item in list">
+                    <i class="iconfont"></i><a ui-sref="product/productList({cate:item.id})" ng-bind="item.name"
+                                               class="gc-item-a"></a>
                 </li>
             </ul>
         </div>
@@ -83,12 +40,15 @@
             <div class="avatar">
                 <div class="ava-con">
                     <div class="user-info">
-                        <div class="user-head"></div>
+                        <div class="user-head" ng-if="profile">
+                            <img ng-lazy="profile.avatar"/>
+                        </div>
                         <div class="sign-in"></div>
                         <div class="sign-out">
-                            <p>Hi~你好！</p>
-                            <a href="javascript:void(0)" class="login">请登录</a>
-                            <a href="javascript:void(0);" class="register">免费注册</a>
+                            <p ng-if="profile" ng-bind="profile.nickName+' 你好！'"></p>
+                            <a href="javascript:void(0);" ng-click="logout()" ng-if="profile" class="so-login">退出登录</a>
+                            <a ui-sref="login" ng-if="!profile" class="so-login">请登录</a>
+                            <a href="javascript:void(0);" ng-if="!profile" class="so-register">免费注册</a>
                         </div>
                     </div>
                     <div class="privileges">

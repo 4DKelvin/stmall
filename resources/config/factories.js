@@ -31,10 +31,10 @@ define(function (require, exports, module) {
                     cache: false
                 };
                 options[method == 'GET' || method == 'DELETE' ? 'params' : 'data'] = data;
-                console.log('[请求][' + options.url + '][' + options.method + ']数据接口,参数:', data);
+                console.log('[ 请求 ][ ' + options.url + ' ][ ' + options.method + ' ]数据接口,参数:', data);
                 try {
                     $http(options).success(function (data) {
-                        console.log('[响应][' + options.url + '][' + options.method + ']数据接口,返回:', data);
+                        console.log('[ 响应 ][ ' + options.url + ' ][ ' + options.method + ' ]数据接口,返回:', data);
                         switch (data.responseCode) {
                             case "000000":
                                 deferred.resolve(data.responseData);

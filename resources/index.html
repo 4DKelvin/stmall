@@ -11,7 +11,7 @@
     <meta name="keywords" content="#"/>
     <meta name="description" content="#"/>
     <meta name="author" content="#"/>
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_lpvrxeged2y8ehfr.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_jvb9syjtxcd6lxr.css">
     <!-- inject:css --><!-- endinject -->
 </head>
 <body>
@@ -38,13 +38,15 @@
             'app': '../config/app',
             'routes': '../config/routes',
             'constants': '../config/constants',
-            'factories': '../config/factories'
+            'factories': '../config/factories',
+            'geetest': 'http://static.geetest.com/static/tools/gt',
             /** @Inject:mock-define */
         },
         shim: {
             'jquery': {exports: 'jquery'},
             'unveil': {deps: ['jquery'], exports: 'jquery'},
             'cookie': {deps: ['jquery'], exports: 'jquery'},
+            'geetest': {deps: ['jquery']},
             'angular': {exports: 'angular'},
             'angular-ui-router': {deps: ['angular']},
             'ng-dialog': {deps: ['angular']},

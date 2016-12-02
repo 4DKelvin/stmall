@@ -1,22 +1,12 @@
 <header></header>
-<div id="header">
-    <div class="mall-logo">
-        <img src="images/mall_logo.png" alt="">
-    </div>
-    <div class="mall-text">购物车</div>
-    <div class="mall-search">
-    <div class="ms-form">
-        <input type="text" class="ms-input">
-        <button class="ms-submit">搜索</button>
-        </div>
-    </div>
-</div>
-
+<search-bar sub-title="购物车"></search-bar>
 <!--内容-->
 <div ng-cloak id="container" class="cart-panle">
     <div class="cart-main">
         <div class="cart-table-th cart-thead">
-            <div class="th th-chk-txt"><input type="checkbox" ng-checked="isSelectedAll" ng-click="select(null, null, !isSelectedAll);">全选</div>
+            <div class="th th-chk-txt"><input type="checkbox" ng-checked="isSelectedAll"
+                                              ng-click="select(null, null, !isSelectedAll);getSelectedTotalAmount();">全选
+            </div>
             <div class="th th-info">商品信息</div>
             <div class="th th-attribute">属性</div>
             <div class="th th-price">单价</div>
@@ -26,8 +16,10 @@
         </div>
 
         <div ng-repeat="shop in shopList" class="cart-shop-item">
-            <div class="cart-shop-info">
-                <input ng-checked="shop.selected" ng-click="select(shop.id, null, !shop.selected);" type="checkbox">
+            <div class="cart-shop-info" ng-if="shop.buyProductList.length>0">
+                <input ng-checked="shop.selected"
+                       ng-click="select(shop.id, null, !shop.selected);getSelectedTotalAmount();" type="checkbox">
+
                 <div class="shop-name">
                     <img ng-src="{{shop.logo}}" alt="" width="20">
                     {{shop.shopName}}
@@ -38,11 +30,14 @@
             <div ng-repeat="product in shop.buyProductList" class="cart-item">
                 <div class="cart-table-th">
                     <div class="th th-chk">
-                        <input ng-checked="product.selected" ng-click="select(shop.id, product.id, !product.selected);" type="checkbox">
+                        <input ng-checked="product.selected"
+                               ng-click="select(shop.id, product.cartId, !product.selected);getSelectedTotalAmount();"
+                               type="checkbox">
                     </div>
                     <div class="th th-info">
                         <div class="inner-td-pro">
                             <img ng-src="{{product.mainImage}}" alt="">
+
                             <p>{{product.title}}</p>
                         </div>
                     </div>
@@ -52,17 +47,19 @@
                     </div>
                     <div class="th th-count">
                         <div class="cart-count">
-                            <button class="minus">-</button>
-                            <input ng-init="buyNum=1" type="text" ng-model="buyNum">
-                            <button class="plus">+</button>
+                            <button class="minus" ng-click="buyNumChange(product, product.productNum*1-1)">-</button>
+                            <input ng-model="product.productNum" ng-change="buyNumChange(product, product.productNum*1)"
+                                   type="text">
+                            <button class="plus" ng-click="buyNumChange(product, product.productNum*1+1)">+</button>
                         </div>
                     </div>
                     <div class="th th-total">
-                        <span>{{product.shopPrice * buyNum||0 | currency:"￥"}}</span>
+                        <span>{{product.shopPrice * product.productNum||0 | currency:"￥"}}</span>
                     </div>
                     <div class="th th-operate">
-                        <a href="javascript:void(0)" ng-click="cartService.del(product.id)">删除</a>
-                        <a href="javascript:void(0)" ng-click="cartService.favorite(product.id, product.isFavorite)">收藏</a>
+                        <a href="javascript:void(0)" ng-click="delProduct([product.cartId])">删除</a>
+                        <a href="javascript:void(0)"
+                           ng-click="cartService.favorite(product.productId, product.isFavorite)">收藏</a>
                     </div>
                 </div>
             </div>
@@ -72,35 +69,25 @@
     <div class="float-bar-holder">
         <div class="fbh-sellectAll">
             <input ng-checked="isSelectedAll" ng-click="select(shop.id, null, !shop.selected);" type="checkbox"> 全选
-            <a href="javascript:void(0)" ng-click="cartService.del(getSelectedCartIds())">删除选择的商品</a>
+            <a href="javascript:void(0)" ng-click="delProduct(getSelectedCartIds())">删除选择的商品</a>
         </div>
         <div class="fbh-right">
-            <a href="javascript:void(0)">结 算</a>
+            <a href="javascript:void(0)" ng-class="{'disabled':getSelectedCartIds().length==0}" ng-click="">结 算</a>
         </div>
         <div class="fbh-total">
-            <span>已选中 <i>2</i> 件商品</span>
+            <span>已选中 <i>{{getSelectedCartIds().length}}</i> 件商品</span>
             <span>总价：</span>
-            <span class="total">{{totalAmount | currency:"￥"}}</span>
+            <span class="total">{{totalAmount||0 | currency:"￥"}}</span>
         </div>
     </div>
 
     <!--为你推荐-->
-    <div class="base-recommend">
+    <!--<div class="base-recommend">
         <h2 class="title">为你推荐</h2>
         <ul class="br-main">
-            <!--<li>
-                <div class="br-img">
-                    <img src="images/tem/tem_rec_pro.jpg" alt="">
-                </div>
-                <div class="br-name ellipsis">女装冬装2016新款潮超大毛领白鸭绒保暖羽绒服女中长款韩国面包服</div>
-                <div class="price-sales">
-                    <span class="price">￥129.00</span>
-                    <span class="sales">23</span>
-                </div>
-            </li>-->
             <li ng-repeat="rec in recommend">
                 <div class="br-img">
-                    <img ng-src="rec.mainImage" alt="">
+                    <img ng-src="{{rec.mainImage}}" alt="">
                 </div>
                 <div class="br-name ellipsis">{{rec.title}}</div>
                 <div class="price-sales">
@@ -109,8 +96,8 @@
                 </div>
             </li>
         </ul>
-    </div>
-
+    </div>-->
+    <suggest size="10"></suggest>
 </div>
 
 <footer></footer>

@@ -5,37 +5,28 @@ define(function (require, exports, module) {
     var ngModule = angular.module('search', []);
 
     document.createElement('search-bar');
-    ngModule.directive('searchBar', ['$timeout', function ($timeout) {
+    ngModule.directive('searchBar', ['$rootScope', function ($rootScope) {
         return {
             restrict: 'E',
             template: '<div id="header">' +
-            '<div class="mall-logo"><img src="images/mall_logo.png" alt=""></div>' +
+            '<a class="mall-logo" ui-sref="home"><img src="images/mall_logo.png" alt=""></a>' +
+            '<div class="mall-text" ng-bind="subTitle" ng-if="subTitle"></div>' +
             '<div class="mall-search">' +
             '<div class="ms-form">' +
-            '<input type="text" class="ms-input">' +
-            '<button class="ms-submit">搜索</button>' +
+            '<input type="text" placeholder="搜索宝贝" class="ms-input" ng-model="keyword">' +
+            '<button class="ms-submit" ui-sref="product/productList({keyword:keyword,cate:0,page:1})">搜索</button>' +
             '</div>' +
-            '<ul class="ms-hot-query">' +
-            '<li><a href="javascript:void(0);">iphone7</a></li>' +
-            '<li><a href="javascript:void(0);">坚果</a></li>' +
-            '<li><a href="javascript:void(0);">洗衣机</a></li>' +
-            '<li><a href="javascript:void(0);">电视机</a></li>' +
-            '<li><a href="javascript:void(0);">电脑</a></li>' +
-            '<li><a href="javascript:void(0);">空调</a></li>' +
-            '<li><a href="javascript:void(0);">冰箱</a></li>' +
-            '<li><a href="javascript:void(0);">衣服</a></li>' +
-            '<li><a href="javascript:void(0);">吹风机</a></li>' +
-            '<li><a href="javascript:void(0);">鞋子</a></li>' +
-            '<li><a href="javascript:void(0);">夹克</a></li>' +
-            '<li><a href="javascript:void(0);">干衣机</a></li>' +
+            '<ul class="ms-hot-query" ng-if="!subTitle">' +
+            '<li ng-repeat="text in hots"><a ui-sref="product/productList({keyword:text,cate:0,page:1})" ng-bind="text"></a></li>' +
             '</ul>' +
             '</div>' +
             '</div>',
             scope: {
-                'profile': '=?'
+                'subTitle': '@'
             },
             controller: function ($scope, $element, $attrs) {
-
+                $scope.keyword = $rootScope.$stateParams.keyword;
+                $scope.hots = ['iPhone 7', 'Mac book Pro 2016', 'iPad Mini'];
             }
         }
     }]);
