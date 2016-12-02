@@ -1,0 +1,86 @@
+<div class="reg-head">
+    <div class="head-main">
+        <h1>账户注册</h1>
+    </div>
+</div>
+
+<div class="register" ng-switch="step">
+    <div class="reg-step">
+        <ul>
+            <li ng-class="{'cut':step=='first'}">
+                <span class="rs-num">1</span>
+                <span class="rs-name">验证手机</span>
+            </li>
+            <li ng-class="{'cut':step=='second'}">
+                <span class="rs-num">2</span>
+                <span class="rs-name">设置用户名</span>
+            </li>
+            <li ng-class="{'cut':step=='third'}">
+                <span class="rs-num">3</span>
+                <span class="rs-name">注册成功</span>
+            </li>
+        </ul>
+    </div>
+    <div class="reg-main" ng-switch-when="first">
+        <div class="form-group">
+            <span class="form-label">手机号</span>
+            <div class="form-text"><input type="text" class="reg-txt" placeholder="请输入您的手机号"></div>
+        </div>
+        <div class="form-group">
+            <span class="form-label">验证</span>
+            <div class="form-text" id="float-captcha"></div>
+        </div>
+        <div class="form-operate">
+            <a class="reg-btn disabled" href="javascript:void(0)">下一步</a>
+        </div>
+    </div>
+    <div class="reg-main" ng-switch-when="second">
+        <div class="form-group">
+            <span class="form-label">*用户名</span>
+            <div class="form-text">
+                <input type="text" class="reg-txt">
+                <p>字母和数字组成，一经设置，不可修改</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="form-label">*密码</span>
+            <div class="form-text">
+                <input type="password" class="reg-txt">
+                <p>由6-16数字字母组成，字母区分大小写</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="form-label">*确认密码</span>
+            <div class="form-text">
+                <input type="text" class="reg-txt" placeholder="再次输入密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="form-label">*推荐人</span>
+            <div class="form-text">
+                <input type="password" class="reg-txt" placeholder="(选填)">
+                <p>桂林银行客户经理工号</p>
+            </div>
+        </div>
+        <div class="form-operate">
+            <a class="reg-btn disabled" href="javascript:void(0)">注 册</a>
+        </div>
+    </div>
+    <div class="reg-main" ng-switch-when="third">
+        <div class="reg-result" ng-if="result=='success'">
+            <div class="tips-info success">
+                <i class="iconfont icon-ok"></i>
+                恭喜您，注册成功！
+            </div>
+            <p>3s后页面将自动跳转</p>
+            <a class="go-login" href="javascript:void(0)">去登录</a>
+        </div>
+        <div class="reg-result" ng-if="result=='failed'">
+            <div class="tips-info failed">
+                <i class="iconfont icon-cancel"></i>
+                对不起，注册失败！
+            </div>
+            <a class="go-login" href="javascript:void(0)">重新注册</a>
+        </div>
+    </div>
+</div>
